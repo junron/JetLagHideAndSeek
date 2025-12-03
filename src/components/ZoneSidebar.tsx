@@ -47,6 +47,7 @@ import {
     QuestionSpecificLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
+import { getLineNamesForStationName } from "@/maps/api/sgmrt";
 import {
     geoSpatialVoronoi,
     holedMask,
@@ -327,28 +328,82 @@ export const ZoneSidebar = () => {
                                 continue;
                             }
 
-                            const nodes = await trainLineNodeFinder(nid);
+                            const stationName =
+                                nearestTrainStation.properties["name:en"] ||
+                                nearestTrainStation.properties.name;
 
-                            if (nodes.length === 0) {
+                            if (!stationName) {
                                 toast.warning(
-                                    `No train line found for ${
-                                        nearestTrainStation.properties[
-                                            "name:en"
-                                        ] || nearestTrainStation.properties.name
-                                    }`,
+                                    "Nearest station has no English name; skipping 'same train line' filter.",
                                 );
                                 continue;
-                            } else {
-                                circles = circles.filter((circle: any) => {
-                                    const idProp = circle.properties.properties
-                                        .id as string;
-                                    if (!idProp || !idProp.includes("/"))
-                                        return false;
-                                    const id = parseInt(idProp.split("/")[1]);
+                            }
 
-                                    return question.data.same
-                                        ? nodes.includes(id)
-                                        : !nodes.includes(id);
+                            const nearestLines = await getLineNamesForStationName(
+                                stationName,
+                            );
+
+                            if (!nearestLines || nearestLines.length === 0) {
+                                // fallback to nodal Overpass method
+                                const nodes = await trainLineNodeFinder(nid);
+
+                                if (nodes.length === 0) {
+                                    toast.warning(
+                                        `No train line found for ${
+                                            stationName
+                                        }`,
+                                    );
+                                    continue;
+                                } else {
+                                    circles = circles.filter((circle: any) => {
+                                        const idProp = circle.properties.properties
+                                            .id as string;
+                                        if (!idProp || !idProp.includes("/"))
+                                            return false;
+                                        const id = parseInt(idProp.split("/")[1]);
+
+                                        return question.data.same
+                                            ? nodes.includes(id)
+                                            : !nodes.includes(id);
+                                    });
+                                }
+                            } else {
+                                // Use the sgmrt-based line matching using names
+                                circles = circles.filter((circle: any) => {
+                                    const name =
+                                        circle.properties.properties["name:en"] ||
+                                        circle.properties.properties.name;
+
+                                    if (!name) return false;
+
+                                    // Determine lines for this station
+                                    // We don't `await` inside filter; prefetch may be better but for clarity, do synchronous array filter with simple inclusion checks using getLineNamesForStationName
+                                    return true;
+                                });
+
+                                // Prefetch lines per circle and then filter
+                                const linesCache = new Map<string, string[]>();
+                                await Promise.all(
+                                    circles.map(async (circle: any) => {
+                                        const name =
+                                            circle.properties.properties["name:en"] ||
+                                            circle.properties.properties.name;
+                                        if (!name) return;
+                                        const lns = await getLineNamesForStationName(name);
+                                        linesCache.set(name, lns);
+                                    }),
+                                );
+
+                                circles = circles.filter((circle: any) => {
+                                    const name =
+                                        circle.properties.properties["name:en"] ||
+                                        circle.properties.properties.name;
+                                    if (!name) return false;
+                                    const lns = linesCache.get(name) || [];
+                                    const shared = lns.some((ln) =>
+                                        nearestLines.includes(ln),
+                                    );
+                                    return question.data.same ? shared : !shared;
                                 });
                             }
                         }

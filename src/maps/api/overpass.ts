@@ -8,6 +8,7 @@ import {
     mapGeoLocation,
     polyGeoJSON,
 } from "@/lib/context";
+import { getLineNamesForStationName } from "@/maps/api/sgmrt";
 import { safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
@@ -140,26 +141,40 @@ wr(bn);
 out tags;
 `;
     const tagData = await getOverpassData(tagQuery, "Finding train line...");
+    // Try to use the static sgmrt data first to derive line names; then build a smaller overpass query when necessary.
+    const tagElements = tagData.elements || [];
+    let possibleLineQueries: string[] = [];
+
+    // Use station name to query sgmrt lines
+    const nodeName =
+        (tagElements[0] && (tagElements[0].tags["name:en"] || tagElements[0].tags.name)) ||
+        undefined;
+    if (nodeName) {
+        const sgmrtLines = await getLineNamesForStationName(nodeName);
+        if (sgmrtLines && sgmrtLines.length) {
+            for (const ln of sgmrtLines) {
+                possibleLineQueries.push(`wr["name"="${ln}"];`);
+            }
+        }
+    }
+
+    // Fallback to using tag-based network or names
+    for (const element of tagElements) {
+        if (element.tags && (element.tags.name || element.tags["name:en"])) {
+            const nm = element.tags["name:en"] || element.tags.name;
+            if (nm) {
+                possibleLineQueries.push(`wr["name"="${nm}"];`);
+            }
+        }
+        if (element.tags && element.tags.network) {
+            possibleLineQueries.push(`wr["network"="${element.tags.network}"];`);
+        }
+    }
+
     const query = `
 [out:json];
 (
-${tagData.elements
-    .map((element: any) => {
-        if (
-            !element.tags.name &&
-            !element.tags["name:en"] &&
-            !element.tags.network
-        )
-            return "";
-        let query = "";
-        if (element.tags.name) query += `wr["name"="${element.tags.name}"];`;
-        if (element.tags["name:en"])
-            query += `wr["name:en"="${element.tags["name:en"]}"];`;
-        if (element.tags["network"])
-            query += `wr["network"="${element.tags["network"]}"];`;
-        return query;
-    })
-    .join("\n")}
+${possibleLineQueries.join("\n")}
 );
 out geom;
 `;

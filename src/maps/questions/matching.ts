@@ -24,6 +24,10 @@ import {
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
+import {
+    areStationsOnSameLineByNames,
+    getLineNamesForStationName,
+} from "@/maps/api/sgmrt";
 import { holedMask, modifyMapData, safeUnion } from "@/maps/geo-utils";
 import { geoSpatialVoronoi } from "@/maps/geo-utils";
 import type {
@@ -32,21 +36,19 @@ import type {
     MatchingQuestion,
 } from "@/maps/schema";
 
+
+const airports = {
+    "Seletar Airport": [1.3515572,103.9868333],
+    "Changi Airport": [1.4152511,103.8671796],
+}
+
 export const findMatchingPlaces = async (question: MatchingQuestion) => {
     switch (question.type) {
         case "airport": {
-            return _.uniqBy(
-                (
-                    await findPlacesInZone(
-                        '["aeroway"="aerodrome"]["iata"]', // Only commercial airports have IATA codes,
-                        "Finding airports...",
-                    )
-                ).elements,
-                (feature: any) => feature.tags.iata,
-            ).map((x) =>
+            return Object.values(airports).map((coords) =>
                 turf.point([
-                    x.center ? x.center.lon : x.lon,
-                    x.center ? x.center.lat : x.lat,
+                    coords[1],
+                    coords[0],
                 ]),
             );
         }
@@ -334,18 +336,44 @@ export const hiderifyMatching = async (question: MatchingQuestion) => {
         );
 
         if (question.type === "same-train-line") {
-            const nodes = await trainLineNodeFinder(
-                nearestSeekerTrainStation.properties.id,
-            );
+            // Prefer sgmrt static data to check train lines via station name
+            const hiderLangName =
+                nearestHiderTrainStation.properties["name:en"] ||
+                nearestHiderTrainStation.properties.name;
+            const seekerLangName =
+                nearestSeekerTrainStation.properties["name:en"] ||
+                nearestSeekerTrainStation.properties.name;
 
-            const hiderId = parseInt(
-                nearestHiderTrainStation.properties.id.split("/")[1],
-            );
+            if (hiderLangName && seekerLangName) {
+                const seekerLines = await getLineNamesForStationName(
+                    seekerLangName,
+                );
+                const hiderLines = await getLineNamesForStationName(
+                    hiderLangName,
+                );
 
-            if (nodes.includes(hiderId)) {
-                question.same = true;
+                if (seekerLines.length > 0 && hiderLines.length > 0) {
+                    const shared = seekerLines.some((l) => hiderLines.includes(l));
+                    question.same = shared;
+                } else {
+                    // Fallback to Overpass node-based search
+                    const nodes = await trainLineNodeFinder(
+                        nearestSeekerTrainStation.properties.id,
+                    );
+                    const hiderId = parseInt(
+                        nearestHiderTrainStation.properties.id.split("/")[1],
+                    );
+                    question.same = nodes.includes(hiderId);
+                }
             } else {
-                question.same = false;
+                // No station names — fallback to existing node-based logic
+                const nodes = await trainLineNodeFinder(
+                    nearestSeekerTrainStation.properties.id,
+                );
+                const hiderId = parseInt(
+                    nearestHiderTrainStation.properties.id.split("/")[1],
+                );
+                question.same = nodes.includes(hiderId);
             }
         }
 
