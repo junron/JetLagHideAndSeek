@@ -55,3 +55,5 @@ export const BLANK_GEOJSON = {
         },
     ],
 };
+
+export const ELECTORAL_BOUNDARY_GEOJSON = "/ElectoralBoundary2025GEOJSON.geojson";

@@ -12,7 +12,7 @@ import { getLineNamesForStationName } from "@/maps/api/sgmrt";
 import { safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
-import { LOCATION_FIRST_TAG, OVERPASS_API } from "./constants";
+import { LOCATION_FIRST_TAG, OVERPASS_API, ELECTORAL_BOUNDARY_GEOJSON } from "./constants";
 import type {
     EncompassingTentacleQuestionSchema,
     HomeGameMatchingQuestions,
@@ -111,20 +111,80 @@ export const findAdminBoundary = async (
     longitude: number,
     adminLevel: 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
 ) => {
+    // If the requested adminLevel corresponds to electoral divisions (5), prefer
+    // the bundled geojson file if available rather than hitting Overpass every time.
+    if (adminLevel === 5) {
+        try {
+                const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
+                "Loading electoral boundary data...",
+                CacheType.PERMANENT_CACHE,
+            );
+            const data = await resp.json();
+            const point = turf.point([longitude, latitude]);
+            for (const feature of data.features) {
+                if (
+                    feature.geometry &&
+                    (feature.geometry.type === "Polygon" ||
+                        feature.geometry.type === "MultiPolygon")
+                ) {
+                    try {
+                        if (turf.booleanPointInPolygon(point, feature as any)) {
+                            return feature as any;
+                        }
+                    } catch (e) {
+                        // continue on errors in polygon checks
+                    }
+                }
+            }
+        } catch (err) {
+            // If local lookup fails for any reason, fallback to Overpass below
+            console.warn("Failed to load electoral boundaries locally, falling back to Overpass", err);
+        }
+    }
+};
+
+export const findAdminBoundariesByLetter = async (
+    adminLevel: number,
+    letter: string,
+) => {
+    // If admin level 5, use the bundled geojson and filter names by starting letter
+    if (adminLevel === 5) {
+        try {
+            const resp = await cacheFetch((import.meta.env.BASE_URL || "") + ELECTORAL_BOUNDARY_GEOJSON,
+                "Loading electoral boundary data...",
+                CacheType.PERMANENT_CACHE,
+            );
+            const data = await resp.json();
+            const upperLetter = letter.toUpperCase();
+            const features = data.features.filter((feature: any) => {
+                const name =
+                    feature.properties?.["name:en"] || feature.properties?.Name || feature.properties?.name;
+                if (!name || typeof name !== "string") return false;
+                return name[0].toUpperCase() === upperLetter;
+            });
+            return {
+                type: "FeatureCollection",
+                features,
+            } as any;
+        } catch (err) {
+            console.warn("Failed to load electoral boundaries locally for letter filter, falling back to Overpass", err);
+        }
+    }
+
+    // Fallback: Use Overpass query similar to existing behavior (returns raw data elements)
     const query = `
 [out:json];
-is_in(${latitude}, ${longitude})->.a;
-rel(pivot.a)["admin_level"="${adminLevel}"];
+rel["admin_level"="${adminLevel}"]["name:en"~"^${letter}.+"];
 out geom;
     `;
-    const data = await getOverpassData(query, "Determining matching zone...");
+    const data = await getOverpassData(query, `Finding zones that start with the same letter (${letter})...`);
     const geo = osmtogeojson(data);
-    return geo.features?.[0];
+    return geo;
 };
 
 export const fetchCoastline = async () => {
     const response = await cacheFetch(
-        import.meta.env.BASE_URL + "/coastline50.geojson",
+           (import.meta.env.BASE_URL || "") + "/coastline50.geojson",
         "Fetching coastline data...",
         CacheType.PERMANENT_CACHE,
     );

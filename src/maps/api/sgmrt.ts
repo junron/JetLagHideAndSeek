@@ -23,7 +23,7 @@ export async function loadSgmrt() {
     if (cached) return cached;
 
     // We'll fetch the file from the public folder using the base url
-    const url = import.meta.env.BASE_URL + "/sgmrt.geojson";
+    const url = "/sgmrt.geojson";
     const resp = await fetch(url);
     const geojson = (await resp.json()) as FeatureCollection;
 

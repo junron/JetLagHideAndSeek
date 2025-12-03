@@ -227,25 +227,26 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
 
 const zoneMatchingQuestionsSchema = baseMatchingQuestionSchema.extend({
     type: z.union([
-        z.literal("zone").describe("Zone Question"),
+        z.literal("zone").describe("Electoral Division Question"),
         z
             .literal("letter-zone")
-            .describe("Zone Starts With Same Letter Question"),
+            .describe("Electoral Division Starts With Same Letter Question"),
     ]),
     cat: z
         .object({
-            adminLevel: z.union([
-                z.literal(3),
-                z.literal(4),
-                z.literal(5),
-                z.literal(6),
-                z.literal(7),
-                z.literal(8),
-                z.literal(9),
-                z.literal(10),
-            ]),
+            // adminLevel: z.union([
+            //     // z.literal(3),
+            //     // z.literal(4),
+            //     z.literal(5)
+            //     // z.literal(6),
+            //     // z.literal(7),
+            //     // z.literal(8),
+            //     // z.literal(9),
+            //     // z.literal(10),
+            // ]),
+            adminLevel: z.literal(5),
         })
-        .default(() => ({ adminLevel: 3 }) as { adminLevel: 3 }),
+        .default(() => ({ adminLevel: 5 }) as { adminLevel: 5 }),
 });
 
 const homeGameMatchingQuestionsSchema = baseMatchingQuestionSchema.extend({
@@ -271,9 +272,9 @@ const hidingZoneMatchingQuestionsSchema = baseMatchingQuestionSchema.extend({
         z
             .literal("same-length-station")
             .describe("Station Has Same Length Question"),
-        z
-            .literal("same-train-line")
-            .describe("Station On Same Train Line Question"),
+        // z
+        //     .literal("same-train-line")
+        //     .describe("Station On Same Train Line Question"),
     ]),
 });
 
@@ -288,7 +289,7 @@ const customMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
 export const matchingQuestionSchema = z.union([
     zoneMatchingQuestionsSchema.describe(NO_GROUP),
     ordinaryMatchingQuestionSchema.describe(NO_GROUP),
-    customMatchingQuestionSchema.describe(NO_GROUP),
+    // customMatchingQuestionSchema.describe(NO_GROUP),
     hidingZoneMatchingQuestionsSchema.describe("Hiding Zone Mode"),
     homeGameMatchingQuestionsSchema.describe("Hiding Zone Mode"),
 ]);

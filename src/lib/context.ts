@@ -8,6 +8,7 @@ import type {
     CustomStation,
     OpenStreetMap,
 } from "@/maps/api";
+import { loadSgmrt } from "@/maps/api/sgmrt";
 import {
     type DeepPartial,
     type Question,
@@ -117,7 +118,7 @@ export const questionFinishedMapData = atom<any>(null);
 export const trainStations = atom<any[]>([]);
 export const useCustomStations = persistentAtom<boolean>(
     "useCustomStations",
-    false,
+    true,
     {
         encode: JSON.stringify,
         decode: JSON.parse,
@@ -131,6 +132,48 @@ export const customStations = persistentAtom<CustomStation[]>(
         decode: JSON.parse,
     },
 );
+
+// Populate `customStations` from the bundled `sgmrt.geojson` if none are
+// currently persisted. This runs in the browser only and won't overwrite
+// any user-specified custom stations already present.
+if (typeof window !== "undefined") {
+    (async () => {
+        try {
+            // Only set defaults if nothing persisted yet
+            if (customStations.get().length === 0) {
+                const data = await loadSgmrt();
+                const features: any[] = (data.geojson?.features || []).filter(
+                    (f) => f.properties && f.properties.stop_type === "station",
+                );
+
+                const converted: CustomStation[] = features.map((f) => {
+                    const name = f.properties?.["name:en"] || f.properties?.name || undefined;
+                    const coords: any[] = f.geometry?.coordinates || [0, 0];
+                    const lng = coords[0];
+                    const lat = coords[1];
+                    let id = f.properties?.station_codes || f.properties?.id;
+                    if (!id) {
+                        // fallback to stable-ish id
+                        id = `${lat},${lng}`;
+                    }
+                    return {
+                        id: String(id),
+                        name,
+                        lat,
+                        lng,
+                    } as CustomStation;
+                });
+
+                if (converted.length > 0) {
+                    customStations.set(converted);
+                }
+            }
+        } catch (err) {
+            // Ignore any errors — existing behavior loads sgmrt.geojson elsewhere
+            console.warn("Failed to initialize customStations from sgmrt.geojson", err);
+        }
+    })();
+}
 export const mergeDuplicates = persistentAtom<boolean>(
     "removeDuplicates",
     false,
@@ -155,13 +198,13 @@ export const animateMapMovements = persistentAtom<boolean>(
         decode: JSON.parse,
     },
 );
-export const hidingRadius = persistentAtom<number>("hidingRadius", 0.5, {
+export const hidingRadius = persistentAtom<number>("hidingRadius", 400, {
     encode: JSON.stringify,
     decode: JSON.parse,
 });
 export const hidingRadiusUnits = persistentAtom<Units>(
     "hidingRadiusUnits",
-    "miles",
+    "meters",
     {
         encode: JSON.stringify,
         decode: JSON.parse,
