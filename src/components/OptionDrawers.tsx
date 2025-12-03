@@ -428,14 +428,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                     onCheckedChange={() => {
                                         const willBeEnabled =
                                             !$highlightTrainLines;
-                                        if (
-                                            willBeEnabled &&
-                                            !$thunderforestApiKey
-                                        ) {
-                                            toast.warn(
-                                                "A Thunderforest API key is required to highlight train lines. Please add one in the options below.",
-                                            );
-                                        }
                                         highlightTrainLines.set(willBeEnabled);
                                     }}
                                 />

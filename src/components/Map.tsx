@@ -5,7 +5,7 @@ import "leaflet-contextmenu";
 import { useStore } from "@nanostores/react";
 import * as turf from "@turf/turf";
 import * as L from "leaflet";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { MapContainer, ScaleControl, TileLayer } from "react-leaflet";
 import { toast } from "react-toastify";
 
@@ -37,6 +37,7 @@ import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
 import { PolygonDraw } from "./PolygonDraw";
+import { MeasureTool } from "./MeasureTool";
 
 export const Map = ({ className }: { className?: string }) => {
     useStore(additionalMapGeoLocations);
@@ -57,6 +58,28 @@ export const Map = ({ className }: { className?: string }) => {
         () => ({ current: null as number | null }),
         [],
     );
+
+    const trainLayersRef = useRef<{
+        lines?: L.GeoJSON | null;
+        stations?: L.GeoJSON | null;
+    }>({ lines: null, stations: null });
+    const stationCircleRef = useRef<L.Circle | null>(null);
+    const mapColorFromToken = (token: string | undefined) => {
+        if (!token) return "#000000";
+        const base = token.split(/[-,]/)[0];
+        const colors: Record<string, string> = {
+            red: "#D32F2F",
+            green: "#2E7D32",
+            blue: "#1976D2",
+            yellow: "#FBC02D",
+            brown: "#6D4C41",
+            purple: "#6A1B9A",
+            gray: "#6B7280",
+            orange: "#FB8C00",
+            black: "#000000",
+        };
+        return colors[base] ?? base;
+    };
 
     const refreshQuestions = async (focus: boolean = false) => {
         if (!map) return;
@@ -169,7 +192,7 @@ export const Map = ({ className }: { className?: string }) => {
                 zoom={5}
                 className={cn("w-[500px] h-[500px]", className)}
                 ref={leafletMapContext.set}
-                // @ts-expect-error Typing doesn't update from react-contextmenu
+                // @ts-ignore Typing doesn't update from react-contextmenu
                 contextmenu={true}
                 contextmenuWidth={140}
                 contextmenuItems={[
@@ -296,6 +319,7 @@ export const Map = ({ className }: { className?: string }) => {
                 <div className="leaflet-top leaflet-right">
                     <div className="leaflet-control flex-col flex gap-2">
                         <LeafletFullScreenButton />
+                        <MeasureTool />
                     </div>
                 </div>
                 <PolygonDraw />
@@ -319,7 +343,6 @@ export const Map = ({ className }: { className?: string }) => {
 
     useEffect(() => {
         if (!map) return;
-
         refreshQuestions(true);
     }, [$questions, map, $hiderMode]);
 
@@ -415,6 +438,156 @@ export const Map = ({ className }: { className?: string }) => {
             }
         };
     }, [$followMe, map]);
+
+    // Toggle MRT lines/stations overlay based on highlightTrainLines
+    useEffect(() => {
+        if (!map) return;
+
+        const removeTrainLayers = () => {
+            try {
+                if (trainLayersRef.current.lines) {
+                    map.removeLayer(trainLayersRef.current.lines);
+                    trainLayersRef.current.lines = null;
+                }
+                if (trainLayersRef.current.stations) {
+                    map.removeLayer(trainLayersRef.current.stations);
+                    trainLayersRef.current.stations = null;
+                }
+                if (stationCircleRef.current) {
+                    try {
+                        map.removeLayer(stationCircleRef.current);
+                    } catch (err) {
+                        // ignore
+                    }
+                    stationCircleRef.current = null;
+                }
+            } catch (err) {
+                // Swallow - map may be destroyed
+            }
+        };
+
+        const loadGeoJSON = async () => {
+            try {
+                const resp = await fetch("/sgmrt.geojson");
+                if (!resp.ok) return;
+                const geo = await resp.json();
+
+                // Lines (LineString / MultiLineString)
+                const linesLayer = L.geoJSON(geo, {
+                    filter(feature) {
+                        return (
+                            feature.geometry &&
+                            (feature.geometry.type === "LineString" ||
+                                feature.geometry.type === "MultiLineString")
+                        );
+                    },
+                    style(feature: any) {
+                        const color = mapColorFromToken(
+                            feature?.properties?.line_color || feature?.properties?.color,
+                        );
+                        return {
+                            color,
+                            weight: 4,
+                            opacity: 0.85,
+                            // Slightly offset to make lines visible over base tiles
+                        } as any;
+                    },
+                });
+
+                // Stations (Point)
+                const stationLayer = L.geoJSON(geo, {
+                    filter(feature) {
+                        return (
+                            feature.geometry && feature.geometry.type === "Point" && feature.properties.network === "singapore-mrt"
+                        );
+                    },
+                    pointToLayer(geoJsonPoint, latlng) {
+                        const color = mapColorFromToken(
+                            geoJsonPoint.properties?.station_colors || geoJsonPoint.properties?.color,
+                        );
+
+                        const marker = L.circleMarker(latlng, {
+                            radius: 5,
+                            color: color,
+                            fillColor: color,
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 1,
+                        });
+
+                        const name =
+                            geoJsonPoint.properties["name:en"] ||
+                            geoJsonPoint.properties.name ||
+                            "Untitled Station";
+
+                        marker.bindPopup(`<b>${name}</b>`);
+
+                        // When the station marker is clicked, draw a 400m radius
+                        marker.on("click", () => {
+                            try {
+                                if (!map) return;
+                                // Remove existing station circle
+                                if (stationCircleRef.current) {
+                                    try {
+                                        map.removeLayer(stationCircleRef.current);
+                                    } catch (err) {
+                                        /* ignore */
+                                    }
+                                    stationCircleRef.current = null;
+                                }
+
+                                // Create a new circle with 400m radius
+                                const newCircle = L.circle(latlng, {
+                                    radius: 400,
+                                    color,
+                                    fillColor: color,
+                                    fillOpacity: 0.12,
+                                    weight: 2,
+                                });
+                                newCircle.addTo(map);
+                                stationCircleRef.current = newCircle;
+                            } catch (err) {
+                                console.warn("Error drawing station circle", err);
+                            }
+                        });
+
+                        return marker;
+                    },
+                });
+
+                // Attach markers and layers to the map if the component is still alive
+                if ($highlightTrainLines) {
+                    trainLayersRef.current.lines = linesLayer.addTo(map);
+                    trainLayersRef.current.stations = stationLayer.addTo(map);
+                }
+            } catch (error) {
+                console.warn("Could not load sgmrt.geojson", error);
+            }
+        };
+
+        if ($highlightTrainLines) {
+            // remove existing just in case
+            removeTrainLayers();
+            loadGeoJSON();
+        } else {
+            removeTrainLayers();
+        }
+
+        return () => {
+            try {
+                if (trainLayersRef.current.lines) {
+                    map.removeLayer(trainLayersRef.current.lines);
+                    trainLayersRef.current.lines = null;
+                }
+                if (trainLayersRef.current.stations) {
+                    map.removeLayer(trainLayersRef.current.stations);
+                    trainLayersRef.current.stations = null;
+                }
+            } catch (err) {
+                /* noop */
+            }
+        };
+    }, [$highlightTrainLines, map]);
 
     return displayMap;
 };

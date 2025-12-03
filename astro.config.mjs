@@ -47,6 +47,5 @@ export default defineConfig({
     devToolbar: {
         enabled: false,
     },
-    site: "https://taibeled.github.io",
-    base: "JetLagHideAndSeek",
+    site: "https://map.jro.sg",
 });

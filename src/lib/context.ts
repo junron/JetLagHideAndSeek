@@ -27,13 +27,13 @@ export const mapGeoLocation = persistentAtom<OpenStreetMap>(
         type: "Feature",
         properties: {
             osm_type: "R",
-            osm_id: 382313,
+            osm_id: 1769123,
             extent: [45.7112046, 122.7141754, 20.2145811, 154.205541],
-            country: "Japan",
+            country: "Singapore",
             osm_key: "place",
-            countrycode: "JP",
+            countrycode: "SG",
             osm_value: "country",
-            name: "Japan",
+            name: "Singapore",
             type: "country",
         },
     },
@@ -77,10 +77,10 @@ export const questionModified = (..._: any[]) => {
 
 export const leafletMapContext = atom<Map | null>(null);
 
-export const defaultUnit = persistentAtom<Units>("defaultUnit", "miles");
+export const defaultUnit = persistentAtom<Units>("defaultUnit", "kilometers");
 export const highlightTrainLines = persistentAtom<boolean>(
     "highlightTrainLines",
-    false,
+    true,
     {
         encode: JSON.stringify,
         decode: JSON.parse,
