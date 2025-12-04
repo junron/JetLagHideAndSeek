@@ -166,7 +166,7 @@ export const determineMatchingBoundary = _.memoize(
                     throw new Error("No boundary found");
                 }
 
-                let englishName = zone.properties?.["name:en"];
+                let englishName = zone.properties?.["Name"];
 
                 if (!englishName) {
                     const name = zone.properties?.name;

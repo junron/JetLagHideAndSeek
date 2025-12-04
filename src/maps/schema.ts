@@ -310,7 +310,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
                 .describe("Major City (1,000,000+ people) Question"),
             z
                 .literal("highspeed-measure-shinkansen")
-                .describe("High-Speed Rail Question"),
+                .describe("MRT Line Question"),
             z
                 .literal("aquarium-full")
                 .describe("Aquarium Question (Small+Medium Games)"),

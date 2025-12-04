@@ -219,11 +219,11 @@ export const DraggableMarkers = () => {
             {$questions.map((question) => {
                 if (!question.data) return null;
                 if (!question.data.drag) return null;
-                if (
-                    question.id === "matching" &&
-                    question.data.type === "custom-zone"
-                )
-                    return null;
+                // if (
+                //     question.id === "matching" &&
+                //     question.data.type === "custom-zone"
+                // )
+                //     return null;
 
                 switch (question.id) {
                     case "radius":

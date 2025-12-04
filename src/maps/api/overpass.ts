@@ -2,7 +2,7 @@ import * as turf from "@turf/turf";
 import type { FeatureCollection, MultiPolygon } from "geojson";
 import _ from "lodash";
 import osmtogeojson from "osmtogeojson";
-
+import geojsontoosm from "geojsontoosm";
 import {
     additionalMapGeoLocations,
     mapGeoLocation,
@@ -148,9 +148,10 @@ export const findAdminBoundariesByLetter = async (
     letter: string,
 ) => {
     // If admin level 5, use the bundled geojson and filter names by starting letter
+    console.log({adminLevel, letter})
     if (adminLevel === 5) {
         try {
-            const resp = await cacheFetch((import.meta.env.BASE_URL || "") + ELECTORAL_BOUNDARY_GEOJSON,
+            const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
                 "Loading electoral boundary data...",
                 CacheType.PERMANENT_CACHE,
             );
@@ -162,6 +163,7 @@ export const findAdminBoundariesByLetter = async (
                 if (!name || typeof name !== "string") return false;
                 return name[0].toUpperCase() === upperLetter;
             });
+            console.log({features})
             return {
                 type: "FeatureCollection",
                 features,
@@ -189,6 +191,16 @@ export const fetchCoastline = async () => {
     );
     const data = await response.json();
     return data;
+};
+
+
+export const fetchLibraries = async () => {
+    const response = await cacheFetch("/Libraries.geojson",
+        "Fetching library data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data as FeatureCollection;
 };
 
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
@@ -272,6 +284,11 @@ export const findPlacesInZone = async (
     alternatives: string[] = [],
     timeoutDuration: number = 0,
 ) => {
+
+    if(loadingText === "Fetching libraries..."){
+        const data = await fetchLibraries();
+        return geojsontoosm(data);
+    }
     let query = "";
     const $polyGeoJSON = polyGeoJSON.get();
     if ($polyGeoJSON) {
