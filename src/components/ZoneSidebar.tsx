@@ -211,15 +211,14 @@ export const ZoneSidebar = () => {
                 }));
             } else {
                 // Fetch default, optionally merge custom
-                places = osmtogeojson(
-                    await findPlacesInZone(
+                places = await findPlacesInZone(
                         $displayHidingZonesOptions[0],
                         "Finding stations. This may take a while. Do not press any buttons while this is processing. Don't worry, it will be cached.",
                         "nwr",
                         "center",
                         $displayHidingZonesOptions.slice(1),
-                    ),
-                ).features;
+                        60, true
+                    );
 
                 if (
                     useCustomStations &&

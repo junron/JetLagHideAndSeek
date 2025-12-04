@@ -43,32 +43,27 @@ import type {
 export const findMatchingPlaces = async (question: MatchingQuestion) => {
     switch (question.type) {
         case "airport": {
-            return Object.values(airports).map((coords) =>
-                turf.point([
-                    coords[1],
-                    coords[0],
-                ]),
-            );
+            return airports.features.map((f) => turf.point(f.geometry.coordinates));
         }
-        case "major-city": {
-            return (
-                await findPlacesInZone(
-                    '[place=city]["population"~"^[1-9]+[0-9]{6}$"]', // The regex is faster than (if:number(t["population"])>1000000)
-                    "Finding cities...",
-                )
-            ).elements.map((x: any) =>
-                turf.point([
-                    x.center ? x.center.lon : x.lon,
-                    x.center ? x.center.lat : x.lat,
-                ]),
-            );
-        }
-        case "custom-points": {
-            return question.geo!;
-        }
-        case "aquarium-full":
-        case "zoo-full":
-        case "theme_park-full":
+        // case "major-city": {
+        //     return (
+        //         await findPlacesInZone(
+        //             '[place=city]["population"~"^[1-9]+[0-9]{6}$"]', // The regex is faster than (if:number(t["population"])>1000000)
+        //             "Finding cities...",
+        //         )
+        //     ).elements.map((x: any) =>
+        //         turf.point([
+        //             x.center ? x.center.lon : x.lon,
+        //             x.center ? x.center.lat : x.lat,
+        //         ]),
+        //     );
+        // }
+        // case "custom-points": {
+        //     return question.geo!;
+        // }
+        // case "aquarium-full":
+        // case "zoo-full":
+        // case "theme_park-full":
         case "museum-full":
         case "hospital-full":
         case "cinema-full":
@@ -122,9 +117,9 @@ export const determineMatchingBoundary = _.memoize(
         let boundary;
 
         switch (question.type) {
-            case "aquarium":
-            case "zoo":
-            case "theme_park":
+            // case "aquarium":
+            // case "zoo":
+            // case "theme_park":
             case "museum":
             case "hospital":
             case "cinema":
@@ -134,13 +129,14 @@ export const determineMatchingBoundary = _.memoize(
             case "park":
             case "same-first-letter-station":
             case "same-length-station":
-            case "same-train-line": {
+            // case "same-train-line":
+            {
                 return false;
             }
-            case "custom-zone": {
-                boundary = question.geo;
-                break;
-            }
+            // case "custom-zone": {
+            //     boundary = question.geo;
+            //     break;
+            // }
             case "zone": {
                 boundary = await findAdminBoundary(
                     question.lat,
@@ -182,37 +178,16 @@ export const determineMatchingBoundary = _.memoize(
                 const letter = englishName[0].toUpperCase();
 
                 // If adminLevel 5 (Electoral Divisions), prefer the built-in geojson search
-                if (question.cat.adminLevel === 5) {
-                    const data = await findAdminBoundariesByLetter(
-                        question.cat.adminLevel,
-                        letter,
-                    );
+                const data = await findAdminBoundariesByLetter(
+                    question.cat.adminLevel,
+                    letter,
+                );
 
-                    boundary = turf.featureCollection(
-                        (data.features as any[]).filter(
-                            (x: any) => x.geometry && (x.geometry.type === "Polygon" || x.geometry.type === "MultiPolygon"),
-                        ),
-                    );
-                } else {
-                    boundary = turf.featureCollection(
-                        osmtogeojson(
-                            await findPlacesInZone(
-                                `[admin_level=${question.cat.adminLevel}]["name:en"~"^${letter}.+"]`, // Regex is faster than filtering afterward
-                                `Finding zones that start with the same letter (${letter})...`,
-                                "relation",
-                                "geom",
-                                [
-                                    `[admin_level=${question.cat.adminLevel}]["name"~"^${letter}.+"]`,
-                                ], // Regex is faster than filtering afterward
-                            ),
-                        ).features.filter(
-                            (x): x is Feature<Polygon | MultiPolygon> =>
-                                x.geometry &&
-                                (x.geometry.type === "Polygon" ||
-                                    x.geometry.type === "MultiPolygon"),
-                        ),
-                    );
-                }
+                boundary = turf.featureCollection(
+                    (data.features as any[]).filter(
+                        (x: any) => x.geometry && (x.geometry.type === "Polygon" || x.geometry.type === "MultiPolygon"),
+                    ),
+                );
 
                 // It's either simplify or crash. Technically this could be bad if someone's hiding zone was inside multiple zones, but that's unlikely.
                 boundary = safeUnion(
@@ -324,8 +299,8 @@ export const hiderifyMatching = async (question: MatchingQuestion) => {
 
     if (
         question.type === "same-first-letter-station" ||
-        question.type === "same-length-station" ||
-        question.type === "same-train-line"
+        question.type === "same-length-station"// ||
+        // question.type === "same-train-line"
     ) {
         const hiderPoint = turf.point([
             $hiderMode.longitude,

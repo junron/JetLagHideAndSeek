@@ -2,7 +2,8 @@ import { useStore } from "@nanostores/react";
 import { type DragEndEvent, Icon } from "leaflet";
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
-import { Marker } from "react-leaflet";
+import { Marker, Tooltip } from "react-leaflet";
+import { nearestToQuestion, findAdminBoundary } from "@/maps/api";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
@@ -47,6 +48,7 @@ const ColoredMarker = ({
     const $hiderMode = useStore(hiderMode);
     const $autoSave = useStore(autoSave);
     const [open, setOpen] = useState(false);
+    const [hoverText, setHoverText] = useState<string | null>(null);
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -81,8 +83,68 @@ const ColoredMarker = ({
                             setOpen(true);
                         }
                     },
+                    mouseover: async (e) => {
+                        try {
+                            // Find the matching question and compute the nearest matching place
+                            const q = (questions.get() || []).find(
+                                (qq: any) => qq.key === questionKey,
+                            );
+                            if (!q || (q.id !== "matching" && q.id !== "measuring") || q.data.type === "coastline") {
+                                try {
+                                    e.target.closeTooltip();
+                                } catch {}
+                                setHoverText(null);
+                                return;
+                            };
+                            // If it's a matching question with a matching endpoint, compute nearest place
+                            // nearestToQuestion returns a turf point with properties populated
+                            // compute nearest
+                            let nearest;
+                            if(q.data.type == "zone") {
+                                nearest = await findAdminBoundary(q.data.lat, q.data.lng, q.data.cat.adminLevel);
+                            }else{
+                                nearest = await nearestToQuestion(q.data);
+                            }
+                            if (nearest && nearest.properties) {
+                                    const name =
+                                        nearest.properties["name:en"] ||
+                                        nearest.properties.name ||
+                                        nearest.properties.Name ||
+                                        nearest.properties.ED_DESC ||
+                                        nearest.properties.ED_DESC_FU ||
+                                        "Matched Entity";
+                                    setHoverText(name);
+                                setTimeout(() => {
+                                    try {
+                                        e.target.openTooltip();
+                                    } catch {}
+                                }, 0);
+                            } else {
+                                setHoverText("Matched Entity");
+                                setHoverText("Matched Entity");
+                                setTimeout(() => {
+                                    try {
+                                        e.target.openTooltip();
+                                    } catch {}
+                                }, 0);
+                            }
+                        } catch (err) {
+                            // ignore it but don't crash the UI
+                        }
+                    },
+                    mouseout: (e) => {
+                        if(isDragging) return;
+                        try {
+                            e.target.closeTooltip();
+                        } catch {}
+                        setHoverText(null);
+                    },
                 }}
-            />
+            >
+                <Tooltip direction="top" opacity={0.95} offset={[0, -40]}>
+                    {hoverText ?? ""}
+                </Tooltip>
+            </Marker>
             <DialogContent className="!bg-[hsl(var(--sidebar-background))] !text-white">
                 {questionKey === -1 && $hiderMode !== false && (
                     <>

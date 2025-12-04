@@ -138,12 +138,7 @@ export const determineMeasuringBoundary = async (
             ];
         }
         case "airport":
-            return Object.values(airports).map((coords) =>
-                turf.point([
-                    coords[1],
-                    coords[0],
-                ]),
-            );
+            return airports.features.map((f) => turf.point(f.geometry.coordinates));
         case "city":
             return [
                 turf.combine(

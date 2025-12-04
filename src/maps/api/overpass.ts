@@ -2,7 +2,6 @@ import * as turf from "@turf/turf";
 import type { FeatureCollection, MultiPolygon } from "geojson";
 import _ from "lodash";
 import osmtogeojson from "osmtogeojson";
-import geojsontoosm from "geojsontoosm";
 import {
     additionalMapGeoLocations,
     mapGeoLocation,
@@ -20,6 +19,7 @@ import type {
     QuestionSpecificLocation,
 } from "./types";
 import { CacheType } from "./types";
+import { airports } from "./data";
 
 export const getOverpassData = async (
     query: string,
@@ -75,11 +75,14 @@ out center;
     `;
     const center = turf.point([question.lng, question.lat]);
     let data = null;
-    if(question.locationType === "library"){
+    if(question.locationType.includes("library")){
         data = await fetchLibraries();
     }
-    if(question.locationType === "museum"){
+    if(question.locationType.includes("museum")){
         data = await fetchMuseums();
+    }
+    if(question.locationType.includes("airport")){
+        data = Object.assign({}, airports);
     }
 
     if(data != null){
@@ -94,7 +97,6 @@ out center;
 
             const pt = turf.point(coords);
             const dist = turf.distance(center, pt, { units: question.unit });
-
             return dist <= question.radius;
         });
         return data;
@@ -173,40 +175,26 @@ export const findAdminBoundariesByLetter = async (
     adminLevel: number,
     letter: string,
 ) => {
-    // If admin level 5, use the bundled geojson and filter names by starting letter
-    console.log({adminLevel, letter})
-    if (adminLevel === 5) {
-        try {
-            const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
-                "Loading electoral boundary data...",
-                CacheType.PERMANENT_CACHE,
-            );
-            const data = await resp.json();
-            const upperLetter = letter.toUpperCase();
-            const features = data.features.filter((feature: any) => {
-                const name =
-                    feature.properties?.["name:en"] || feature.properties?.Name || feature.properties?.name;
-                if (!name || typeof name !== "string") return false;
-                return name[0].toUpperCase() === upperLetter;
-            });
-            console.log({features})
-            return {
-                type: "FeatureCollection",
-                features,
-            } as any;
-        } catch (err) {
-            console.warn("Failed to load electoral boundaries locally for letter filter, falling back to Overpass", err);
-        }
+    try {
+        const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
+            "Loading electoral boundary data...",
+            CacheType.PERMANENT_CACHE,
+        );
+        const data = await resp.json();
+        const upperLetter = letter.toUpperCase();
+        const features = data.features.filter((feature: any) => {
+            const name =
+                feature.properties?.["name:en"] || feature.properties?.Name || feature.properties?.name;
+            if (!name || typeof name !== "string") return false;
+            return name[0].toUpperCase() === upperLetter;
+        });
+        return {
+            type: "FeatureCollection",
+            features,
+        } as any;
+    } catch (err) {
+        console.warn("Failed to load electoral boundaries locally for letter filter, falling back to Overpass", err);
     }
-
-    // Fallback: Use Overpass query similar to existing behavior (returns raw data elements)
-    const query = `
-[out:json];
-rel["admin_level"="${adminLevel}"]["name:en"~"^${letter}.+"];
-out geom;
-    `;
-    const data = await getOverpassData(query, `Finding zones that start with the same letter (${letter})...`);
-    const geo = osmtogeojson(data);
     return geo;
 };
 
@@ -303,6 +291,20 @@ out geom;
     return uniqNodes;
 };
 
+const geojsontoosm = (geojson: FeatureCollection) => {
+    return {
+        elements: geojson.features.map((feature) => ({
+            type: "node",
+            id: feature.properties?.osm_id || 0,
+            lat: feature.geometry.type === "Point" ? feature.geometry.coordinates[1] : undefined,
+            lon: feature.geometry.type === "Point" ? feature.geometry.coordinates[0] : undefined,
+            tags: {
+                name: feature.properties?.name || "",
+            },
+        }))
+    }
+}
+
 export const findPlacesInZone = async (
     filter: string,
     loadingText?: string,
@@ -318,90 +320,28 @@ export const findPlacesInZone = async (
     outType: "center" | "geom" = "center",
     alternatives: string[] = [],
     timeoutDuration: number = 0,
+    returnGeoJSON: boolean = false,
 ) => {
 
-    if(loadingText === "Fetching libraries..."){
-        const data = await fetchLibraries();
-        return geojsontoosm(data);
+    let data = null;
+    if(loadingText?.includes("libraries")){
+        data = await fetchLibraries();
     }
-    if(loadingText === "Fetching museums..."){
-        const data = await fetchMuseums();
-        return geojsontoosm(data);
+    if(loadingText?.includes("museums")){
+        data = await fetchMuseums();
     }
-    let query = "";
-    const $polyGeoJSON = polyGeoJSON.get();
-    if ($polyGeoJSON) {
-        query = `
-[out:json]${timeoutDuration != 0 ? `[timeout:${timeoutDuration}]` : ""};
-(
-${searchType}${filter}(poly:"${turf
-            .getCoords($polyGeoJSON.features)
-            .flatMap((polygon) => polygon.geometry.coordinates)
-            .flat()
-            .map((coord) => [coord[1], coord[0]].join(" "))
-            .join(" ")}");
-${
-    alternatives.length > 0
-        ? alternatives
-              .map(
-                  (alternative) =>
-                      `${searchType}${alternative}(poly:"${turf
-                          .getCoords($polyGeoJSON.features)
-                          .flatMap((polygon) => polygon.geometry.coordinates)
-                          .flat()
-                          .map((coord) => [coord[1], coord[0]].join(" "))
-                          .join(" ")}");`,
-              )
-              .join("\n")
-        : ""
-}
-);
-out ${outType};
-`;
-    } else {
-        const primaryLocation = mapGeoLocation.get();
-        const additionalLocations = additionalMapGeoLocations
-            .get()
-            .filter((entry) => entry.added)
-            .map((entry) => entry.location);
-        const allLocations = [primaryLocation, ...additionalLocations];
-        const relationToAreaBlocks = allLocations
-            .map((loc, idx) => {
-                const regionVar = `.region${idx}`;
-                return `relation(${loc.properties.osm_id});map_to_area->${regionVar};`;
-            })
-            .join("\n");
-        const searchBlocks = allLocations
-            .map((_, idx) => {
-                const regionVar = `area.region${idx}`;
-                const altQueries =
-                    alternatives.length > 0
-                        ? alternatives
-                              .map(
-                                  (alt) => `${searchType}${alt}(${regionVar});`,
-                              )
-                              .join("\n")
-                        : "";
-                return `
-            ${searchType}${filter}(${regionVar});
-            ${altQueries}
-          `;
-            })
-            .join("\n");
-        query = `
-        [out:json]${timeoutDuration !== 0 ? `[timeout:${timeoutDuration}]` : ""};
-        ${relationToAreaBlocks}
-        (
-        ${searchBlocks}
-        );
-        out ${outType};
-        `;
+
+    if(returnGeoJSON && data !== null){
+        return data;
     }
-    const data = await getOverpassData(
-        query,
-        loadingText,
-        CacheType.ZONE_CACHE,
-    );
+
+    if(data == null) {
+        return [];
+    }
+
+    data = geojsontoosm(data);
+
+
     const subtractedEntries = additionalMapGeoLocations
         .get()
         .filter((e) => !e.added);
@@ -458,7 +398,7 @@ export const findPlacesSpecificInZone = async (
 export const nearestToQuestion = async (
     question: HomeGameMatchingQuestions | HomeGameMeasuringQuestions,
 ) => {
-    let radius = 30;
+    let radius = 5;
     let instances: any = { features: [] };
     while (instances.features.length === 0) {
         instances = await findTentacleLocations(
@@ -466,7 +406,7 @@ export const nearestToQuestion = async (
                 lat: question.lat,
                 lng: question.lng,
                 radius: radius,
-                unit: "miles",
+                unit: "kilometers",
                 location: false,
                 locationType: question.type,
                 drag: false,
@@ -475,7 +415,10 @@ export const nearestToQuestion = async (
             },
             "Finding matching locations...",
         );
-        radius += 30;
+        radius += 5;
+        if(radius > 500){
+            break;
+        }
     }
     const questionPoint = turf.point([question.lng, question.lat]);
     return turf.nearestPoint(questionPoint, instances as any);
