@@ -19,7 +19,7 @@ import type {
     QuestionSpecificLocation,
 } from "./types";
 import { CacheType } from "./types";
-import { airports, international_borders } from "./data";
+import { airports, international_borders, mountains } from "./data";
 
 export const getOverpassData = async (
     query: string,
@@ -84,10 +84,13 @@ out center;
     if(question.locationType.includes("airport")){
         data = Object.assign({}, airports);
     }
+    if(question.locationType.includes("mountain")){
+        data = Object.assign({}, mountains);
+    }
     if(question.locationType.includes("international_borders")){
         data = Object.assign({}, international_borders);
     }
-    
+
     if(data != null){
         data.features = data.features.filter((feature: any) => {
             const coords =

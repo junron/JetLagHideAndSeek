@@ -198,6 +198,7 @@ export const MatchingQuestionComponent = ({
                     } else {
                         if (
                             data.type === "airport" ||
+                            data.type === "mountain" ||
                             data.type === "major-city" ||
                             data.type === "aquarium-full" ||
                             data.type === "zoo-full" ||
@@ -302,6 +303,7 @@ export const MatchingQuestionComponent = ({
                                 } else {
                                     if (
                                         data.type === "airport" ||
+                                        data.type === "mountain" ||
                                         data.type === "major-city" ||
                                         data.type === "aquarium-full" ||
                                         data.type === "zoo-full" ||

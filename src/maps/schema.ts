@@ -192,6 +192,7 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             z
                 .literal("airport")
                 .describe("Commercial Airport In Zone Question"),
+            z.literal("mountain").describe("Mountain Peak Question"),
             // z
             //     .literal("major-city")
             //     .describe("Major City (1,000,000+ people) In Zone Question"),
@@ -310,6 +311,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("international_borders")
                 .describe("International Border Question"),
+            z.literal("mountain").describe("Mountain Peak Question"),
             // z
             //     .literal("city")
             //     .describe("Major City (1,000,000+ people) Question"),

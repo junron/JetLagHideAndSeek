@@ -32,3 +32,34 @@ export const international_borders: FeatureCollection<Point> = {
         },
     ],
 };
+
+export const mountains: FeatureCollection<Point> = {
+    type: "FeatureCollection",
+    features: [
+        {
+            type: "Feature",
+            properties: { name: "Bukit Timah" },
+            geometry: { type: "Point", coordinates: [103.7750291, 1.3572969] },
+        },
+        {
+            type: "Feature",
+            properties: { name: "Mount Faber" },
+            geometry: { type: "Point", coordinates: [103.8190964, 1.2718601] },
+        },
+        {
+            type: "Feature",
+            properties: { name: "Fort Canning Hill" },
+            geometry: { type: "Point", coordinates: [103.846944, 1.294444] },
+        },
+        {
+            type: "Feature",
+            properties: { name: "Telok Blangah Hill" },
+            geometry: { type: "Point", coordinates: [103.81055, 1.27887] },
+        },
+        {
+            type: "Feature",
+            properties: { name: "Jurong Hill" },
+            geometry: { type: "Point", coordinates: [103.70725, 1.31745] },
+        }
+    ],
+};
