@@ -25,6 +25,8 @@ import {
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
+
+import { airports } from "../api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
@@ -37,11 +39,6 @@ import type {
     MatchingQuestion,
 } from "@/maps/schema";
 
-
-const airports = {
-    "Seletar Airport": [1.3515572,103.9868333],
-    "Changi Airport": [1.4152511,103.8671796],
-}
 
 export const findMatchingPlaces = async (question: MatchingQuestion) => {
     switch (question.type) {

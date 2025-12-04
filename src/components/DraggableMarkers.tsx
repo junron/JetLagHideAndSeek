@@ -110,6 +110,7 @@ const ColoredMarker = ({
                 {$questions
                     .filter((q) => q.key === questionKey)
                     .map((q) => {
+                        console.log({q})
                         switch (q.id) {
                             case "radius":
                                 return (

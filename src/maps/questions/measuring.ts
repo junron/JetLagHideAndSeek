@@ -20,6 +20,7 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
+import { airports } from "../api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
@@ -101,9 +102,7 @@ export const determineMeasuringBoundary = async (
             return [highSpeedBase(features)];
         }
         case "coastline": {
-            const coastline = turf.lineToPolygon(
-                await fetchCoastline(),
-            ) as Feature<MultiPolygon>;
+            const coastline = await fetchCoastline();
 
             const distanceToCoastline = turf.pointToPolygonDistance(
                 turf.point([question.lng, question.lat]),
@@ -139,26 +138,12 @@ export const determineMeasuringBoundary = async (
             ];
         }
         case "airport":
-            return [
-                turf.combine(
-                    turf.featureCollection(
-                        _.uniqBy(
-                            (
-                                await findPlacesInZone(
-                                    '["aeroway"="aerodrome"]["iata"]', // Only commercial airports have IATA codes,
-                                    "Finding airports...",
-                                )
-                            ).elements,
-                            (feature: any) => feature.tags.iata,
-                        ).map((x: any) =>
-                            turf.point([
-                                x.center ? x.center.lon : x.lon,
-                                x.center ? x.center.lat : x.lat,
-                            ]),
-                        ),
-                    ),
-                ).features[0],
-            ];
+            return Object.values(airports).map((coords) =>
+                turf.point([
+                    coords[1],
+                    coords[0],
+                ]),
+            );
         case "city":
             return [
                 turf.combine(
