@@ -1,0 +1,1331 @@
+{
+	"type" : "FeatureCollection",
+	"name" : "MUSEUM",
+	"features" : [
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.72207100029921, 1.371999999880441 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1295,
+				"ADDRESSBLOCKHOUSENUMBER" : "501",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "698928",
+				"ADDRESSSTREETname" : "Old Choa Chu Kang Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Home Team Gallery is a two storey building with a mezzanine floor located within the Home Team Academy.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/home-team-gallery",
+				"LANDXADDRESSPOINT" : 15619.495,
+				"LANDYADDRESSPOINT" : 39334.5927,
+				"name" : "Home Team Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/21-home-team-gallery.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "D9BAC2CA8467C35D",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84212052532594, 1.3197361753517143 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1296,
+				"ADDRESSBLOCKHOUSENUMBER" : "55",
+				"ADDRESSBUILDINGname" : "Revenue House",
+				"ADDRESSPOSTALCODE" : "307987",
+				"ADDRESSSTREETname" : "Newton Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The gallery explores tax in Singapore in the past, the present and the future through a highly interactive experience that allows visitors to discover much of this story for themselves.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/iras-gallery",
+				"LANDXADDRESSPOINT" : 28979.57,
+				"LANDYADDRESSPOINT" : 33555.24,
+				"name" : "IRAS Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/41-iras-gallery-the-singapore-tax-story.png",
+				"ADDRESSFLOORNUMBER" : "1",
+				"INC_CRC" : "8B823FECBB198C4F",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85225036260746, 1.3056737635846938 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1297,
+				"ADDRESSBLOCKHOUSENUMBER" : "5",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "209924",
+				"ADDRESSSTREETname" : "Campbell Lane",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Indian Heritage Centre is the first museum in Southeast Asia to focus on diverse heritage of the Indian community. The four-storey building stands in the heart of the historic Little India precinct.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/indian-heritage-centre",
+				"LANDXADDRESSPOINT" : 30106.93295,
+				"LANDYADDRESSPOINT" : 32000.29698,
+				"name" : "Indian Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/01-ihc.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "26C0482A1DBE2194",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84339072753129, 1.2994651066336609 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1298,
+				"ADDRESSBLOCKHOUSENUMBER" : "35",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "238902",
+				"ADDRESSSTREETname" : "Orchard Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Istana Heritage Gallery offers visitors a glimpse into the rich history and heritage of the Istana, a national monument whose history was closely intertwined with Singapore's transition into an independent nation.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/istana-heritage-gallery",
+				"LANDXADDRESSPOINT" : 29120.94,
+				"LANDYADDRESSPOINT" : 31313.77,
+				"name" : "Istana Heritage Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/istana-heritage-gallery.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "136C77C01948500B",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84935136917356, 1.3081439023374268 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1299,
+				"ADDRESSBLOCKHOUSENUMBER" : "1",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "219428",
+				"ADDRESSSTREETname" : "Hampshire Road Blk 1 Level 1",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The gallery provides an interesting multi-sensory experience for visitors using various presentation methods and formats to continually engage visitors in a fun and interactive way.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/land-transport-gallery",
+				"LANDXADDRESSPOINT" : 29784.3,
+				"LANDYADDRESSPOINT" : 32273.43,
+				"name" : "Land Transport Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/42-land-transport-gallery.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "CCD1A87881266981",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.7736400002151, 1.3016179996439228 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1300,
+				"ADDRESSBLOCKHOUSENUMBER" : "2",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "117377",
+				"ADDRESSSTREETname" : "Conservatory Drive",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Based at the National University of Singapore, the Lee Kong Chian Natural History Museum houses Singapore's national and reference collection of preserved zoological specimens as well as a herbarium.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/lee-kong-chian-natural-history-museum",
+				"LANDXADDRESSPOINT" : 21358.3125,
+				"LANDYADDRESSPOINT" : 31551.9022,
+				"name" : "Lee Kong Chian Natural History Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/science-innovation/51-lee-kong-chian-natural-history-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "7E4951B3C85CD05D",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85987591471, 1.3028577106142705 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1301,
+				"ADDRESSBLOCKHOUSENUMBER" : "85",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "198501",
+				"ADDRESSSTREETname" : "Sultan Gate",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Experience our Malays' immensely rich cultural legacy in this regal compound, which was a former king's palace.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/malay-heritage-centre",
+				"LANDXADDRESSPOINT" : 30955.59,
+				"LANDYADDRESSPOINT" : 31688.92,
+				"name" : "Malay Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/12-malay-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "5AFEED0F9A34C253",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.87082086979177, 1.2808759926446396 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1302,
+				"ADDRESSBLOCKHOUSENUMBER" : "8",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "18951",
+				"ADDRESSSTREETname" : "Marina Gardens Drive",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Marina Barrage is a dam built across the Marina Channel, forming Singapore's first reservoir in the city.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/marina-barrage",
+				"LANDXADDRESSPOINT" : 32173.7,
+				"LANDYADDRESSPOINT" : 29258.31,
+				"name" : "Marina Barrage",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/43-marina-barrage.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "BDAF66A730040FE1",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.79823099978857, 1.3035730001480357 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1303,
+				"ADDRESSBLOCKHOUSENUMBER" : null,
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "149599",
+				"ADDRESSSTREETname" : "402 Commonwealth Drive",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The MOE Heritage Centre is set-up to inspire aspiring teachers, affirm the work of serving educators and commemorate the contributions of educators and communities that shaped education in Singapore.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/ministry-of-education-heritage-centre",
+				"LANDXADDRESSPOINT" : 24095.0724,
+				"LANDYADDRESSPOINT" : 31768.0247,
+				"name" : "Ministry of Education Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/44-ministry-of-education-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "4A272B0C7B133A04",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8546464121479, 1.2962947856533336 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1304,
+				"ADDRESSBLOCKHOUSENUMBER" : "26",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "188382",
+				"ADDRESSSTREETname" : "Seah Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Whether you are a child at heart or an avid toy collector, the Mint Museum of Toys has something for everyone.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/mint-museum-of-toys",
+				"LANDXADDRESSPOINT" : 30373.6,
+				"LANDYADDRESSPOINT" : 30963.22,
+				"name" : "Mint Museum of Toys",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/lifestyle-and-collectibles/34-mint-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "1636D5981F7C3EE8",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.95869339791689, 1.3241694524769985 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1305,
+				"ADDRESSBLOCKHOUSENUMBER" : "20",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "486593",
+				"ADDRESSSTREETname" : "Koh Sek Lim Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Discover the importance of water and NEWater's role as one of our Four National Taps.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/newater-visitor-centre",
+				"LANDXADDRESSPOINT" : 41952.97,
+				"LANDYADDRESSPOINT" : 34045.8,
+				"name" : "NEWater Visitor Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/science-innovation/52-newater-visitor-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "E9165548CD5FE2C7",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.83736217545379, 1.277061744448789 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1306,
+				"ADDRESSBLOCKHOUSENUMBER" : "157",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "88883",
+				"ADDRESSSTREETname" : "Neil Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Baba House plays an important role in conserving our distinctive Peranakan heritage in one of the last surviving Peranakan-style houses in its original state in Singapore.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/nus-baba-house",
+				"LANDXADDRESSPOINT" : 28450.02,
+				"LANDYADDRESSPOINT" : 28836.52,
+				"name" : "NUS Baba House",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/03-nus-baba-house.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "D0AB4F9E70B76EFB",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.77246783005917, 1.3014356317148432 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1307,
+				"ADDRESSBLOCKHOUSENUMBER" : "50",
+				"ADDRESSBUILDINGname" : "University Cultural Centre",
+				"ADDRESSPOSTALCODE" : "119279",
+				"ADDRESSSTREETname" : "Kent Ridge Crescent",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "A memorable experience of ancient culture and contemporary Asian artworks awaits you at NUS Museum.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/nus-museum",
+				"LANDXADDRESSPOINT" : 21227.86,
+				"LANDYADDRESSPOINT" : 31531.74,
+				"name" : "NUS Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/02-nus-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "1AC754FB04A3E02A",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8515419880971, 1.2898969716460507 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1308,
+				"ADDRESSBLOCKHOUSENUMBER" : "1",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "178957",
+				"ADDRESSSTREETname" : "St. Andrews Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "National Gallery Singapore is a visual arts institution which oversees the largest public collection of modern art in Singapore and Southeast Asia.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/national-gallery-singapore",
+				"LANDXADDRESSPOINT" : 30028.11,
+				"LANDYADDRESSPOINT" : 30255.78,
+				"name" : "National Gallery Singapore",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/ngs.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "23BEA6DB9D404BDF",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.74764684500971, 1.352031064583857 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1309,
+				"ADDRESSBLOCKHOUSENUMBER" : "50",
+				"ADDRESSBUILDINGname" : "Bukit Batok Polyclinic",
+				"ADDRESSPOSTALCODE" : "659164",
+				"ADDRESSSTREETname" : "Bukit Batok West Avenue 3",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "This Museum documents the history of modern medical care in Singapore from 1819 with the arrival of Sir Stamford Raffles and has a display of more than 100 artefacts from the past like the travelling",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/national-healthcare-group-polyclinics",
+				"LANDXADDRESSPOINT" : 18465.7,
+				"LANDYADDRESSPOINT" : 37126.41,
+				"name" : "National Healthcare Group Polyclinics' Gallery of Memories",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/healthcare/29-national-healthcare-group.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "D2BB4AF96508DB48",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84850486878858, 1.2967235895259812 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1311,
+				"ADDRESSBLOCKHOUSENUMBER" : "93",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "178897",
+				"ADDRESSSTREETname" : "Stamford Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The National Museum is Singapore's oldest museum with the youngest and most innovative soul.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/national-museum-of-singapore",
+				"LANDXADDRESSPOINT" : 29690.1,
+				"LANDYADDRESSPOINT" : 31010.63,
+				"name" : "National Museum of Singapore",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/45-national-museum-of-singapore.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "9481679345B89C6E",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84344920624825, 1.2952981551120266 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1312,
+				"ADDRESSBLOCKHOUSENUMBER" : "97",
+				"ADDRESSBUILDINGname" : "Ngee Ann Cultural Centre",
+				"ADDRESSPOSTALCODE" : "238066",
+				"ADDRESSSTREETname" : "Tank Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Ngee Ann Kongsi Collections permanently houses the art collection of the Kongsi. It aims to support and encourage Teochew artists in their artistic endeavours.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/ngee-ann-cultural-centre",
+				"LANDXADDRESSPOINT" : 29127.45,
+				"LANDYADDRESSPOINT" : 30853.01,
+				"name" : "Ngee Ann Cultural Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/13-ngee-ann-cultural-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "513EE40C31FB5261",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84914785142772, 1.294252499184929 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1313,
+				"ADDRESSBLOCKHOUSENUMBER" : "39",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "179941",
+				"ADDRESSSTREETname" : "Armenian Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Experience the unique culture of the Peranakans, an eclectic community that can only be found in Southeast Asia.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-peranakan-museum",
+				"LANDXADDRESSPOINT" : 29761.66,
+				"LANDYADDRESSPOINT" : 30737.39,
+				"name" : "Peranakan Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/14-peranakan-museum.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "41BAA965FA5A9435",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84501954379014, 1.324025655199157 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1314,
+				"ADDRESSBLOCKHOUSENUMBER" : "28",
+				"ADDRESSBUILDINGname" : "Police Headquarters Tower",
+				"ADDRESSPOSTALCODE" : "329560",
+				"ADDRESSSTREETname" : "Irrawaddy Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Be immersed in an enriching learning journey that details SPF's role in nation building.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/police-heritage-centre",
+				"LANDXADDRESSPOINT" : 29302.2,
+				"LANDYADDRESSPOINT" : 34029.55,
+				"name" : "Police Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/23-police-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : "1",
+				"INC_CRC" : "C23A5FAC6442F5D5",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85631603182864, 1.2802280065530671 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1315,
+				"ADDRESSBLOCKHOUSENUMBER" : "11",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "18940",
+				"ADDRESSSTREETname" : "Marina Boulevard",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The red dot design museum is the physical embodiment of the red dot design awards, an exclusive exhibition venue for red dot design award winners.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/red-dot-design-museum",
+				"LANDXADDRESSPOINT" : 30559.43,
+				"LANDYADDRESSPOINT" : 29186.64,
+				"name" : "Red Dot Design Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/lifestyle-and-collectibles/reddotdesignmuseum1jpg.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "CFCEB533E19D5DD1",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.79424189060683, 1.2795432966598788 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1316,
+				"ADDRESSBLOCKHOUSENUMBER" : "31-K",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "118458",
+				"ADDRESSSTREETname" : "Pepys Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "A WWII interpretative centre of National Archives. Discover the Malay Regiment soldiers who fought in the Battle of Pasir Panjang and reflect upon the universal values of courage, loyalty and honour.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/reflections-at-bukit-chandu",
+				"LANDXADDRESSPOINT" : 23651.08,
+				"LANDYADDRESSPOINT" : 29110.95,
+				"name" : "Reflections at Bukit Chandu",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/25-reflections-at-bukit-chandu.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "2D5C507DFEDE29ED",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8997318552728, 1.3451555229376673 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1317,
+				"ADDRESSBLOCKHOUSENUMBER" : "400",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "534234",
+				"ADDRESSSTREETname" : "Airport Road, Paya Lebar Airbase",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Trace the development of the Republic of Singapore Air Force from its early days the Royal Air Force in 1927 to the present.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/republic-of-singapore-airforce-museum",
+				"LANDXADDRESSPOINT" : 35391.07,
+				"LANDYADDRESSPOINT" : 36366.08,
+				"name" : "Republic of Singapore Airforce Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/24-republic-of-singapore-air-force-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "389FE01338494E95",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 104.01651600007263, 1.3174349999945567 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1318,
+				"ADDRESSBLOCKHOUSENUMBER" : "112",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "498794",
+				"ADDRESSSTREETname" : "Tahan Merah Coast Road, outside Changi Naval Base",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Take a trip down memory lane, as you have view guns and other components taken from our warships.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/republic-of-singapore-navy-museum",
+				"LANDXADDRESSPOINT" : 48388.1238,
+				"LANDYADDRESSPOINT" : 33301.5354,
+				"name" : "Republic of Singapore Navy Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/25-republic-of-singapore-navy-museum.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "DC4B52F0635AAB2C",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.67894267749962, 1.3327264080778696 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1319,
+				"ADDRESSBLOCKHOUSENUMBER" : "510",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "638365",
+				"ADDRESSSTREETname" : "Upper Jurong Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Comprising five main galleries over some 4500 square metres, the new Centre tells the Singapore Story with even more exciting interactive and multi-sensory exhibits.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/spore-discovery-centre",
+				"LANDXADDRESSPOINT" : 10819.55,
+				"LANDYADDRESSPOINT" : 34992.17,
+				"name" : "Singapore Discovery Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/26-singapore-discovery-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "F80BE2D474B2239F",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.736269714867, 1.333284360531366 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1320,
+				"ADDRESSBLOCKHOUSENUMBER" : "15",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "609081",
+				"ADDRESSSTREETname" : "Science Centre Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Learn about the wonders of science through a year-long calendar of innovative exhibitions, programmes and activities.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/science-centre-singapore",
+				"LANDXADDRESSPOINT" : 17199.47,
+				"LANDYADDRESSPOINT" : 35053.54,
+				"name" : "Science Centre Singapore",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/science-innovation/53-science-centre-singapore.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "7944970454B77153",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85094891155299, 1.29724059894391 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1321,
+				"ADDRESSBLOCKHOUSENUMBER" : "71",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "189555",
+				"ADDRESSSTREETname" : "Bras Basah Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Enjoy, explore and experience modern and contemporary art in one of the most exquisite location in town.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/singapore-art-museum",
+				"LANDXADDRESSPOINT" : 29962.1,
+				"LANDYADDRESSPOINT" : 31067.8,
+				"name" : "Singapore Art Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/05-singapore-art-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "8E1302D6ED1C524F",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84532304501236, 1.2795928560728564 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1322,
+				"ADDRESSBLOCKHOUSENUMBER" : "45",
+				"ADDRESSBUILDINGname" : "The URA Centre",
+				"ADDRESSPOSTALCODE" : "69118",
+				"ADDRESSSTREETname" : "Maxwell Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Be captivated by an amazing bird's eye view of Singapore's central hub - not from the top of a skyscraper - but a finely detailed architectural model measuring a mere 11 by 11 metres.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/singapore-city-gallery",
+				"LANDXADDRESSPOINT" : 29336,
+				"LANDYADDRESSPOINT" : 29116.4,
+				"name" : "Singapore City Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/46-singapore-city-gallery.png",
+				"ADDRESSFLOORNUMBER" : "2",
+				"INC_CRC" : "F6C0238D27E3A019",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8633369996361, 1.2710389997242697 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1323,
+				"ADDRESSBLOCKHOUSENUMBER" : "31",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "18988",
+				"ADDRESSSTREETname" : "Marina Coastal Drive",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Maritime Singapore Gallery helps visitors to understand the story of contemporary Maritime Singapore, the importance to its economy, and the diverse range of rewarding career options it offers.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/singapore-maritime-gallery",
+				"LANDXADDRESSPOINT" : 31340.8187,
+				"LANDYADDRESSPOINT" : 28170.5751,
+				"name" : "Singapore Maritime Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/47-singapore-maritime-gallery.png",
+				"ADDRESSFLOORNUMBER" : "2",
+				"INC_CRC" : "862F093C546F37A5",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84871582342552, 1.2928325586606664 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1324,
+				"ADDRESSBLOCKHOUSENUMBER" : "23-B",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "179807",
+				"ADDRESSSTREETname" : "Coleman St",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Immerse yourself in the world of stamps!",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/singapore-philatelic-museum",
+				"LANDXADDRESSPOINT" : 29713.58,
+				"LANDYADDRESSPOINT" : 30580.38,
+				"name" : "Singapore Philatelic Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/48-singapore-philatelic-museum.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "2B6C9FBB7F0FD9F2",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.87345300039193, 1.3014420003625915 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1325,
+				"ADDRESSBLOCKHOUSENUMBER" : "6",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "397698",
+				"ADDRESSSTREETname" : "Stadium Walk",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Sports Museum was first established in 1983 and it is a place where sporting dreams are celebrated",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/singapore-sports-museum",
+				"LANDXADDRESSPOINT" : 32466.5989,
+				"LANDYADDRESSPOINT" : 31532.398,
+				"name" : "Singapore Sports Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/lifestyle-and-collectibles/37-singapore-sports-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "ADC99D9450316000",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84721733870217, 1.328109211649089 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1326,
+				"ADDRESSBLOCKHOUSENUMBER" : "12",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "327874",
+				"ADDRESSSTREETname" : "Tai Gin Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Built in the late 19th century, the father of 1911 Chinese Revolution, Dr Sun Yat Sen, used to reside in this two-storey bungalow whenever he visited Singapore.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/sun-yat-sen-nanyang-memorial-hall",
+				"LANDXADDRESSPOINT" : 29546.79,
+				"LANDYADDRESSPOINT" : 34481.09,
+				"name" : "Sun Yat Sen Nanyang Memorial Hall",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/15-sun-yat-sen-nanyang-memorial-hall.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "CD923371696B1D41",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8459406392494, 1.321687687255205 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1327,
+				"ADDRESSBLOCKHOUSENUMBER" : "11",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "308433",
+				"ADDRESSSTREETname" : "Jalan Tan Tock Seng",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Honouring the legacy of founder Mr Tan Tock Seng, the museum features narrative displays, salvaged historical objects and a time capsule.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/tan-tock-seng-hospitals-heritage-museum",
+				"LANDXADDRESSPOINT" : 29404.71,
+				"LANDYADDRESSPOINT" : 33771.03,
+				"name" : "Tan Tock Seng Hospital Heritage Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/healthcare/30-tan-tock-seng-hospital-heritage-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "B9B007805881BBB8",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84616325741102, 1.2955000874100802 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1328,
+				"ADDRESSBLOCKHOUSENUMBER" : "2",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "179872",
+				"ADDRESSSTREETname" : "Cox Terrace",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "This used to be the largest underground military operations complex in Singapore during World War II. Witness the drama of British surrender to the Japanese, as wax figurines, video and audio effects.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-battle-box",
+				"LANDXADDRESSPOINT" : 29429.5,
+				"LANDYADDRESSPOINT" : 30875.34,
+				"name" : "The Battle Box",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/18-the-battle-box.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "17223C94A8593EA3",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.97400679325058, 1.3621666504618917 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1329,
+				"ADDRESSBLOCKHOUSENUMBER" : "1000",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "507707",
+				"ADDRESSSTREETname" : "Upper Changi Road North",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Walk through the adverse journeys of Singapore's bravehearts.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-changi-museum",
+				"LANDXADDRESSPOINT" : 43656.96,
+				"LANDYADDRESSPOINT" : 38247.44,
+				"name" : "The Changi Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/27-the-changi-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "10078D3A6F49545E",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.78814399598262, 1.2829160238367683 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1330,
+				"ADDRESSBLOCKHOUSENUMBER" : "70",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "118176",
+				"ADDRESSSTREETname" : "South Buona Vista Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Grassroots Heritage Centre is set up by the National Community Leadership Institute (NACLI) as part of the People's Association (PA) National Education efforts for its staff and grassroots leaders.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-grassroots-heritage-centre",
+				"LANDXADDRESSPOINT" : 22972.44,
+				"LANDYADDRESSPOINT" : 29483.9,
+				"name" : "The Grassroots Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/39-the-grassroots-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "AA1B94923CA24149",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.90096799969704, 1.3144860002655308 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1331,
+				"ADDRESSBLOCKHOUSENUMBER" : "69",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "427231",
+				"ADDRESSSTREETname" : "Joo Chiat Terrace",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "With a deep love for all things Peranakan, owner, collector, and 7th generation Peranakan, Alvin Yapp, turned his passion into a haven for this fascinating and ever-adapting culture.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-intan",
+				"LANDXADDRESSPOINT" : 35528.7323,
+				"LANDYADDRESSPOINT" : 32974.8028,
+				"name" : "The Intan",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/16-the-intan.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "826FD6D207AEFBFE",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85145449414914, 1.2980885992082083 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1332,
+				"ADDRESSBLOCKHOUSENUMBER" : "51",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "187969",
+				"ADDRESSSTREETname" : "Waterloo Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The museumâ€™s focus is to provide a space for art collectors to showcase their private collections, as well as establishing an alternative platform for artists to push boundaries in various art forms.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/The-Private-Museum",
+				"LANDXADDRESSPOINT" : 30018.36624,
+				"LANDYADDRESSPOINT" : 31161.56793,
+				"name" : "The Private Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/private-museum/private-museum-1.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "5F1702481A73AB57",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.83593476332338, 1.2807443203872204 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1333,
+				"ADDRESSBLOCKHOUSENUMBER" : null,
+				"ADDRESSBUILDINGname" : "Bowyer Block Clock Tower",
+				"ADDRESSPOSTALCODE" : "169608",
+				"ADDRESSSTREETname" : "Outram Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The SGH Museum is a dedicated space which houses a vast collection of medical objects, history and developments of the practice of medicine at the Singapore general hospital.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/the-sgh-museum",
+				"LANDXADDRESSPOINT" : 28291.16,
+				"LANDYADDRESSPOINT" : 29243.72,
+				"name" : "The SGH Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/healthcare/31-the-sgh-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "158E405E81948EB7",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.88499249320303, 1.3830684467949683 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1334,
+				"ADDRESSBLOCKHOUSENUMBER" : "10",
+				"ADDRESSBUILDINGname" : "Buangkok Green Medical Park",
+				"ADDRESSPOSTALCODE" : "539747",
+				"ADDRESSSTREETname" : "Buangkok Green",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Explore the history of mental health services in Singapore via artefacts, documents, and photographs from the old Woodbridge Hospital in Yio Chu Kang.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/woodbridge-museum",
+				"LANDXADDRESSPOINT" : 33750.65,
+				"LANDYADDRESSPOINT" : 40558.26,
+				"name" : "Woodbridge Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/healthcare/32-woodbridge-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "DB33D65E82085B0E",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.67681459535031, 1.3319067408220373 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1281,
+				"ADDRESSBLOCKHOUSENUMBER" : "520",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "638367",
+				"ADDRESSSTREETname" : "Upper Jurong Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Launched in conjunction with the 40th anniversary of National Service, the museum charts the development of the Army and honours the contributions of our soldiers.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/army-museum-of-singapore",
+				"LANDXADDRESSPOINT" : 10582.71,
+				"LANDYADDRESSPOINT" : 34901.55,
+				"name" : "Army Museum of Singapore",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/17-army-museum-of-singapore.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "0F00C0C993AAE600",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85923399957615, 1.286278000206668 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1282,
+				"ADDRESSBLOCKHOUSENUMBER" : "10",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "18956",
+				"ADDRESSSTREETname" : "Bayfront Avenue",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Artscience Museum a Marina Bay Sands is Southeast Asia's leading cultural institution that explores the inter-relation between art, science, technology and culture.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/artscience-museum",
+				"LANDXADDRESSPOINT" : 30884.1694,
+				"LANDYADDRESSPOINT" : 29855.6202,
+				"name" : "ArtScience Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/science-innovation/49-artscience-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "7BAE097DBB1ED70B",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85137088866942, 1.2874599809412386 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1283,
+				"ADDRESSBLOCKHOUSENUMBER" : "1",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "179555",
+				"ADDRESSSTREETname" : "Empress Place",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "One of Singapore's largest and grandest museum, the Asian Civilisations Museum traces more than 5,000 years of our ancestral culture.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/asian-civilisations-museum",
+				"LANDXADDRESSPOINT" : 30009.07,
+				"LANDYADDRESSPOINT" : 29986.31,
+				"name" : "Asian Civilisations Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/06-asian-civilisations-museum.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "C9C1E8F8BFDCEC42",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.85855035019748, 1.344409114982723 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1284,
+				"ADDRESSBLOCKHOUSENUMBER" : "200",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "579700",
+				"ADDRESSSTREETname" : "Braddell Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Find out what goes on behind the scenes from the drawing board to the construction of a building.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/bca-gallery",
+				"LANDXADDRESSPOINT" : 30808.02,
+				"LANDYADDRESSPOINT" : 36283.46,
+				"name" : "BCA Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/38-bca-gallery.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "2C4FA556EB1346BC",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84437771042481, 1.283578306098072 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1285,
+				"ADDRESSBLOCKHOUSENUMBER" : "48",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "59207",
+				"ADDRESSSTREETname" : "Pagoda Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Relive a past era when Chinese immigrants risked their lives crossing the South China Sea for a better tomorrow in Singapore.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/chinatown-heritage-centre",
+				"LANDXADDRESSPOINT" : 29230.79,
+				"LANDYADDRESSPOINT" : 29557.09,
+				"name" : "Chinatown Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/07-chinatown-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "25CE8ACCB0912E16",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.68399852929879, 1.3437790132963425 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1286,
+				"ADDRESSBLOCKHOUSENUMBER" : "12",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "637721",
+				"ADDRESSSTREETname" : "Nanyang Drive",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "A treasure trove of discoveries about the Chinese venturing outside of their motherland in China awaits you.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/chinese-heritage-centre",
+				"LANDXADDRESSPOINT" : 11382.29,
+				"LANDYADDRESSPOINT" : 36214.28,
+				"name" : "Chinese Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/08-chinese-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "4C5FD39A4C97A7CA",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84911513088197, 1.2920533554635916 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1287,
+				"ADDRESSBLOCKHOUSENUMBER" : "62",
+				"ADDRESSBUILDINGname" : "Central Fire Station",
+				"ADDRESSPOSTALCODE" : "179367",
+				"ADDRESSSTREETname" : "Hill Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "This oldest existing fire station in Singapore reveals the developments of civil defence in Singapore from the 19th century till today.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/civil-defence-heritage-gallery",
+				"LANDXADDRESSPOINT" : 29758.02,
+				"LANDYADDRESSPOINT" : 30494.22,
+				"name" : "Civil Defence Heritage Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/19-civil-defence-heritage-gallery.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "0BFA275358A71963",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8993969998423, 1.3100990003261606 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1288,
+				"ADDRESSBLOCKHOUSENUMBER" : "139",
+				"ADDRESSBUILDINGname" : "Eurasian Community House",
+				"ADDRESSPOSTALCODE" : "429744",
+				"ADDRESSSTREETname" : "Celyon Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The mission of the Eurasian Heritage Centre is to preserve and share Eurasian heritage and culture.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/eurasian-heritage-centre",
+				"LANDXADDRESSPOINT" : 35353.9078,
+				"LANDYADDRESSPOINT" : 32489.7059,
+				"name" : "Eurasian Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/09-eurasian-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "3538A5F06D5B7FC3",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.7688552505037, 1.3526917293127256 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1289,
+				"ADDRESSBLOCKHOUSENUMBER" : "351",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "588192",
+				"ADDRESSSTREETname" : "Upper Bukit Timah Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "National monument where the British surrendered Singapore to the Japanese on 15 Feb 1942, now restored by the National Archives to house a permanent WWII exhibition gallery and archives repositories.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/Former-Ford-Factory",
+				"LANDXADDRESSPOINT" : 20825.96,
+				"LANDYADDRESSPOINT" : 37199.39,
+				"name" : "Former Ford Factory",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/22-memories-at-old-ford-factory.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "359F7DACB4AE3B46",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.82795023940967, 1.2483486033894742 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1290,
+				"ADDRESSBLOCKHOUSENUMBER" : "33",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "99981",
+				"ADDRESSSTREETname" : "Allanbrooke Road, Sentosa",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Singapore's only preserved coastal fortress has both indoor and outdoor exhibitions, allowing visitors a glimpse into Singapore's colonial past.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/fort-siloso",
+				"LANDXADDRESSPOINT" : 27402.54,
+				"LANDYADDRESSPOINT" : 25661.57,
+				"name" : "Fort Siloso",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/defence/fort-siloso-loading-cannon-2.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "E3E1787F33B6DFCA",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84880894285857, 1.2829814925863203 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1291,
+				"ADDRESSBLOCKHOUSENUMBER" : "76",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "48464",
+				"ADDRESSSTREETname" : "Telok Ayer Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "One of the oldest temples in Singapore, this Chinese temple began as a small shrine set up by Hakka and Cantonese immigrants in 1824.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/fuk-tak-chi-museum",
+				"LANDXADDRESSPOINT" : 29723.95,
+				"LANDYADDRESSPOINT" : 29491.1,
+				"name" : "Fuk Tak Chi Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/10-fu-tak-chi-museum.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "969F5AC60117B495",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.8408230000597, 1.2791770001431926 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1292,
+				"ADDRESSBLOCKHOUSENUMBER" : "18",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "89832",
+				"ADDRESSSTREETname" : "Bukit Pasoh Road",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "Gan Heritage Centre seek to honour and preserve the rich heritage of the Gan Clan, to celebrate the historic and cultural significance of the Gan ancestry.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/gan-heritage-centre",
+				"LANDXADDRESSPOINT" : 28835.1815,
+				"LANDYADDRESSPOINT" : 29070.4149,
+				"name" : "Gan Heritage Centre",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/culture-and-community/11-gan-heritage-centre.png",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "7CFBBF2CAED38072",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84953182115134, 1.2977657731023078 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1293,
+				"ADDRESSBLOCKHOUSENUMBER" : "222",
+				"ADDRESSBUILDINGname" : null,
+				"ADDRESSPOSTALCODE" : "188550",
+				"ADDRESSSTREETname" : "Queen Street",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The Gem Museum is the first and foremost comprehensive gems and minerals museum in Singapore, open to the public.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/gem-museum",
+				"LANDXADDRESSPOINT" : 29804.39,
+				"LANDYADDRESSPOINT" : 31125.87,
+				"name" : "Gem Museum",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/art/gem-museum-1.jpg",
+				"ADDRESSFLOORNUMBER" : null,
+				"INC_CRC" : "EFC447CE4EC9955E",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : "#02-02"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 103.84883800031153, 1.3322690003384345 ]
+			},
+			"properties" : {
+				"OBJECTID" : 1294,
+				"ADDRESSBLOCKHOUSENUMBER" : "480",
+				"ADDRESSBUILDINGname" : "HDB Hub, Basement",
+				"ADDRESSPOSTALCODE" : "310480",
+				"ADDRESSSTREETname" : "Toa Payoh Lorong 6",
+				"ADDRESSTYPE" : null,
+				"DESCRIPTION" : "The HDB gallery serves as a one-stop destination that provides learning opportunities about Singapore's Public Housing for both Singaporeans and overseas visitors.",
+				"HYPERLINK" : "https://www.roots.gov.sg/places/places-landing/Places/museums/hdb-gallery",
+				"LANDXADDRESSPOINT" : 29727.1502,
+				"LANDYADDRESSPOINT" : 34941.0592,
+				"name" : "HDB Gallery",
+				"PHOTOURL" : "https://roots.sg/~/media/Roots/Images/museum-roundtable/national-history/40-hdb-gallery.png",
+				"ADDRESSFLOORNUMBER" : "1",
+				"INC_CRC" : "2BB8640BFEFC0F9C",
+				"FMEL_UPD_D" : "20210305140019",
+				"ADDRESSUNITNUMBER" : null
+			}
+		}
+	]
+}

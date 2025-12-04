@@ -365,7 +365,7 @@ const tutorialSteps: TutorialStep[] = [
                                 radius: 15,
                                 unit: "miles",
                                 color: "red",
-                                locationType: "theme_park",
+                                locationType: "museum",
                                 location: false,
                             }}
                         />

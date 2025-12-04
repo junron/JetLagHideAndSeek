@@ -44,9 +44,9 @@ export const AddQuestionDialog = ({
             id: "thermometer",
             data: {
                 latA: center.lat,
-                lngB: center.lng,
+                lngA: center.lng,
                 latB: destination.geometry.coordinates[1],
-                lngA: destination.geometry.coordinates[0],
+                lngB: destination.geometry.coordinates[0],
             },
         });
 
@@ -59,7 +59,9 @@ export const AddQuestionDialog = ({
         const center = map.getCenter();
         addQuestion({
             id: "tentacles",
-            data: { lat: center.lat, lng: center.lng },
+            // `tentacles` questions require a locationType — default to 'museum'
+            // which is one of the permitted values in the schema
+            data: { lat: center.lat, lng: center.lng, locationType: "museum" },
         });
         return true;
     };

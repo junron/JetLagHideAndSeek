@@ -146,7 +146,9 @@ const tentacleQuestionSpecificSchemaFifteen = baseTentacleQuestionSchema.extend(
 );
 
 const tentacleQuestionSpecificSchemaOne = baseTentacleQuestionSchema.extend({
-    locationType: tentacleLocationsOne,
+    // Provide a default location type so adding a tentacles question without
+    // explicitly setting `locationType` still validates.
+    locationType: tentacleLocationsOne.default("museum"),
     places: z.array(z.any()).optional(),
 });
 

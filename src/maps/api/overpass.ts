@@ -78,6 +78,9 @@ out center;
     if(question.locationType === "library"){
         data = await fetchLibraries();
     }
+    if(question.locationType === "museum"){
+        data = await fetchMuseums();
+    }
 
     if(data != null){
         data.features = data.features.filter((feature: any) => {
@@ -96,7 +99,6 @@ out center;
         });
         return data;
     }
-    // return [];
     data = await getOverpassData(query, text);
     const elements = data.elements;
     const response = turf.points([]);
@@ -227,6 +229,15 @@ export const fetchLibraries = async () => {
     return data as FeatureCollection;
 };
 
+export const fetchMuseums = async () => {
+    const response = await cacheFetch("/Museums.geojson",
+        "Fetching museum data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data as FeatureCollection;
+};
+
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
     const nodeId = node.split("/")[1];
     const tagQuery = `
@@ -311,6 +322,10 @@ export const findPlacesInZone = async (
 
     if(loadingText === "Fetching libraries..."){
         const data = await fetchLibraries();
+        return geojsontoosm(data);
+    }
+    if(loadingText === "Fetching museums..."){
+        const data = await fetchMuseums();
         return geojsontoosm(data);
     }
     let query = "";
