@@ -15,3 +15,20 @@ export const airports: FeatureCollection<Point> = {
         },
     ],
 };
+
+
+export const international_borders: FeatureCollection<Point> = {
+    type: "FeatureCollection",
+    features: [
+        {
+            type: "Feature",
+            properties: { name: "Causeway" },
+            geometry: { type: "Point", coordinates: [103.76917898654938, 1.452598503901771] },
+        },
+        {
+            type: "Feature",
+            properties: { name: "Second Link" },
+            geometry: { type: "Point", coordinates: [103.63447576761249, 1.3497370633490116] },
+        },
+    ],
+};

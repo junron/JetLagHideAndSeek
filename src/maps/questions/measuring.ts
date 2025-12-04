@@ -20,7 +20,7 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
-import { airports } from "../api/data";
+import { airports, international_borders } from "../api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
@@ -139,6 +139,8 @@ export const determineMeasuringBoundary = async (
         }
         case "airport":
             return airports.features.map((f) => turf.point(f.geometry.coordinates));
+        case "international_borders":
+            return international_borders.features.map((f) => turf.point(f.geometry.coordinates));
         case "city":
             return [
                 turf.combine(

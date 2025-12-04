@@ -26,7 +26,7 @@ import {
     trainLineNodeFinder,
 } from "@/maps/api";
 
-import { airports } from "../api/data";
+import { airports, international_borders } from "../api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
@@ -44,6 +44,9 @@ export const findMatchingPlaces = async (question: MatchingQuestion) => {
     switch (question.type) {
         case "airport": {
             return airports.features.map((f) => turf.point(f.geometry.coordinates));
+        }
+        case "international_borders": {
+            return international_borders.features.map((f) => turf.point(f.geometry.coordinates));
         }
         // case "major-city": {
         //     return (
