@@ -73,7 +73,31 @@ nwr["${LOCATION_FIRST_TAG[question.locationType]}"="${question.locationType}"](a
     )}, ${question.lat}, ${question.lng});
 out center;
     `;
-    const data = await getOverpassData(query, text);
+    const center = turf.point([question.lng, question.lat]);
+    let data = null;
+    if(question.locationType === "library"){
+        data = await fetchLibraries();
+    }
+
+    if(data != null){
+        data.features = data.features.filter((feature: any) => {
+            const coords =
+                feature?.geometry?.coordinates ??
+                (feature?.properties?.lon && feature?.properties?.lat
+                    ? [feature.properties.lon, feature.properties.lat]
+                    : null);
+
+            if (!coords) return false;
+
+            const pt = turf.point(coords);
+            const dist = turf.distance(center, pt, { units: question.unit });
+
+            return dist <= question.radius;
+        });
+        return data;
+    }
+    // return [];
+    data = await getOverpassData(query, text);
     const elements = data.elements;
     const response = turf.points([]);
     elements.forEach((element: any) => {
