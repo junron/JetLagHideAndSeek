@@ -204,6 +204,7 @@ export const determineMatchingBoundary = _.memoize(
                 break;
             }
             case "airport":
+            case "mountain":
             case "major-city":
             case "aquarium-full":
             case "zoo-full":
