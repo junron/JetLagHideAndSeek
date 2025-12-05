@@ -5,7 +5,6 @@ import osmtogeojson from "osmtogeojson";
 import {
     additionalMapGeoLocations,
     mapGeoLocation,
-    polyGeoJSON,
 } from "@/lib/context";
 import { getLineNamesForStationName } from "@/maps/api/sgmrt";
 import { safeUnion } from "@/maps/geo-utils";
@@ -89,6 +88,9 @@ out center;
     }
     if(question.locationType.includes("international_borders")){
         data = Object.assign({}, international_borders);
+    }
+    if(question.locationType.includes("hospital")){
+        data = await fetchHawkerCenters();
     }
 
     if(data != null){
@@ -232,6 +234,15 @@ export const fetchMuseums = async () => {
     return data as FeatureCollection;
 };
 
+export const fetchHawkerCenters = async () => {
+    const response = await cacheFetch("/Hawker.geojson",
+        "Fetching hawker center data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data as FeatureCollection;
+}
+
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
     const nodeId = node.split("/")[1];
     const tagQuery = `
@@ -335,6 +346,19 @@ export const findPlacesInZone = async (
     }
     if(loadingText?.includes("museums")){
         data = await fetchMuseums();
+    }
+    console.log({loadingText})
+    if(loadingText?.includes("hawker")){
+        data = await fetchHawkerCenters();
+    }
+    if(loadingText?.includes("airports")){
+        data = Object.assign({}, airports);
+    }
+    if(loadingText?.includes("international borders")){
+        data = Object.assign({}, international_borders);
+    }
+    if(loadingText?.includes("mountains")){
+        data = Object.assign({}, mountains);
     }
 
     if(returnGeoJSON && data !== null){

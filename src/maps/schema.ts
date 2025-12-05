@@ -105,7 +105,7 @@ const tentacleLocationsFifteen = z.union([
 
 const tentacleLocationsOne = z.union([
     z.literal("museum").describe("Museums"),
-    z.literal("hospital").describe("Hospitals"),
+    z.literal("hospital").describe("Hawker Centers"),
     z.literal("cinema").describe("Movie Theaters"),
     z.literal("library").describe("Libraries"),
 ]);
@@ -206,9 +206,9 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             z
                 .literal("museum-full")
                 .describe("Museum Question (Small+Medium Games)"),
-            // z
-            //     .literal("hospital-full")
-            //     .describe("Hospital Question (Small+Medium Games)"),
+            z
+                .literal("hospital-full")
+                .describe("Hawker Center"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),
@@ -258,7 +258,7 @@ const homeGameMatchingQuestionsSchema = baseMatchingQuestionSchema.extend({
         // z.literal("zoo").describe("Zoo Question"),
         // z.literal("theme_park").describe("Theme Park Question"),
         z.literal("museum").describe("Museum Question"),
-        z.literal("hospital").describe("Hospital Question"),
+        z.literal("hospital").describe("Hawker Center Question"),
         z.literal("cinema").describe("Cinema Question"),
         z.literal("library").describe("Library Question"),
         z.literal("golf_course").describe("Golf Course Question"),
@@ -328,9 +328,9 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("museum-full")
                 .describe("Museum Question (Small+Medium Games)"),
-            // z
-            //     .literal("hospital-full")
-            //     .describe("Hospital Question (Small+Medium Games)"),
+            z
+                .literal("hospital-full")
+                .describe("Hawker Center Question"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),
@@ -364,7 +364,7 @@ const homeGameMeasuringQuestionsSchema = baseMeasuringQuestionSchema.extend({
         z.literal("zoo").describe("Zoo Question"),
         z.literal("theme_park").describe("Theme Park Question"),
         z.literal("museum").describe("Museum Question"),
-        z.literal("hospital").describe("Hospital Question"),
+        z.literal("hospital").describe("Hawker Center Question"),
         z.literal("cinema").describe("Cinema Question"),
         z.literal("library").describe("Library Question"),
         z.literal("golf_course").describe("Golf Course Question"),

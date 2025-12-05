@@ -1,0 +1,1771 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_1",
+                "Description": "",
+                "name": "Blk 75 Toa Payoh Lorong 5"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.852956990661,
+                    1.33602076580964,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_2",
+                "Description": "",
+                "name": "Blk 79 Redhill Lane"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.818334176648,
+                    1.28778345950392,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_3",
+                "Description": "",
+                "name": "Blk 79 Telok Blangah Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.807621588844,
+                    1.27336490645598,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_4",
+                "Description": "",
+                "name": "Blk 80 Circuit Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8871026771,
+                    1.32783414800817,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_5",
+                "Description": "",
+                "name": "Blk 82 Telok Blangah Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.807900652669,
+                    1.27389121072642,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_6",
+                "Description": "",
+                "name": "Blk 84 Marine Parade Central"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.906338604333,
+                    1.30228521619123,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_7",
+                "Description": "",
+                "name": "Blk 85 Bedok North Street 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.938715027592,
+                    1.33205776976155,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_8",
+                "Description": "",
+                "name": "Blk 85 Redhill Lane"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.818311195662,
+                    1.28730751565504,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_9",
+                "Description": "",
+                "name": "Blk 89 Circuit Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.885438845181,
+                    1.32357971443551,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_10",
+                "Description": "",
+                "name": "Blk 90 Whampoa Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.854995081029,
+                    1.32306402839084,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_11",
+                "Description": "",
+                "name": "Blk 93 Toa Payoh Lorong 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.849484968795,
+                    1.33841733454963,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_12",
+                "Description": "",
+                "name": "Blks 13\\\\/14 Haig Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.895587840784,
+                    1.31510909242347,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_13",
+                "Description": "",
+                "name": "Blks 160\\\\/162 Ang Mo Kio Ave 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.838977220176,
+                    1.37428261906226,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_14",
+                "Description": "",
+                "name": "Blks 1A\\\\/ 2A\\\\/ 3A Commonwealth Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.797835544969,
+                    1.29973071739094,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_15",
+                "Description": "",
+                "name": "Blks 20\\\\/21 Marsiling Lane"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.776967219025,
+                    1.44340482276096,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_16",
+                "Description": "",
+                "name": "Blks 221 A\\\\/B Boon Lay Place"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.712800683256,
+                    1.34522406539603,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_17",
+                "Description": "",
+                "name": "Blks 22A\\\\/B Havelock Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8296234139,
+                    1.28797051119369,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_18",
+                "Description": "",
+                "name": "Blks 91\\\\/92 Whampoa Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.854060200572,
+                    1.3234281969107,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_19",
+                "Description": "",
+                "name": "Chinatown Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.843159525256,
+                    1.28227187459299,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_20",
+                "Description": "",
+                "name": "Chong Pang Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.828419861633,
+                    1.43152673126679,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_21",
+                "Description": "",
+                "name": "Kovan Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.886055374439,
+                    1.35908383188817,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_22",
+                "Description": "",
+                "name": "Pek Kio Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.85022513135,
+                    1.31615999423399,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_23",
+                "Description": "",
+                "name": "People's Park Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.842342124165,
+                    1.28473523649934,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_24",
+                "Description": "",
+                "name": "Quality Road Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.710476876454,
+                    1.33325219613572,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_25",
+                "Description": "",
+                "name": "Tekka Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.850609985873,
+                    1.30617773903708,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_26",
+                "Description": "",
+                "name": "Commonwealth Crescent Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.800356459762,
+                    1.30699535095582,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_27",
+                "Description": "",
+                "name": "Adam Road Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.814079836487,
+                    1.32413470389528,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_28",
+                "Description": "",
+                "name": "Alexandra Village Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.80448934427,
+                    1.28629781562685,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_29",
+                "Description": "",
+                "name": "Amoy Street Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.846606863163,
+                    1.27921848785053,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_30",
+                "Description": "",
+                "name": "Serangoon Garden Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.866724953125,
+                    1.36308500266876,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_31",
+                "Description": "",
+                "name": "Taman Jurong Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.721519919846,
+                    1.33458937850472,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_32",
+                "Description": "",
+                "name": "Tanglin Halt Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.797719382989,
+                    1.30055807553211,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_33",
+                "Description": "",
+                "name": "Tiong Bahru Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.832181567218,
+                    1.28478557017979,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_34",
+                "Description": "",
+                "name": "Zion Riverside Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.831189310735,
+                    1.29234223812004,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_35",
+                "Description": "",
+                "name": "ABC Brickworks Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.808128014593,
+                    1.28695275470268,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_36",
+                "Description": "",
+                "name": "Albert Centre Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.854077577558,
+                    1.30105169022247,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_37",
+                "Description": "",
+                "name": "Ayer Rajah Food Centre 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.787481044481,
+                    1.29740669811768,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_38",
+                "Description": "",
+                "name": "Ayer Rajah Food Centre 3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.788523123828,
+                    1.2934997598258,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_39",
+                "Description": "",
+                "name": "Blk 1 Jalan Kukoh"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.839934174505,
+                    1.28823101665683,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_40",
+                "Description": "",
+                "name": "Blk 105 Hougang Ave 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.890094154565,
+                    1.35384727630583,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_41",
+                "Description": "",
+                "name": "Blk 11 Telok Blangah Crescent"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.81864170499,
+                    1.27736689869568,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_42",
+                "Description": "",
+                "name": "Blk 115 Bukit Merah View"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.821823261698,
+                    1.28550446469858,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_43",
+                "Description": "",
+                "name": "Blk 117 Aljunied Ave 2"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.886773535561,
+                    1.32078108005111,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_44",
+                "Description": "",
+                "name": "Blk 127 Toa Payoh Lorong 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.844731693846,
+                    1.33809276057578,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_45",
+                "Description": "",
+                "name": "Blk 137 Tampines Street 11"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.944624549442,
+                    1.34563954272448,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_46",
+                "Description": "",
+                "name": "Blk 159 Mei Chin Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.802903877753,
+                    1.29323624984597,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_47",
+                "Description": "",
+                "name": "Blk 16 Bedok South Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.935473641112,
+                    1.32050084219179,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_48",
+                "Description": "",
+                "name": "Blk 163 Bukit Merah Central"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.816992411859,
+                    1.28369264625598,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_49",
+                "Description": "",
+                "name": "Blk 20 Ghim Moh Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.78823031569,
+                    1.31099663575987,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_50",
+                "Description": "",
+                "name": "Blk 208B New Upper Changi Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.930544297492,
+                    1.3248181686642,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_51",
+                "Description": "",
+                "name": "Blk 210 Toa Payoh Lorong 8"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.854333835648,
+                    1.34025208214604,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_52",
+                "Description": "",
+                "name": "Blk 216 Bedok North Street 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.933221628318,
+                    1.32706246133934,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_53",
+                "Description": "",
+                "name": "Blk 22 Toa Payoh Lorong 7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.857003713555,
+                    1.3353826058434,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_54",
+                "Description": "",
+                "name": "Blk 503 West Coast Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.759751412669,
+                    1.31180309686362,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_55",
+                "Description": "",
+                "name": "Blk 502 West  Coast Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.759041981812,
+                    1.31189101702482,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_56",
+                "Description": "",
+                "name": "Bedok Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.955471877252,
+                    1.32035409051798,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_57",
+                "Description": "",
+                "name": "Beo Crescent Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.827353979133,
+                    1.2888308508684,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_58",
+                "Description": "",
+                "name": "Berseh Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.856853990878,
+                    1.30733654545461,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_59",
+                "Description": "",
+                "name": "Blk 112 Jalan Bukit Merah"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.82600359589,
+                    1.28000182122612,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_60",
+                "Description": "",
+                "name": "Blk 17 Upper Boon Keng Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.871620325751,
+                    1.3150280641904,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_61",
+                "Description": "",
+                "name": "Blk 353 Clementi Ave 2"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.770772815907,
+                    1.3143806546683,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_62",
+                "Description": "",
+                "name": "Blk 4A Eunos Crescent"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.90426225727,
+                    1.32032835825272,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_63",
+                "Description": "",
+                "name": "Blk 6 Tanjong Pagar Plaza"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.843167029877,
+                    1.27661464955076,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_64",
+                "Description": "",
+                "name": "Blks 79\\\\/79A Circuit Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.885043560223,
+                    1.32644997412417,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_65",
+                "Description": "",
+                "name": "Blks 2 & 3 Changi Village Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.988245253984,
+                    1.38915164742951,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_66",
+                "Description": "",
+                "name": "Bukit Timah Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.776007311098,
+                    1.3394524205512,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_67",
+                "Description": "",
+                "name": "Chomp Chomp Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.86652702067,
+                    1.36423251514864,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_68",
+                "Description": "",
+                "name": "Dunman Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.901825213705,
+                    1.30941427412897,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_69",
+                "Description": "",
+                "name": "East Coast Lagoon Food Village"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.934799740097,
+                    1.30726107208842,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_70",
+                "Description": "",
+                "name": "Geylang Serai Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.897977415723,
+                    1.31672515889934,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_71",
+                "Description": "",
+                "name": "Golden Mile Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.863877378496,
+                    1.30314151702473,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_72",
+                "Description": "",
+                "name": "Blk 44 Holland Drive"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.79277377894,
+                    1.30811780974286,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_73",
+                "Description": "",
+                "name": "Holland Village Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.79483380689,
+                    1.31114896752555,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_74",
+                "Description": "",
+                "name": "Hong Lim Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.845823810738,
+                    1.28529908693582,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_75",
+                "Description": "",
+                "name": "Kallang Estate Market"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.884018305945,
+                    1.30734401581935,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_76",
+                "Description": "",
+                "name": "Market Street Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.849983684218,
+                    1.28388541323894,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_77",
+                "Description": "",
+                "name": "Maxwell Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.844733514898,
+                    1.28033024990422,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_78",
+                "Description": "",
+                "name": "Newton Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.839412499443,
+                    1.31218587337693,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_79",
+                "Description": "",
+                "name": "North Bridge Road Market & Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.863909346503,
+                    1.30563434531607,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_80",
+                "Description": "",
+                "name": "Pasir Panjang Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.791402719856,
+                    1.27590755886885,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_81",
+                "Description": "",
+                "name": "Sembawang Hills Food Centre"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.82899325725,
+                    1.37238419753667,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_82",
+                "Description": "",
+                "name": "Blk 226D Ang Mo Kio Ave 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.839142558292,
+                    1.36681000495722,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_83",
+                "Description": "",
+                "name": "Blk 226H Ang Mo Kio Street 22"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.84002222809,
+                    1.36719653700044,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_84",
+                "Description": "",
+                "name": "Blk 254 Jurong East Street 24"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.73773840346,
+                    1.34348812560694,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_85",
+                "Description": "",
+                "name": "Blk 29 Bendemeer Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.863020925556,
+                    1.3192166867721,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_86",
+                "Description": "",
+                "name": "Blk 320 Shunfu Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.836964514004,
+                    1.35202556283625,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_87",
+                "Description": "",
+                "name": "Blk 341 Ang Mo Kio Ave 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.848067300496,
+                    1.36384516738631,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_88",
+                "Description": "",
+                "name": "Blk 347 Jurong East Ave 1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.731144806193,
+                    1.34518811200878,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_89",
+                "Description": "",
+                "name": "Blk 36 Telok Blangah Rise"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.821998237127,
+                    1.2725891448479,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_90",
+                "Description": "",
+                "name": "Blk 37A Teban Gardens Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.742747351986,
+                    1.32083172111871,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_91",
+                "Description": "",
+                "name": "Blk 409 Ang Mo Kio Ave 10"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.855288301498,
+                    1.36265410043436,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_92",
+                "Description": "",
+                "name": "Blk 448 Clementi Ave 3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.764517193421,
+                    1.31331969357879,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_93",
+                "Description": "",
+                "name": "Blk 453A Ang Mo Kio Ave 10"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.856308677281,
+                    1.3682513033781,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_94",
+                "Description": "",
+                "name": "Blk 49 Sims Place"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.879309859634,
+                    1.31703502746749,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_95",
+                "Description": "",
+                "name": "Blk 4A Jalan Batu"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.883909749659,
+                    1.30234533816469,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_96",
+                "Description": "",
+                "name": "Blk 4A Woodlands Centre Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.770076811961,
+                    1.44108421544269,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_97",
+                "Description": "",
+                "name": "Blk 505 Jurong West Street 52"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.718443684502,
+                    1.34965728797728,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_98",
+                "Description": "",
+                "name": "Blk 50A Marine Terrace"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.915737039583,
+                    1.30572973690803,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_99",
+                "Description": "",
+                "name": "Blk 51 Old Airport Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.885731678014,
+                    1.30810982511157,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_100",
+                "Description": "",
+                "name": "Blk 511 Bedok North Street 3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.930455971641,
+                    1.33300947788224,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_101",
+                "Description": "",
+                "name": "Blk 527 Ang Mo Kio Ave 10"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.854457964314,
+                    1.37277208982045,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_102",
+                "Description": "",
+                "name": "Blk 538 Bedok North Street 3"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.924621320658,
+                    1.33206726719415,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_103",
+                "Description": "",
+                "name": "Blk 58 New Upper Changi Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.941125284506,
+                    1.32420088206515,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_104",
+                "Description": "",
+                "name": "Blk 628 Ang Mo Kio Ave 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.840628094393,
+                    1.38099060141854,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_105",
+                "Description": "",
+                "name": "Blk 630 Bedok Reservoir Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.914053979066,
+                    1.33315929117989,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_106",
+                "Description": "",
+                "name": "Blk 69 Geylang Bahru"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.870005024383,
+                    1.32146311126807,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_107",
+                "Description": "",
+                "name": "Blk 7 Empress Road"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.80563642456,
+                    1.3162457528889,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_108",
+                "Description": "",
+                "name": "Blk 724 Ang Mo Kio Ave 6"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.846510312494,
+                    1.37217258443782,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_109",
+                "Description": "",
+                "name": "Blk 726 Clementi West Street 2"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.76425075431,
+                    1.30381073921218,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "Name": "kml_110",
+                "Description": "",
+                "name": "Blk 74 Toa Payoh Lorong 4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.852003509927,
+                    1.33455074869237,
+                    0.0
+                ]
+            }
+        }
+    ]
+}
