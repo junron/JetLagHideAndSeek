@@ -219,9 +219,9 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             z
                 .literal("library-full")
                 .describe("Library Question (Small+Medium Games)"),
-            // z
-            //     .literal("golf_course-full")
-            //     .describe("Golf Course Question (Small+Medium Games)"),
+            z
+                .literal("golf_course-full")
+                .describe("Golf Course Question (Small+Medium Games)"),
             // z
             //     .literal("consulate-full")
             //     .describe("Foreign Consulate Question (Small+Medium Games)"),
@@ -345,9 +345,9 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("library-full")
                 .describe("Library Question (Small+Medium Games)"),
-            // z
-            //     .literal("golf_course-full")
-            //     .describe("Golf Course Question (Small+Medium Games)"),
+            z
+                .literal("golf_course-full")
+                .describe("Golf Course Question (Small+Medium Games)"),
             // z
             //     .literal("consulate-full")
             //     .describe("Foreign Consulate Question (Small+Medium Games)"),

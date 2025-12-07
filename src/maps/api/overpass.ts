@@ -18,7 +18,7 @@ import type {
     QuestionSpecificLocation,
 } from "./types";
 import { CacheType } from "./types";
-import { airports, international_borders, mountains } from "./data";
+import { airports, golf_courses, international_borders, mountains } from "./data";
 
 export const getOverpassData = async (
     query: string,
@@ -94,6 +94,10 @@ out center;
     }
     if(question.locationType.includes("supermarket")){
         data = await fetchSupermarkets();
+    }
+
+    if(question.locationType.includes("golf_course")){
+        data = Object.assign({}, golf_courses);
     }
 
     if(data != null){
@@ -375,6 +379,10 @@ export const findPlacesInZone = async (
 
     if(loadingText?.includes("supermarkets")){
         data = await fetchSupermarkets();
+    }
+
+    if(loadingText?.includes("golf courses")){
+        data = Object.assign({}, golf_courses);
     }
 
     if(returnGeoJSON && data !== null){
