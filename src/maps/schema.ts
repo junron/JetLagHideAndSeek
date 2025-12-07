@@ -92,7 +92,7 @@ const getDefaultUnit = () => {
 };
 
 const radiusQuestionSchema = ordinaryBaseQuestionSchema.extend({
-    radius: z.number().min(0, "You cannot have a negative radius").default(50),
+    radius: z.number().min(0, "You cannot have a negative radius").default(5),
     unit: unitsSchema.default(getDefaultUnit),
     within: z.boolean().default(true),
 });
@@ -108,6 +108,7 @@ const tentacleLocationsOne = z.union([
     z.literal("hospital").describe("Hawker Centers"),
     z.literal("cinema").describe("Movie Theaters"),
     z.literal("library").describe("Libraries"),
+    z.literal("supermarket").describe("NTUC Supermarkets"),
 ]);
 
 const apiLocationSchema = z.union([
@@ -209,6 +210,9 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             z
                 .literal("hospital-full")
                 .describe("Hawker Center"),
+            z
+                .literal("supermarket-full")
+                .describe("NTUC Supermarket Question"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),
@@ -259,6 +263,7 @@ const homeGameMatchingQuestionsSchema = baseMatchingQuestionSchema.extend({
         // z.literal("theme_park").describe("Theme Park Question"),
         z.literal("museum").describe("Museum Question"),
         z.literal("hospital").describe("Hawker Center Question"),
+        z.literal("supermarket").describe("NTUC Supermarket Question"),
         z.literal("cinema").describe("Cinema Question"),
         z.literal("library").describe("Library Question"),
         z.literal("golf_course").describe("Golf Course Question"),
@@ -331,6 +336,9 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("hospital-full")
                 .describe("Hawker Center Question"),
+            z
+                .literal("supermarket-full")
+                .describe("NTUC Supermarket Question"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),

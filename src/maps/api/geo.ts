@@ -24,6 +24,8 @@ export const prettifyLocation = (
     }
 
     switch (location) {
+        case "supermarket":
+            return "Supermarket";
         case "aquarium":
             return "Aquarium";
         case "hospital":

@@ -92,6 +92,9 @@ out center;
     if(question.locationType.includes("hospital")){
         data = await fetchHawkerCenters();
     }
+    if(question.locationType.includes("supermarket")){
+        data = await fetchSupermarkets();
+    }
 
     if(data != null){
         data.features = data.features.filter((feature: any) => {
@@ -243,6 +246,15 @@ export const fetchHawkerCenters = async () => {
     return data as FeatureCollection;
 }
 
+export const fetchSupermarkets = async () => {
+    const response = await cacheFetch("/Supermarkets.geojson",
+        "Fetching supermarket data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data as FeatureCollection;
+}
+
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
     const nodeId = node.split("/")[1];
     const tagQuery = `
@@ -359,6 +371,10 @@ export const findPlacesInZone = async (
     }
     if(loadingText?.includes("mountains")){
         data = Object.assign({}, mountains);
+    }
+
+    if(loadingText?.includes("supermarkets")){
+        data = await fetchSupermarkets();
     }
 
     if(returnGeoJSON && data !== null){

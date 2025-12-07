@@ -1,0 +1,3179 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_117",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "192",
+        "name": "LORONG 4 TOA PAYOH",
+        "UNIT_NO": "672",
+        "POSTCODE": "310192",
+        "LIC_NO": "S02051L000",
+        "INC_CRC": "BA393865D9429B41",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.850483008706,
+          1.33166183429417,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_118",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "475",
+        "name": "TAMPINES STREET 44",
+        "UNIT_NO": "145",
+        "POSTCODE": "520475",
+        "LIC_NO": "S02052K000",
+        "INC_CRC": "9018E3DE81D128D1",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.953125974102,
+          1.36032331726567,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_119",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "107",
+        "name": "TAMPINES STREET 11",
+        "UNIT_NO": "353/9",
+        "POSTCODE": "521107",
+        "LIC_NO": "S02053J000",
+        "INC_CRC": "26741892D38D0A04",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.948128932393,
+          1.34837104824236,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_120",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "11",
+        "name": "RIVERVALE CRESCENT",
+        "UNIT_NO": "1",
+        "POSTCODE": "545082",
+        "LIC_NO": "S02054E000",
+        "INC_CRC": "67F93295E5A48722",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.90447160757,
+          1.39219777362583,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_121",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "118",
+        "name": "RIVERVALE DRIVE",
+        "UNIT_NO": "8",
+        "POSTCODE": "540118",
+        "LIC_NO": "S02055C000",
+        "INC_CRC": "79B5F430300EF1B5",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.901558027563,
+          1.38493201671183,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_122",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "301",
+        "name": "UPPER THOMSON ROAD",
+        "UNIT_NO": "25",
+        "POSTCODE": "574408",
+        "LIC_NO": "S02056B000",
+        "INC_CRC": "1A6B6A0A96F41CFD",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.830919788426,
+          1.35466901882051,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_123",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "500",
+        "name": "LORONG 6 TOA PAYOH",
+        "UNIT_NO": "",
+        "POSTCODE": "310500",
+        "LIC_NO": "S02103A000",
+        "INC_CRC": "A5C9705C273748FD",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.847050353797,
+          1.33296549379038,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_124",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "110",
+        "name": "LENGKONG TIGA",
+        "UNIT_NO": "233/5",
+        "POSTCODE": "410110",
+        "LIC_NO": "S91085V000",
+        "INC_CRC": "700C0F2E35957CEA",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.910689656957,
+          1.32397688357175,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_125",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "279",
+        "name": "BISHAN STREET 24",
+        "UNIT_NO": "62/64",
+        "POSTCODE": "570279",
+        "LIC_NO": "S94081C000",
+        "INC_CRC": "BA6EA24E581F55D2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.843785259758,
+          1.35722282377111,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_126",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "734",
+        "name": "PASIR RIS STREET 72",
+        "UNIT_NO": "37",
+        "POSTCODE": "510734",
+        "LIC_NO": "S98084K000",
+        "INC_CRC": "B2A48B8DDF299D93",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.936207570696,
+          1.37976753619581,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_127",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "2",
+        "name": "JOO CHIAT ROAD",
+        "UNIT_NO": "1139",
+        "POSTCODE": "420002",
+        "LIC_NO": "SE04012L000",
+        "INC_CRC": "A54DA254F5F99AFB",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.898764898642,
+          1.31553964712804,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_128",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "41",
+        "name": "JALAN TIGA",
+        "UNIT_NO": "5",
+        "POSTCODE": "390041",
+        "LIC_NO": "SE04130B000",
+        "INC_CRC": "93EC66CC6F37312F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.884763855717,
+          1.30782737247273,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_129",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "65",
+        "name": "AIRPORT BOULEVARD",
+        "UNIT_NO": "10",
+        "POSTCODE": "819663",
+        "LIC_NO": "SE07559P000",
+        "INC_CRC": "B00E2FE630585015",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.985169647877,
+          1.35437073798267,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_130",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "5",
+        "name": "EUNOS CRESCENT",
+        "UNIT_NO": "2619",
+        "POSTCODE": "400005",
+        "LIC_NO": "SE09706N000",
+        "INC_CRC": "B7F681A9F638088F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.903266275569,
+          1.32118979604503,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_131",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "23",
+        "name": "SERANGOON CENTRAL",
+        "UNIT_NO": "42",
+        "POSTCODE": "556083",
+        "LIC_NO": "SE10564B000",
+        "INC_CRC": "9C08ADA0824D1D7A",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.871861623795,
+          1.35067551423916,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_132",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "89",
+        "name": "BEDOK NORTH STREET 4",
+        "UNIT_NO": "77/79",
+        "POSTCODE": "460089",
+        "LIC_NO": "SE11071C000",
+        "INC_CRC": "47C2F906FB4A8869",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.938051292004,
+          1.33233467983413,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_133",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "612-620",
+        "name": "GEYLANG ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "389551",
+        "LIC_NO": "SE11577E000",
+        "INC_CRC": "D12B7744F9A097B3",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.888544913634,
+          1.31414996835354,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_134",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "5",
+        "name": "CHANGI BUSINESS PARK CENTRAL 1",
+        "UNIT_NO": "8/11",
+        "POSTCODE": "486038",
+        "LIC_NO": "SE11947P000",
+        "INC_CRC": "5B8B133D441E3A0A",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.962389306789,
+          1.3343251542009,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_135",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "8",
+        "name": "CHANGI BUSINESS PARK AVENUE 1",
+        "UNIT_NO": "",
+        "POSTCODE": "486018",
+        "LIC_NO": "SE12G19X000",
+        "INC_CRC": "173987F2420DE201",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.963653907777,
+          1.33491977399192,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_136",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "311",
+        "name": "NEW UPPER CHANGI ROAD",
+        "UNIT_NO": "60",
+        "POSTCODE": "467360",
+        "LIC_NO": "SE13135L000",
+        "INC_CRC": "BA23392A3AA4C5D9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.929267657363,
+          1.32477207902253,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_137",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "57",
+        "name": "NEW UPPER CHANGI ROAD",
+        "UNIT_NO": "1334",
+        "POSTCODE": "461057",
+        "LIC_NO": "SE13S71X000",
+        "INC_CRC": "BF75AB36E33F82E0",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9415687075,
+          1.32424554991112,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_138",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "60",
+        "name": "AIRPORT BOULEVARD",
+        "UNIT_NO": "29",
+        "POSTCODE": "819643",
+        "LIC_NO": "SE13U39E000",
+        "INC_CRC": "C0ECA33ED08ABFAE",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.988750977656,
+          1.3551909440899,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_139",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "30",
+        "name": "EAST COAST ROAD",
+        "UNIT_NO": "6/9",
+        "POSTCODE": "428751",
+        "LIC_NO": "SE13U91V000",
+        "INC_CRC": "915404DD609FDB06",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.902850380057,
+          1.30385030848158,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_140",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "6",
+        "name": "POTONG PASIR AVENUE 2",
+        "UNIT_NO": "1",
+        "POSTCODE": "358361",
+        "LIC_NO": "SE14441L000",
+        "INC_CRC": "3D99EC241C2C20EF",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.867036838441,
+          1.33253590792541,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_141",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "STADIUM PLACE",
+        "UNIT_NO": "29",
+        "POSTCODE": "397628",
+        "LIC_NO": "SE14467N000",
+        "INC_CRC": "9A762656DA66BDBE",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.872750707738,
+          1.30384327849927,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_142",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "3",
+        "name": "SIMEI STREET 6",
+        "UNIT_NO": "1",
+        "POSTCODE": "528833",
+        "LIC_NO": "SE14775X000",
+        "INC_CRC": "72D4FFF12CCE16D9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.953024500232,
+          1.34270618915228,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_143",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "401",
+        "name": "MACPHERSON ROAD",
+        "UNIT_NO": "22/29",
+        "POSTCODE": "368125",
+        "LIC_NO": "SE16122V000",
+        "INC_CRC": "8636C035C8D92C78",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.879294502591,
+          1.33177055027825,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_144",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "18",
+        "name": "TAI SENG STREET",
+        "UNIT_NO": "13",
+        "POSTCODE": "539775",
+        "LIC_NO": "SE17082P000",
+        "INC_CRC": "97B865E2E4C0509D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.888762709438,
+          1.33653867658135,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_145",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "10",
+        "name": "EUNOS ROAD 8",
+        "UNIT_NO": "101",
+        "POSTCODE": "408600",
+        "LIC_NO": "SE17481P000",
+        "INC_CRC": "B03AE698B7AEC878",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.894731355106,
+          1.31886941200841,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_147",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "108",
+        "name": "DEPOT ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "100108",
+        "LIC_NO": "SW04158X000",
+        "INC_CRC": "53334C1CA869F4BD",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8100313205,
+          1.28112227851946,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_149",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "28",
+        "name": "DOVER CRESCENT",
+        "UNIT_NO": "83",
+        "POSTCODE": "130028",
+        "LIC_NO": "SW07481A000",
+        "INC_CRC": "C2D30D6A61C98791",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.781697201377,
+          1.30476357340306,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_150",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "140",
+        "name": "TECK WHYE LANE",
+        "UNIT_NO": "351",
+        "POSTCODE": "680140",
+        "LIC_NO": "SW08821N000",
+        "INC_CRC": "1012E7DDBD421739",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75311841662,
+          1.38003057765068,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_151",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "63",
+        "name": "JURONG WEST CENTRAL 3",
+        "UNIT_NO": "",
+        "POSTCODE": "648331",
+        "LIC_NO": "SW08A59X000",
+        "INC_CRC": "F84D5621D7F59F0F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.705351000578,
+          1.33931503939035,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_152",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "21",
+        "name": "CHOA CHU KANG NORTH 6",
+        "UNIT_NO": "1/7",
+        "POSTCODE": "689578",
+        "LIC_NO": "SW09032C000",
+        "INC_CRC": "D2D1D58DFEF0EDA7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.746558069293,
+          1.39730189954737,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_153",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "61",
+        "name": "CHOA CHU KANG DRIVE",
+        "UNIT_NO": "1",
+        "POSTCODE": "689715",
+        "LIC_NO": "SW09285K000",
+        "INC_CRC": "FDB6807BE8EE6429",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.747329724589,
+          1.39712885652678,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_155",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "3155",
+        "name": "COMMONWEALTH AVENUE WEST",
+        "UNIT_NO": "",
+        "POSTCODE": "129588",
+        "LIC_NO": "SW10A16E000",
+        "INC_CRC": "644570985CDF911C",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.764248204763,
+          1.31485322616185,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_156",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "78A",
+        "name": "TELOK BLANGAH STREET 32",
+        "UNIT_NO": "1",
+        "POSTCODE": "101078",
+        "LIC_NO": "SW11452C000",
+        "INC_CRC": "B163FC1A7F3CF0FB",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.808934817338,
+          1.27338252999837,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_157",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "460",
+        "name": "ALEXANDRA ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "119963",
+        "LIC_NO": "SW11A26P000",
+        "INC_CRC": "33F754B4DFB6E088",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.801126955437,
+          1.27367658025919,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_158",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "2",
+        "name": "JURONG EAST CENTRAL 1",
+        "UNIT_NO": "12",
+        "POSTCODE": "609731",
+        "LIC_NO": "SW12C98J000",
+        "INC_CRC": "D3E25B1CE998209D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.740176741625,
+          1.33326818232541,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_159",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "352",
+        "name": "CLEMENTI AVENUE 2",
+        "UNIT_NO": "141",
+        "POSTCODE": "120352",
+        "LIC_NO": "SW12F58E000",
+        "INC_CRC": "562A45954C098582",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.771350566042,
+          1.31427860895568,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_160",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "498",
+        "name": "JURONG WEST STREET 41",
+        "UNIT_NO": "",
+        "POSTCODE": "640498",
+        "LIC_NO": "SW12H20A000",
+        "INC_CRC": "E2CA10A4AA0467CC",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.72430732776,
+          1.34833334908052,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_161",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "502",
+        "name": "WEST COAST DRIVE",
+        "UNIT_NO": "41",
+        "POSTCODE": "120502",
+        "LIC_NO": "SW12O05A000",
+        "INC_CRC": "4455CEE928BD0F3E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.759080943921,
+          1.31188596098541,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_162",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "LOWER KENT RIDGE ROAD",
+        "UNIT_NO": "16",
+        "POSTCODE": "119082",
+        "LIC_NO": "SW13245V000",
+        "INC_CRC": "BE502BB90FDBD6E2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.784084020187,
+          1.29277432695785,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_163",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "280",
+        "name": "BUKIT BATOK EAST AVENUE 3",
+        "UNIT_NO": "315",
+        "POSTCODE": "650280",
+        "LIC_NO": "SW13Q24X000",
+        "INC_CRC": "32C4A6B5B680E026",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.757044586256,
+          1.34770147779385,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_164",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "50",
+        "name": "JURONG GATEWAY ROAD",
+        "UNIT_NO": "21/22",
+        "POSTCODE": "608549",
+        "LIC_NO": "SW13T12J000",
+        "INC_CRC": "469AAB3D4F6721E5",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.743170430901,
+          1.33320021671365,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_165",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "2",
+        "name": "BUKIT BATOK WEST AVENUE 7",
+        "UNIT_NO": "10",
+        "POSTCODE": "659003",
+        "LIC_NO": "SW14633X000",
+        "INC_CRC": "4075A5C97BF74FD4",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.746847123122,
+          1.36650698092595,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_167",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "JOO KOON CIRCLE",
+        "UNIT_NO": "21",
+        "POSTCODE": "629117",
+        "LIC_NO": "SW14951X000",
+        "INC_CRC": "F1D64DC8D496ACF9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.67809636872,
+          1.32460665101076,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_169",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "533",
+        "name": "CHOA CHU KANG STREET 51",
+        "UNIT_NO": "11",
+        "POSTCODE": "680533",
+        "LIC_NO": "SW15796X000",
+        "INC_CRC": "A16EBC8EBD498EA6",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.743099576144,
+          1.392073879435,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_170",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "37",
+        "name": "TEBAN GARDENS ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "600037",
+        "LIC_NO": "SW15968N000",
+        "INC_CRC": "53A4EFCFCC3D4DFA",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.742651522893,
+          1.32052027199062,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_172",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "249",
+        "name": "JURONG EAST STREET 24",
+        "UNIT_NO": "106",
+        "POSTCODE": "600249",
+        "LIC_NO": "SW16D83E000",
+        "INC_CRC": "9AC5B4E2A87A7A6E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.739199499869,
+          1.34259104167685,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_177",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "302",
+        "name": "TIONG BAHRU ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "168732",
+        "LIC_NO": "W02072P000",
+        "INC_CRC": "C55DEE69E7AAF209",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.826935081592,
+          1.28646345680433,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_178",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "166",
+        "name": "BUKIT MERAH CENTRAL",
+        "UNIT_NO": "3527",
+        "POSTCODE": "150166",
+        "LIC_NO": "W02083K000",
+        "INC_CRC": "4BE5C143A910D3C6",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.817642874205,
+          1.28311950277785,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_179",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "360",
+        "name": "BALESTIER ROAD",
+        "UNIT_NO": "0",
+        "POSTCODE": "329783",
+        "LIC_NO": "W02084J000",
+        "INC_CRC": "7DE69C15A72F9F33",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.851055636335,
+          1.32512653292631,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_180",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "50",
+        "name": "HAVELOCK ROAD",
+        "UNIT_NO": "755",
+        "POSTCODE": "160050",
+        "LIC_NO": "W02086C000",
+        "INC_CRC": "EDD106F54293EF96",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.826793758818,
+          1.28977814003505,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_181",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "5",
+        "name": "TANJONG PAGAR PLAZA",
+        "UNIT_NO": "1",
+        "POSTCODE": "81005",
+        "LIC_NO": "W02092J000",
+        "INC_CRC": "FECB787EB52CC718",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.843006122101,
+          1.27624052975614,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_182",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "131",
+        "name": "KILLINEY ROAD",
+        "UNIT_NO": "01,02",
+        "POSTCODE": "239571",
+        "LIC_NO": "W02239E000",
+        "INC_CRC": "167A1DC3F2F1FBE8",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.838533933775,
+          1.29727532047679,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_183",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "JELEBU ROAD",
+        "UNIT_NO": "15",
+        "POSTCODE": "677743",
+        "LIC_NO": "B02020N000",
+        "INC_CRC": "E3FC0A790D9DA49D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.763993951638,
+          1.38054244056369,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_184",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "30",
+        "name": "SEMBAWANG DRIVE",
+        "UNIT_NO": "1/3",
+        "POSTCODE": "757713",
+        "LIC_NO": "B02021L000",
+        "INC_CRC": "50949CAD1F658572",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.819462105427,
+          1.44822653003389,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_185",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "71",
+        "name": "WOODLANDS AVENUE 3",
+        "UNIT_NO": "1",
+        "POSTCODE": "739044",
+        "LIC_NO": "B02022K000",
+        "INC_CRC": "F1DA7D4DC4AA14B7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.774051198699,
+          1.43262602939439,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_186",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "888",
+        "name": "WOODLANDS DRIVE 50",
+        "UNIT_NO": "757",
+        "POSTCODE": "730888",
+        "LIC_NO": "B02024E000",
+        "INC_CRC": "A76A3FA3060EE880",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.79513640221,
+          1.43755656449988,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_187",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "414",
+        "name": "YISHUN RING ROAD",
+        "UNIT_NO": "1853",
+        "POSTCODE": "760414",
+        "LIC_NO": "B02025C000",
+        "INC_CRC": "DB8BB7E530A7811F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.846595550971,
+          1.42452848118598,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_188",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "30",
+        "name": "WOODLANDS AVENUE 1",
+        "UNIT_NO": "",
+        "POSTCODE": "739065",
+        "LIC_NO": "B02034B000",
+        "INC_CRC": "AC5343DCF943E46A",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.781136890158,
+          1.42919468259866,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_189",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "301",
+        "name": "YISHUN AVENUE 2",
+        "UNIT_NO": "2",
+        "POSTCODE": "769093",
+        "LIC_NO": "B02093B000",
+        "INC_CRC": "8E1D41DB11B8825E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83499514286,
+          1.42952522056756,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_190",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "849",
+        "name": "YISHUN RING ROAD",
+        "UNIT_NO": "3703",
+        "POSTCODE": "760849",
+        "LIC_NO": "B02099L000",
+        "INC_CRC": "B35ACF8E2815B407",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.835218187743,
+          1.41698315581696,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_191",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "628",
+        "name": "SENJA ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "670628",
+        "LIC_NO": "B03099C000",
+        "INC_CRC": "1330E9CA8B3A45B7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.760218439756,
+          1.38509601466743,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_192",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "215",
+        "name": "ANG MO KIO AVENUE 1",
+        "UNIT_NO": "877",
+        "POSTCODE": "560215",
+        "LIC_NO": "B98014C000",
+        "INC_CRC": "D513E0661525BF90",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.841624088452,
+          1.36655829857198,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_193",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "ORCHID CLUB ROAD",
+        "UNIT_NO": "34",
+        "POSTCODE": "769162",
+        "LIC_NO": "B99041L000",
+        "INC_CRC": "F90120CBD2BCBA51",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84403989942,
+          1.41103598112316,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_194",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "587",
+        "name": "BUKIT TIMAH ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "269707",
+        "LIC_NO": "C02034X000",
+        "INC_CRC": "AC7575B726B5FFD7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.809999578549,
+          1.32383512680832,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_195",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "451",
+        "name": "CLEMENTI AVENUE 3",
+        "UNIT_NO": "307",
+        "POSTCODE": "120451",
+        "LIC_NO": "C02035P000",
+        "INC_CRC": "EFB6758D47B36C67",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.765476758596,
+          1.31248299329667,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_196",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "JALAN ANAK BUKIT",
+        "UNIT_NO": "1",
+        "POSTCODE": "588996",
+        "LIC_NO": "C02036N000",
+        "INC_CRC": "E5E781D6EA88B7A6",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.778560473793,
+          1.33865677093942,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_197",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "135",
+        "name": "JURONG EAST STREET 13",
+        "UNIT_NO": "337",
+        "POSTCODE": "600135",
+        "LIC_NO": "C02037L000",
+        "INC_CRC": "6D7812A1351B491B",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.739371389066,
+          1.33375343289468,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_198",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "JURONG WEST CENTRAL 2",
+        "UNIT_NO": "9",
+        "POSTCODE": "648886",
+        "LIC_NO": "C02038K000",
+        "INC_CRC": "CB59096738AA19D4",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.706460886826,
+          1.33983014805774,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_199",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "63/66",
+        "name": "YUNG KUANG ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "610063",
+        "LIC_NO": "C02040A000",
+        "INC_CRC": "86615D3A14841744",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.722452888408,
+          1.33205937638185,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_200",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "399",
+        "name": "YUNG SHENG ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "610399",
+        "LIC_NO": "C02041V000",
+        "INC_CRC": "D5B771676FE02444",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.720268020639,
+          1.33504201869474,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_201",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "166",
+        "name": "BUKIT BATOK WEST AVENUE 8",
+        "UNIT_NO": "",
+        "POSTCODE": "650166",
+        "LIC_NO": "C02053L000",
+        "INC_CRC": "FD7B034D6FAD7B21",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74280788296,
+          1.34716235926513,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_202",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "10",
+        "name": "BUKIT BATOK CENTRAL",
+        "UNIT_NO": "8",
+        "POSTCODE": "659958",
+        "LIC_NO": "C02104B000",
+        "INC_CRC": "7229CB311386809E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74933452639,
+          1.3487108014327,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_203",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "BLK 345",
+        "name": "JURONG EAST STREET 31",
+        "UNIT_NO": "29",
+        "POSTCODE": "600345",
+        "LIC_NO": "C85274C000",
+        "INC_CRC": "E708205620B9F225",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.731219147651,
+          1.34551209957725,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_204",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "57",
+        "name": "DAWSON ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "142057",
+        "LIC_NO": "CE04086K000",
+        "INC_CRC": "07108C84A74C8A7C",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.810958960395,
+          1.29270339832466,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_206",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "71",
+        "name": "KALLANG BAHRU",
+        "UNIT_NO": "531",
+        "POSTCODE": "330071",
+        "LIC_NO": "CE05295K000",
+        "INC_CRC": "DBA039A142EA9994",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.870389995935,
+          1.32099294995032,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_207",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "JALAN BUKIT MERAH",
+        "UNIT_NO": "4500",
+        "POSTCODE": "150001",
+        "LIC_NO": "CE05487V000",
+        "INC_CRC": "B1D48DC85DA7AD12",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.80824240096,
+          1.28645354374901,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_208",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "491",
+        "name": "RIVER VALLEY ROAD",
+        "UNIT_NO": "14",
+        "POSTCODE": "248371",
+        "LIC_NO": "CE06044N000",
+        "INC_CRC": "ABBD171C982AD017",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.826940812301,
+          1.29301786111443,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_209",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "10",
+        "name": "SINARAN DRIVE",
+        "UNIT_NO": "47/48",
+        "POSTCODE": "307506",
+        "LIC_NO": "CE06L48L000",
+        "INC_CRC": "3FF83B006AE67CA8",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.843892126913,
+          1.32042967863542,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_210",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "53",
+        "name": "ANG MO KIO AVENUE 3",
+        "UNIT_NO": "40",
+        "POSTCODE": "569933",
+        "LIC_NO": "CE06M36N000",
+        "INC_CRC": "48276C87BC805392",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.848399235571,
+          1.36924890739397,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_211",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "43",
+        "name": "CAMBRIDGE ROAD",
+        "UNIT_NO": "15",
+        "POSTCODE": "210043",
+        "LIC_NO": "CE07320C000",
+        "INC_CRC": "82A43E54FB4A0EA8",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.849434508531,
+          1.31536303357228,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_212",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "5",
+        "name": "UPPER BOON KENG ROAD",
+        "UNIT_NO": "5",
+        "POSTCODE": "380005",
+        "LIC_NO": "CE07D83B000",
+        "INC_CRC": "0E191075531C649A",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87254179955,
+          1.31265450087908,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_213",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "18 /20",
+        "name": "KIM TIAN ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "169252",
+        "LIC_NO": "CE08015J000",
+        "INC_CRC": "FC426D36D4075C0D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.829298011427,
+          1.28480734614992,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_214",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "80",
+        "name": "LORONG LIMAU",
+        "UNIT_NO": "191",
+        "POSTCODE": "320080",
+        "LIC_NO": "CE08H32N000",
+        "INC_CRC": "89940D98FCE45C3E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.855670628839,
+          1.32379607925067,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_215",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "180",
+        "name": "KITCHENER ROAD",
+        "UNIT_NO": "9/10",
+        "POSTCODE": "208539",
+        "LIC_NO": "CE09H10X000",
+        "INC_CRC": "1D075CE9A085D43E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.856487121487,
+          1.31139349438913,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_216",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "150",
+        "name": "SILAT AVENUE",
+        "UNIT_NO": "44",
+        "POSTCODE": "160150",
+        "LIC_NO": "CE11F41C000",
+        "INC_CRC": "517F93EED9F80703",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.831425859726,
+          1.2770770759001,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_218",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "6",
+        "name": "SCOTTS ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "228209",
+        "LIC_NO": "CE11M39P000",
+        "INC_CRC": "77462D6E4FE0417D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.832984361905,
+          1.30585583497044,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_219",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "712",
+        "name": "ANG MO KIO AVENUE 6",
+        "UNIT_NO": "4056",
+        "POSTCODE": "560712",
+        "LIC_NO": "CE11N90C000",
+        "INC_CRC": "F8BD1A0C6F5C2F81",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.847082884002,
+          1.37140920462192,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_220",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "100",
+        "name": "TRAS STREET",
+        "UNIT_NO": "1",
+        "POSTCODE": "79027",
+        "LIC_NO": "CE12H50C000",
+        "INC_CRC": "A560CDE425D02E85",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.843470740865,
+          1.27458822422728,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_221",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "20",
+        "name": "AH HOOD ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "329984",
+        "LIC_NO": "CE13O90C000",
+        "INC_CRC": "6EC34C40B1C041F2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.846476465683,
+          1.3270848591504,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_222",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "447A",
+        "name": "JALAN KAYU",
+        "UNIT_NO": "2",
+        "POSTCODE": "791447",
+        "LIC_NO": "CE13R25C000",
+        "INC_CRC": "9C98A7B3A62B0E57",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.872490556756,
+          1.3921382839313,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_224",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "808",
+        "name": "FRENCH ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "200808",
+        "LIC_NO": "CE13Z98K000",
+        "INC_CRC": "B0046E59432ED08F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.861311961994,
+          1.30880609469533,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_226",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "33",
+        "name": "SENGKANG WEST AVENUE",
+        "UNIT_NO": "24",
+        "POSTCODE": "797653",
+        "LIC_NO": "CE14L50J000",
+        "INC_CRC": "63E9C290729A8097",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.876067662182,
+          1.39139305725169,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_227",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "279",
+        "name": "SENGKANG EAST AVENUE",
+        "UNIT_NO": "6",
+        "POSTCODE": "540279",
+        "LIC_NO": "CE15695V000",
+        "INC_CRC": "3AFDC56CA244253F",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.892995500981,
+          1.38621835288115,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_228",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "20",
+        "name": "LENGKOK BAHRU",
+        "UNIT_NO": "13",
+        "POSTCODE": "159053",
+        "LIC_NO": "CE15G35E000",
+        "INC_CRC": "367B3DC566C976CD",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.813766343919,
+          1.28668027234677,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_229",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "574",
+        "name": "ANG MO KIO AVENUE 10",
+        "UNIT_NO": "1847",
+        "POSTCODE": "560574",
+        "LIC_NO": "CE16K18V000",
+        "INC_CRC": "1E35E0C46465FD7B",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.856396513475,
+          1.3708945610762,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_230",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "410A",
+        "name": "SIN MING AVENUE",
+        "UNIT_NO": "2",
+        "POSTCODE": "571410",
+        "LIC_NO": "CE17E43B000",
+        "INC_CRC": "A8542902A6D01A49",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.835445360583,
+          1.36321586107786,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_231",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "30",
+        "name": "BENDEMEER ROAD",
+        "UNIT_NO": "871",
+        "POSTCODE": "330030",
+        "LIC_NO": "CE17K55B000",
+        "INC_CRC": "A278D9A9C68882B7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86390532629,
+          1.31909344185792,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_232",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "95",
+        "name": "LORONG 4 TOA PAYOH",
+        "UNIT_NO": "68",
+        "POSTCODE": "310095",
+        "LIC_NO": "CE17L02A000",
+        "INC_CRC": "3FAE712FCD9D09BB",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.848993319083,
+          1.33889072011391,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_237",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "114",
+        "name": "ALJUNIED AVENUE 2",
+        "UNIT_NO": "75",
+        "POSTCODE": "380114",
+        "LIC_NO": "E02034P000",
+        "INC_CRC": "618DDF0CC172A358",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.886672786663,
+          1.32176644586798,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_238",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "212",
+        "name": "BEDOK NORTH STREET 1",
+        "UNIT_NO": "147",
+        "POSTCODE": "460212",
+        "LIC_NO": "E02035N000",
+        "INC_CRC": "FBB76B059C1D994A",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.931640028654,
+          1.32594069682932,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_239",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "152B",
+        "name": "SERANGOON NORTH AVENUE 1",
+        "UNIT_NO": "384",
+        "POSTCODE": "552152",
+        "LIC_NO": "E02039E000",
+        "INC_CRC": "2ED98545865DE1C7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.873035798474,
+          1.36979940182639,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_240",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "6",
+        "name": "MARINE PARADE CENTRAL",
+        "UNIT_NO": "",
+        "POSTCODE": "449411",
+        "LIC_NO": "E02096K000",
+        "INC_CRC": "B5259E55782463A5",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.907112664975,
+          1.30141955705642,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_241",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "934",
+        "name": "EAST COAST ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "459125",
+        "LIC_NO": "E83157K000",
+        "INC_CRC": "AC99C8F975864BA2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.92523453825,
+          1.31230752821693,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_242",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "77",
+        "name": "CIRCUIT ROAD",
+        "UNIT_NO": "464/6",
+        "POSTCODE": "370077",
+        "LIC_NO": "E95315V000",
+        "INC_CRC": "D8DDD1364FF2F745",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.885349909653,
+          1.32855656927862,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_243",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "239/255",
+        "name": "EAST COAST ROAD",
+        "UNIT_NO": "",
+        "POSTCODE": "428932",
+        "LIC_NO": "E98161V000",
+        "INC_CRC": "96F10AFEB22C27BF",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.907988815995,
+          1.30836165161607,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_244",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "221",
+        "name": "BOON LAY PLACE",
+        "UNIT_NO": "200",
+        "POSTCODE": "640221",
+        "LIC_NO": "J02013A000",
+        "INC_CRC": "C5D382FA8A46B194",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.712429317152,
+          1.34634819293844,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_245",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "21",
+        "name": "CHOA CHU KANG AVENUE 4",
+        "UNIT_NO": "3",
+        "POSTCODE": "689812",
+        "LIC_NO": "J96145K000",
+        "INC_CRC": "4D9DA5784F87535E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.744950388654,
+          1.38506836300634,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_246",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "138",
+        "name": "TAMPINES STREET 11",
+        "UNIT_NO": "136",
+        "POSTCODE": "521138",
+        "LIC_NO": "NE04047K000",
+        "INC_CRC": "6558AF793E6021B8",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.945344294717,
+          1.34528144162057,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_247",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "168",
+        "name": "PUNGGOL FIELD",
+        "UNIT_NO": "1",
+        "POSTCODE": "820168",
+        "LIC_NO": "NE04107V000",
+        "INC_CRC": "94829DCFB889E7AD",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.912976438987,
+          1.394184094795,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_248",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "866A",
+        "name": "TAMPINES STREET 83",
+        "UNIT_NO": "1",
+        "POSTCODE": "521866",
+        "LIC_NO": "NE04114A000",
+        "INC_CRC": "EFDB60DE518B215C",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.934315234757,
+          1.3554217626792,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_249",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "PASIR RIS CLOSE",
+        "UNIT_NO": "127",
+        "POSTCODE": "519599",
+        "LIC_NO": "NE08058P000",
+        "INC_CRC": "2D3F74CA49205874",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.953599087705,
+          1.37714073427956,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_250",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "BLK 277C",
+        "name": "COMPASSVALE LINK",
+        "UNIT_NO": "13",
+        "POSTCODE": "543277",
+        "LIC_NO": "NE08150C000",
+        "INC_CRC": "6D3BDFC26E5A4AB2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.893607840929,
+          1.38233698021703,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_252",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "100",
+        "name": "HOUGANG AVENUE 10",
+        "UNIT_NO": "1",
+        "POSTCODE": "538767",
+        "LIC_NO": "NE09263B000",
+        "INC_CRC": "57E0B3B56BFE85B9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.894165384101,
+          1.37177995742086,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_253",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "MAJU AVENUE",
+        "UNIT_NO": "11/14",
+        "POSTCODE": "556679",
+        "LIC_NO": "NE10310X000",
+        "INC_CRC": "8ED32C743B83D1CB",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.865041855148,
+          1.36516070959148,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_254",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "612",
+        "name": "PUNGGOL DRIVE",
+        "UNIT_NO": "6",
+        "POSTCODE": "820612",
+        "LIC_NO": "NE12B79A000",
+        "INC_CRC": "EDD3F8A190365803",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.908665607626,
+          1.40461002768949,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_255",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "476",
+        "name": "UPPER SERANGOON VIEW",
+        "UNIT_NO": "18",
+        "POSTCODE": "530476",
+        "LIC_NO": "NE15467C000",
+        "INC_CRC": "5D8CF73D82E2D2D3",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.903712868236,
+          1.3774300635181,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_256",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "51",
+        "name": "TAMPINES AVENUE 4",
+        "UNIT_NO": "1",
+        "POSTCODE": "528523",
+        "LIC_NO": "NE16640E000",
+        "INC_CRC": "879B533DDE7D971B",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.939683594446,
+          1.35349616014431,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_258",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "872C",
+        "name": "TAMPINES STREET 86",
+        "UNIT_NO": "1",
+        "POSTCODE": "523872",
+        "LIC_NO": "NE17563L000",
+        "INC_CRC": "6FAEE68236789B6D",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.931623638518,
+          1.35524289885319,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_259",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "681",
+        "name": "PUNGGOL DRIVE",
+        "UNIT_NO": "1",
+        "POSTCODE": "820681",
+        "LIC_NO": "NE18169P000",
+        "INC_CRC": "CFB223ABC56F4731",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.913195747038,
+          1.40287845138627,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_260",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "900",
+        "name": "SOUTH WOODLANDS DRIVE",
+        "UNIT_NO": "1",
+        "POSTCODE": "730900",
+        "LIC_NO": "NW04127A000",
+        "INC_CRC": "6E838EA78CB67267",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.78661961568,
+          1.43507789397689,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_261",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "511",
+        "name": "CANBERRA ROAD",
+        "UNIT_NO": "3",
+        "POSTCODE": "750511",
+        "LIC_NO": "NW06546V000",
+        "INC_CRC": "EA43756B63AE5BD2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.819543348008,
+          1.45384518800838,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_262",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "355",
+        "name": "SEMBAWANG WAY",
+        "UNIT_NO": "1",
+        "POSTCODE": "750355",
+        "LIC_NO": "NW07277P000",
+        "INC_CRC": "871279A45CEE1E93",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.818641141782,
+          1.44956647612199,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_263",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "36",
+        "name": "HOLLAND DRIVE",
+        "UNIT_NO": "3",
+        "POSTCODE": "270036",
+        "LIC_NO": "NW08477X000",
+        "INC_CRC": "4631ECA22376D5D7",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.79254748678,
+          1.30918211194726,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_265",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "570B",
+        "name": "WOODLANDS AVENUE 1",
+        "UNIT_NO": "6",
+        "POSTCODE": "732570",
+        "LIC_NO": "NW13K05E000",
+        "INC_CRC": "6DC01E96DE9196E5",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.790454085829,
+          1.43106395014876,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_266",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "17",
+        "name": "PETIR ROAD",
+        "UNIT_NO": "67",
+        "POSTCODE": "678278",
+        "LIC_NO": "NW17097K000",
+        "INC_CRC": "0F6D2805D151B799",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.762741183479,
+          1.37834971351323,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_268",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "NORTHPOINT DRIVE",
+        "UNIT_NO": "103",
+        "POSTCODE": "768019",
+        "LIC_NO": "NW17872B000",
+        "INC_CRC": "A507A2041C1E0090",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.836142036927,
+          1.42799995739162,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_269",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "676",
+        "name": "WOODLANDS DRIVE 71",
+        "UNIT_NO": "2",
+        "POSTCODE": "730676",
+        "LIC_NO": "NW17908L000",
+        "INC_CRC": "80FFC586D66A480E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.800701205041,
+          1.43991607901426,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_270",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "29A",
+        "name": "GHIM MOH LINK",
+        "UNIT_NO": "1",
+        "POSTCODE": "271029",
+        "LIC_NO": "NW18091N000",
+        "INC_CRC": "CB074CE9A66B40A9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.784598109774,
+          1.3084928850612,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_271",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "598",
+        "name": "YISHUN RING ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "768698",
+        "LIC_NO": "NW18192E000",
+        "INC_CRC": "43A0261E776070BB",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.841236466066,
+          1.41799925737436,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_273",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "510",
+        "name": "BISHAN STREET 13",
+        "UNIT_NO": "520",
+        "POSTCODE": "570510",
+        "LIC_NO": "S02021B000",
+        "INC_CRC": "D6271526316691C6",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.849691986415,
+          1.34888843913817,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_274",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "9",
+        "name": "BISHAN PLACE",
+        "UNIT_NO": "20",
+        "POSTCODE": "579837",
+        "LIC_NO": "S02023V000",
+        "INC_CRC": "FA9FA5ABA05A847E",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.848477626073,
+          1.35023942729665,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_275",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "90",
+        "name": "HOUGANG AVENUE 10",
+        "UNIT_NO": "7",
+        "POSTCODE": "538766",
+        "LIC_NO": "S02026N000",
+        "INC_CRC": "50B8953758D1012C",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.893661619219,
+          1.37231186456868,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_276",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "682",
+        "name": "HOUGANG AVENUE 4",
+        "UNIT_NO": "310",
+        "POSTCODE": "530682",
+        "LIC_NO": "S02027L000",
+        "INC_CRC": "9AF391E828F682EA",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.88574886332,
+          1.37361830003654,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_277",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "202",
+        "name": "HOUGANG STREET 21",
+        "UNIT_NO": "0",
+        "POSTCODE": "530202",
+        "LIC_NO": "S02028K000",
+        "INC_CRC": "C2F5E50531DA5597",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.884038461279,
+          1.35757558065219,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_278",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "HOUGANG STREET 91",
+        "UNIT_NO": "1",
+        "POSTCODE": "538692",
+        "LIC_NO": "S02029J000",
+        "INC_CRC": "F23F4D1905C24B08",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.879450260083,
+          1.3756672808109,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_279",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "1",
+        "name": "PASIR RIS CENTRAL STREET 3",
+        "UNIT_NO": "10",
+        "POSTCODE": "518457",
+        "LIC_NO": "S02034N000",
+        "INC_CRC": "59D794C1E51C56C4",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.949715696944,
+          1.37244980890777,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_280",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "4",
+        "name": "TAMPINES CENTRAL 5",
+        "UNIT_NO": "12",
+        "POSTCODE": "529510",
+        "LIC_NO": "S02039C000",
+        "INC_CRC": "CF4061E3C2BB8F61",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.944387982831,
+          1.35267232042901,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_281",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "745",
+        "name": "BEDOK RESERVOIR ROAD",
+        "UNIT_NO": "3015",
+        "POSTCODE": "470745",
+        "LIC_NO": "S02049A000",
+        "INC_CRC": "06CCD5AEC49398A2",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.921774737841,
+          1.33740471321143,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_421",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "170",
+        "name": "STIRLING ROAD",
+        "UNIT_NO": "1147",
+        "POSTCODE": "140170",
+        "LIC_NO": "W70029L000",
+        "INC_CRC": "083909CF5A11C1D9",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.803107635392,
+          1.29090918346995,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "kml_422",
+        "LIC_NAME": "NTUC FAIRPRICE CO-OPERATIVE LTD",
+        "BLK_HOUSE": "133",
+        "name": "NEW BRIDGE ROAD",
+        "UNIT_NO": "1",
+        "POSTCODE": "59413",
+        "LIC_NO": "W90084A000",
+        "INC_CRC": "FC1B4354666A9811",
+        "FMEL_UPD_D": "20190124162920"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.844697090786,
+          1.28499883856532,
+          0
+        ]
+      }
+    }
+  ]
+}

@@ -164,6 +164,7 @@ export const determineMeasuringBoundary = async (
         case "aquarium-full":
         case "zoo-full":
         case "theme_park-full":
+        case "supermarket-full":
         case "museum-full":
         case "hospital-full":
         case "cinema-full":
