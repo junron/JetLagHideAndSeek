@@ -46,6 +46,8 @@ export const prettifyLocation = (
             return "Foreign Consulate";
         case "park":
             return "Park";
+        case "rail-measure":
+            return "MRT Station";
     }
 };
 

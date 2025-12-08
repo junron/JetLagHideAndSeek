@@ -6,7 +6,7 @@ import {
     additionalMapGeoLocations,
     mapGeoLocation,
 } from "@/lib/context";
-import { getLineNamesForStationName } from "@/maps/api/sgmrt";
+import { getLineNamesForStationName, loadSgmrt } from "@/maps/api/sgmrt";
 import { safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
@@ -74,37 +74,41 @@ out center;
     `;
     const center = turf.point([question.lng, question.lat]);
     let data = null;
-    if(question.locationType.includes("library")){
+    if (question.locationType.includes("library")) {
         data = await fetchLibraries();
     }
-    if(question.locationType.includes("museum")){
+    if (question.locationType.includes("museum")) {
         data = await fetchMuseums();
     }
-    if(question.locationType.includes("airport")){
+    if (question.locationType.includes("airport")) {
         data = Object.assign({}, airports);
     }
-    if(question.locationType.includes("mountain")){
+    if (question.locationType.includes("mountain")) {
         data = Object.assign({}, mountains);
     }
-    if(question.locationType.includes("international_borders")){
+    if (question.locationType.includes("international_borders")) {
         data = Object.assign({}, international_borders);
     }
-    if(question.locationType.includes("hospital")){
+    if (question.locationType.includes("hospital")) {
         data = await fetchHawkerCenters();
     }
-    if(question.locationType.includes("supermarket")){
+    if (question.locationType.includes("supermarket")) {
         data = await fetchSupermarkets();
     }
 
-    if(question.locationType.includes("golf_course")){
+    if (question.locationType.includes("golf_course")) {
         data = Object.assign({}, golf_courses);
     }
 
-    if(question.locationType.includes("park")){
+    if (question.locationType.includes("park")) {
         data = await fetchParks();
     }
 
-    if(data != null){
+    if( question.locationType.includes("rail")) {
+        data = await fetchMrtStations();
+    }
+
+    if (data != null) {
         data.features = data.features.filter((feature: any) => {
             const coords =
                 feature?.geometry?.coordinates ??
@@ -162,7 +166,7 @@ export const findAdminBoundary = async (
     // the bundled geojson file if available rather than hitting Overpass every time.
     if (adminLevel === 5) {
         try {
-                const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
+            const resp = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
                 "Loading electoral boundary data...",
                 CacheType.PERMANENT_CACHE,
             );
@@ -272,6 +276,16 @@ export const fetchParks = async () => {
     return data as FeatureCollection;
 }
 
+export const fetchMrtStations = async () => {
+    let data = await loadSgmrt();
+    data = Array.from(data.stationsByCode.values());
+    data = {
+        "features": data,
+        "type": "FeatureCollection"
+    };
+    return data;
+}
+
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
     const nodeId = node.split("/")[1];
     const tagQuery = `
@@ -370,43 +384,46 @@ export const findPlacesInZone = async (
 ) => {
 
     let data = null;
-    if(loadingText?.includes("libraries")){
+    if (loadingText?.includes("libraries")) {
         data = await fetchLibraries();
     }
-    if(loadingText?.includes("museums")){
+    if (loadingText?.includes("museums")) {
         data = await fetchMuseums();
     }
-    console.log({loadingText})
-    if(loadingText?.includes("hawker")){
+    if (loadingText?.includes("hawker")) {
         data = await fetchHawkerCenters();
     }
-    if(loadingText?.includes("airports")){
+    if (loadingText?.includes("airports")) {
         data = Object.assign({}, airports);
     }
-    if(loadingText?.includes("international borders")){
+    if (loadingText?.includes("international borders")) {
         data = Object.assign({}, international_borders);
     }
-    if(loadingText?.includes("mountains")){
+    if (loadingText?.includes("mountains")) {
         data = Object.assign({}, mountains);
     }
 
-    if(loadingText?.includes("supermarkets")){
+    if (loadingText?.includes("supermarkets")) {
         data = await fetchSupermarkets();
     }
 
-    if(loadingText?.includes("golf courses")){
+    if (loadingText?.includes("golf courses")) {
         data = Object.assign({}, golf_courses);
     }
 
-    if(loadingText?.includes("parks")){
+    if (loadingText?.includes("parks")) {
         data = await fetchParks();
     }
 
-    if(returnGeoJSON && data !== null){
+    if (loadingText?.includes("stations")) {
+        data = await fetchMrtStations();
+    }
+
+    if (returnGeoJSON && data !== null) {
         return data;
     }
 
-    if(data == null) {
+    if (data == null) {
         return [];
     }
 
@@ -449,10 +466,9 @@ export const findPlacesSpecificInZone = async (
     const locations = (
         await findPlacesInZone(
             location,
-            `Finding ${
-                location === '["brand:wikidata"="Q38076"]'
-                    ? "McDonald's"
-                    : "7-Elevens"
+            `Finding ${location === '["brand:wikidata"="Q38076"]'
+                ? "McDonald's"
+                : "7-Elevens"
             }...`,
         )
     ).elements;
@@ -487,7 +503,7 @@ export const nearestToQuestion = async (
             "Finding matching locations...",
         );
         radius += 5;
-        if(radius > 500){
+        if (radius > 500) {
             break;
         }
     }

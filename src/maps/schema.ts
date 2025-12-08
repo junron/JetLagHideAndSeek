@@ -115,6 +115,7 @@ const apiLocationSchema = z.union([
     z.literal("golf_course"),
     z.literal("consulate"),
     z.literal("park"),
+    z.literal("rail-measure"),
     tentacleLocationsFifteen,
     tentacleLocationsOne,
 ]);
@@ -316,6 +317,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("international_borders")
                 .describe("International Border Question"),
+            z.literal("rail-measure-full").describe("MRT Station Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
             // z
             //     .literal("city")
@@ -362,7 +364,6 @@ const hidingZoneMeasuringQuestionsSchema = baseMeasuringQuestionSchema.extend({
     type: z.union([
         z.literal("mcdonalds").describe("McDonald's Question"),
         z.literal("seven11").describe("7-Eleven Question"),
-        // z.literal("rail-measure").describe("Train Station Question"),
     ]),
 });
 
@@ -388,8 +389,8 @@ const customMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
 
 export const measuringQuestionSchema = z.union([
     ordinaryMeasuringQuestionSchema.describe(NO_GROUP),
-    // customMeasuringQuestionSchema.describe(NO_GROUP),
-    hidingZoneMeasuringQuestionsSchema.describe("Hiding Zone Mode"),
+    customMeasuringQuestionSchema.describe(NO_GROUP),
+    // hidingZoneMeasuringQuestionsSchema.describe("Hiding Zone Mode"),
     // homeGameMeasuringQuestionsSchema.describe("Hiding Zone Mode"),
 ]);
 

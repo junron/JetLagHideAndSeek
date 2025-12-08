@@ -171,6 +171,7 @@ export const determineMeasuringBoundary = async (
         case "library-full":
         case "golf_course-full":
         case "consulate-full":
+        case "rail-measure-full":
         case "park-full": {
             const location = question.type.split("-full")[0] as APILocations;
 
@@ -232,7 +233,6 @@ export const determineMeasuringBoundary = async (
         case "park":
         case "mcdonalds":
         case "seven11":
-        case "rail-measure":
             return false;
     }
 };
