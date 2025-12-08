@@ -121,7 +121,7 @@ const apiLocationSchema = z.union([
 ]);
 
 const baseTentacleQuestionSchema = ordinaryBaseQuestionSchema.extend({
-    radius: z.number().min(0, "You cannot have a negative radius").default(2),
+    radius: z.number().min(0, "You cannot have a negative radius").default(1.6),
     unit: unitsSchema.default(getDefaultUnit),
     location: z
         .union([
