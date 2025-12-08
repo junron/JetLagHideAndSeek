@@ -2,6 +2,7 @@ import * as turf from "@turf/turf";
 import type { FeatureCollection, MultiPolygon } from "geojson";
 import _ from "lodash";
 import osmtogeojson from "osmtogeojson";
+
 import {
     additionalMapGeoLocations,
     mapGeoLocation,
@@ -10,7 +11,8 @@ import { getLineNamesForStationName, loadSgmrt } from "@/maps/api/sgmrt";
 import { safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
-import { LOCATION_FIRST_TAG, OVERPASS_API, ELECTORAL_BOUNDARY_GEOJSON } from "./constants";
+import { ELECTORAL_BOUNDARY_GEOJSON,LOCATION_FIRST_TAG, OVERPASS_API } from "./constants";
+import { airports, golf_courses, international_borders, mountains } from "./data";
 import type {
     EncompassingTentacleQuestionSchema,
     HomeGameMatchingQuestions,
@@ -18,7 +20,6 @@ import type {
     QuestionSpecificLocation,
 } from "./types";
 import { CacheType } from "./types";
-import { airports, golf_courses, international_borders, mountains } from "./data";
 
 export const getOverpassData = async (
     query: string,
@@ -230,6 +231,15 @@ export const fetchCoastline = async () => {
     return data;
 };
 
+export const fetchElectoralBoundaries = async () => {
+    const response = await cacheFetch(ELECTORAL_BOUNDARY_GEOJSON,
+        "Fetching electoral boundary data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data;
+};
+
 
 export const fetchLibraries = async () => {
     const response = await cacheFetch("/Libraries.geojson",
@@ -297,7 +307,7 @@ out tags;
     const tagData = await getOverpassData(tagQuery, "Finding train line...");
     // Try to use the static sgmrt data first to derive line names; then build a smaller overpass query when necessary.
     const tagElements = tagData.elements || [];
-    let possibleLineQueries: string[] = [];
+    const possibleLineQueries: string[] = [];
 
     // Use station name to query sgmrt lines
     const nodeName =

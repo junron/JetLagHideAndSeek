@@ -1,5 +1,5 @@
 import * as turf from "@turf/turf";
-import type { FeatureCollection, Feature } from "geojson";
+import type { Feature,FeatureCollection } from "geojson";
 // Note: No Node 'path' or 'url' modules; this module runs in browser context
 
 let cached: {

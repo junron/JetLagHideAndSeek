@@ -36,8 +36,8 @@ import { clearCache, determineMapBoundaries } from "@/maps/api";
 import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
-import { PolygonDraw } from "./PolygonDraw";
 import { MeasureTool } from "./MeasureTool";
+import { PolygonDraw } from "./PolygonDraw";
 
 export const Map = ({ className }: { className?: string }) => {
     useStore(additionalMapGeoLocations);

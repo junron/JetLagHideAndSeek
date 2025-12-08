@@ -319,6 +319,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
                 .describe("International Border Question"),
             z.literal("rail-measure-full").describe("MRT Station Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
+            z.literal("electoral-boundary").describe("Electoral Boundary Question"),
             // z
             //     .literal("city")
             //     .describe("Major City (1,000,000+ people) Question"),

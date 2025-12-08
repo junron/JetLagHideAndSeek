@@ -17,16 +17,14 @@ import {
     polyGeoJSON,
 } from "@/lib/context";
 import {
-    findAdminBoundary,
     findAdminBoundariesByLetter,
+    findAdminBoundary,
     findPlacesInZone,
     LOCATION_FIRST_TAG,
     nearestToQuestion,
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
-
-import { airports, international_borders, mountains } from "../api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
@@ -38,6 +36,7 @@ import type {
     HomeGameMatchingQuestions,
     MatchingQuestion,
 } from "@/maps/schema";
+import { airports, international_borders, mountains } from "@/maps/api/data";
 
 
 export const findMatchingPlaces = async (question: MatchingQuestion) => {

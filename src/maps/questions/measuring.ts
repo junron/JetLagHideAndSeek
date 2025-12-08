@@ -13,6 +13,8 @@ import {
 } from "@/lib/context";
 import {
     fetchCoastline,
+    fetchElectoralBoundaries,
+    findAdminBoundary,
     findPlacesInZone,
     findPlacesSpecificInZone,
     LOCATION_FIRST_TAG,
@@ -20,7 +22,6 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
-import { airports, international_borders, mountains } from "../api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
@@ -33,6 +34,7 @@ import type {
     HomeGameMeasuringQuestions,
     MeasuringQuestion,
 } from "@/maps/schema";
+import { airports, international_borders, mountains } from "@/maps/api/data";
 
 const highSpeedBase = _.memoize(
     (features: Feature[]) => {
@@ -87,6 +89,7 @@ export const determineMeasuringBoundary = async (
     question: MeasuringQuestion,
 ) => {
     const bBox = turf.bbox(mapGeoJSON.get()!);
+    console.log({question})
 
     switch (question.type) {
         case "highspeed-measure-shinkansen": {
@@ -128,6 +131,46 @@ export const determineMeasuringBoundary = async (
                                     : [-180, -90, 180, 90],
                             ),
                             distanceToCoastline,
+                            {
+                                units: "miles",
+                                steps: 64,
+                            },
+                        )!,
+                    ]),
+                )!,
+            ];
+        }
+        case "electoral-boundary": {
+            const electoralBoundaries = await fetchElectoralBoundaries();
+
+            const combinedBoundaries = turf.combine(
+                turf.featureCollection(electoralBoundaries.features),
+            ).features[0];
+
+            const distanceToBoundary = turf.pointToPolygonDistance(
+                turf.point([question.lng, question.lat]),
+                combinedBoundaries,
+                {
+                    units: "miles",
+                    method: "geodesic",
+                },
+            );
+
+            return [
+                turf.difference(
+                    turf.featureCollection([
+                        turf.bboxPolygon(bBox),
+                        turf.buffer(
+                            turf.bboxClip(
+                                combinedBoundaries,
+                                bBox
+                                    ? bboxExtension(
+                                          bBox as any,
+                                          distanceToBoundary,
+                                      )
+                                    : [-180, -90, 180, 90],
+                            ),
+                            distanceToBoundary,
                             {
                                 units: "miles",
                                 steps: 64,

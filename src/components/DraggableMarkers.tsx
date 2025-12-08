@@ -3,7 +3,6 @@ import { type DragEndEvent, Icon } from "leaflet";
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Marker, Tooltip } from "react-leaflet";
-import { nearestToQuestion, findAdminBoundary } from "@/maps/api";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
@@ -15,6 +14,7 @@ import {
     triggerLocalRefresh,
 } from "@/lib/context";
 import type { ICON_COLORS } from "@/maps/api";
+import { findAdminBoundary,nearestToQuestion } from "@/maps/api";
 
 import { LatitudeLongitude } from "./LatLngPicker";
 import {
@@ -100,8 +100,8 @@ const ColoredMarker = ({
                             // nearestToQuestion returns a turf point with properties populated
                             // compute nearest
                             let nearest;
-                            if(q.data.type == "zone") {
-                                nearest = await findAdminBoundary(q.data.lat, q.data.lng, q.data.cat.adminLevel);
+                            if(q.data.type == "zone" || q.data.type == "electoral-boundary") {
+                                nearest = await findAdminBoundary(q.data.lat, q.data.lng, 5);
                             }else{
                                 nearest = await nearestToQuestion(q.data);
                             }
