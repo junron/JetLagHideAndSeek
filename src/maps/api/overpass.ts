@@ -100,6 +100,10 @@ out center;
         data = Object.assign({}, golf_courses);
     }
 
+    if(question.locationType.includes("park")){
+        data = await fetchParks();
+    }
+
     if(data != null){
         data.features = data.features.filter((feature: any) => {
             const coords =
@@ -259,6 +263,15 @@ export const fetchSupermarkets = async () => {
     return data as FeatureCollection;
 }
 
+export const fetchParks = async () => {
+    const response = await cacheFetch("/Parks.geojson",
+        "Fetching park data...",
+        CacheType.PERMANENT_CACHE,
+    );
+    const data = await response.json();
+    return data as FeatureCollection;
+}
+
 export const trainLineNodeFinder = async (node: string): Promise<number[]> => {
     const nodeId = node.split("/")[1];
     const tagQuery = `
@@ -383,6 +396,10 @@ export const findPlacesInZone = async (
 
     if(loadingText?.includes("golf courses")){
         data = Object.assign({}, golf_courses);
+    }
+
+    if(loadingText?.includes("parks")){
+        data = await fetchParks();
     }
 
     if(returnGeoJSON && data !== null){

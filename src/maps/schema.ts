@@ -225,9 +225,9 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             // z
             //     .literal("consulate-full")
             //     .describe("Foreign Consulate Question (Small+Medium Games)"),
-            // z
-            //     .literal("park-full")
-            //     .describe("Park Question (Small+Medium Games)"),
+            z
+                .literal("park-full")
+                .describe("Park Question (Small+Medium Games)"),
         ])
         .default("airport"),
 });
@@ -351,9 +351,9 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             // z
             //     .literal("consulate-full")
             //     .describe("Foreign Consulate Question (Small+Medium Games)"),
-            // z
-            //     .literal("park-full")
-            //     .describe("Park Question (Small+Medium Games)"),
+            z
+                .literal("park-full")
+                .describe("Park Question (Small+Medium Games)"),
         ])
         .default("coastline"),
 });
