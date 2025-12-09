@@ -33,37 +33,38 @@ const Select = <T extends string>({
     }: {
         options: Options<T>;
         disabled?: boolean;
-    }) =>
-        mapObj(options, (value, children) => (
-            <SelectItem key={value} {...{ ...rest, value, children }} />
+    }) => mapObj(options, (value, children) => (
+        <SelectItem key={value} {...{ ...rest, value, children }} />
+    ));
+    const optionNodes = React.useMemo(() => {
+        if (!options) return null;
+        return mapObj(options, (value, children) => (
+            <SelectItem key={value} value={value as any}>{children}</SelectItem>
         ));
+    }, [options]);
     return (
         <SelectPrimitive.Root {...rest}>
             <SelectTrigger {...{ className }}>
                 <SelectValue {...{ placeholder }} />
             </SelectTrigger>
             <SelectContent>
-                {options && <Options {...{ options }} />}
+                {options && optionNodes}
                 {groups &&
-                    mapObj(groups, (children, optionsOrConfig) => {
-                        return (
-                            <SelectGroup key={children}>
-                                <SelectLabel {...{ children }} />
-                                <Options
-                                    {...("options" in optionsOrConfig &&
-                                    typeof optionsOrConfig.options == "object"
-                                        ? optionsOrConfig
-                                        : {
-                                              options:
-                                                  optionsOrConfig as Record<
-                                                      T,
-                                                      string
-                                                  >,
-                                          })}
-                                />
-                            </SelectGroup>
-                        );
-                    })}
+                    React.useMemo(() =>
+                        mapObj(groups, (children, optionsOrConfig) => {
+                            const opts = ("options" in optionsOrConfig && typeof optionsOrConfig.options == "object")
+                                ? (optionsOrConfig as any).options
+                                : (optionsOrConfig as any);
+                            return (
+                                <SelectGroup key={children}>
+                                    <SelectLabel>{children}</SelectLabel>
+                                    {mapObj(opts, (value, label) => (
+                                        <SelectItem key={value} value={value as any}>{label}</SelectItem>
+                                    ))}
+                                </SelectGroup>
+                            );
+                        })
+                    , [groups])}
             </SelectContent>
         </SelectPrimitive.Root>
     );

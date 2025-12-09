@@ -241,6 +241,7 @@ export const LatitudeLongitude = ({
     children,
     disabled,
     inlineEdit = false,
+    showReset = false,
 }: {
     latitude: number;
     longitude: number;
@@ -251,6 +252,7 @@ export const LatitudeLongitude = ({
     children?: React.ReactNode;
     disabled?: boolean;
     inlineEdit?: boolean;
+    showReset?: boolean;
 }) => {
     const $isLoading = useStore(isLoading);
     const $simulatedSeekerMode = useStore(simulatedSeekerMode);
@@ -456,7 +458,8 @@ export const LatitudeLongitude = ({
                         >
                             <ClipboardCopyIcon />
                         </Button>
-                        <Button
+                        {showReset && (
+                            <Button
                             variant="outline"
                             onClick={() => {
                                 const coords = initialCoords;
@@ -470,6 +473,7 @@ export const LatitudeLongitude = ({
                         >
                             <RotateCcw />
                         </Button>
+                        )}
                     </div>
                 </div>
             </SidebarMenuItem>

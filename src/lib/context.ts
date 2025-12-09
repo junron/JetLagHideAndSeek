@@ -388,6 +388,24 @@ export const simulatedSeekerGameStartTime = persistentAtom<number | null>(
     },
 );
 
+export const simulatedSeekerDestination = persistentAtom<string | null>(
+    "simulatedSeekerDestination",
+    null,
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    },
+);
+
+export const simulatedSeekerTimeScale = persistentAtom<number>(
+    "simulatedSeekerTimeScale",
+    5,
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    },
+);
+
 export const thunderforestApiKey = persistentAtom<string>(
     "thunderforestApiKey",
     "",

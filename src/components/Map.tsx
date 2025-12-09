@@ -38,7 +38,7 @@ import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
 import { MeasureTool } from "./MeasureTool";
-import { SimulatedSeekerTimer } from "./SimulatedSeekerTimer";
+import { SimulatedSeekerTimer } from "./SimulatedSeekerTimerAnim";
 import { PolygonDraw } from "./PolygonDraw";
 
 export const Map = ({ className }: { className?: string }) => {

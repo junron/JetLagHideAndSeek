@@ -672,6 +672,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                     <LatitudeLongitude
                                         latitude={$simulatedSeekerMode.latitude}
                                         longitude={$simulatedSeekerMode.longitude}
+                                        showReset
                                         inlineEdit
                                         onChange={(latitude, longitude) => {
                                             $simulatedSeekerMode.latitude =
