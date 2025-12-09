@@ -25,6 +25,7 @@ import {
     polyGeoJSON,
     questionFinishedMapData,
     questions,
+    simulatedSeekerMode,
     thunderforestApiKey,
     triggerLocalRefresh,
 } from "@/lib/context";
@@ -37,6 +38,7 @@ import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
 import { MeasureTool } from "./MeasureTool";
+import { SimulatedSeekerTimer } from "./SimulatedSeekerTimer";
 import { PolygonDraw } from "./PolygonDraw";
 
 export const Map = ({ className }: { className?: string }) => {
@@ -48,6 +50,7 @@ export const Map = ({ className }: { className?: string }) => {
     const $hiderMode = useStore(hiderMode);
     const $isLoading = useStore(isLoading);
     const $followMe = useStore(followMe);
+    const $simulatedSeekerMode = useStore(simulatedSeekerMode);
     const map = useStore(leafletMapContext);
 
     const followMeMarkerRef = useMemo(
@@ -321,6 +324,7 @@ export const Map = ({ className }: { className?: string }) => {
                     <div className="leaflet-control flex-col flex gap-2">
                         <LeafletFullScreenButton />
                         <MeasureTool />
+                        {$simulatedSeekerMode !== false && <SimulatedSeekerTimer />}
                     </div>
                 </div>
                 <PolygonDraw />
@@ -339,7 +343,7 @@ export const Map = ({ className }: { className?: string }) => {
                 />
             </MapContainer>
         ),
-        [map, $highlightTrainLines, $thunderforestApiKey],
+        [map, $highlightTrainLines, $thunderforestApiKey, $simulatedSeekerMode],
     );
 
     useEffect(() => {
@@ -397,17 +401,44 @@ export const Map = ({ className }: { className?: string }) => {
                 map.removeLayer(followMeMarkerRef.current);
                 followMeMarkerRef.current = null;
             }
-            if (geoWatchIdRef.current !== null) {
+            if (geoWatchIdRef.current !== null && geoWatchIdRef.current !== -1) {
                 navigator.geolocation.clearWatch(geoWatchIdRef.current);
+                geoWatchIdRef.current = null;
+            } else if (geoWatchIdRef.current === -1) {
                 geoWatchIdRef.current = null;
             }
             return;
         }
 
+        // If simulated seeker mode is enabled, use simulated position without requesting GPS
+        if ($simulatedSeekerMode !== false) {
+            const lat = $simulatedSeekerMode.latitude;
+            const lng = $simulatedSeekerMode.longitude;
+
+            if (followMeMarkerRef.current) {
+                followMeMarkerRef.current.setLatLng([lat, lng]);
+            } else {
+                const marker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                        html: `<div class="text-blue-700 bg-white rounded-full border-2 border-blue-700 shadow w-5 h-5 flex items-center justify-center"><svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#2A81CB" opacity="0.5"/><circle cx="8" cy="8" r="3" fill="#2A81CB"/></svg></div>`,
+                        className: "",
+                    }),
+                    zIndexOffset: 1000,
+                });
+                marker.addTo(map);
+                followMeMarkerRef.current = marker;
+            }
+            // Set a dummy watch ID to indicate we're "watching"
+            geoWatchIdRef.current = -1;
+            return;
+        }
+
+        // Normal GPS mode
         geoWatchIdRef.current = navigator.geolocation.watchPosition(
             (pos) => {
                 const lat = pos.coords.latitude;
                 const lng = pos.coords.longitude;
+
                 if (followMeMarkerRef.current) {
                     followMeMarkerRef.current.setLatLng([lat, lng]);
                 } else {
@@ -433,12 +464,14 @@ export const Map = ({ className }: { className?: string }) => {
                 map.removeLayer(followMeMarkerRef.current);
                 followMeMarkerRef.current = null;
             }
-            if (geoWatchIdRef.current !== null) {
+            if (geoWatchIdRef.current !== null && geoWatchIdRef.current !== -1) {
                 navigator.geolocation.clearWatch(geoWatchIdRef.current);
+                geoWatchIdRef.current = null;
+            } else if (geoWatchIdRef.current === -1) {
                 geoWatchIdRef.current = null;
             }
         };
-    }, [$followMe, map]);
+    }, [$followMe, map, $simulatedSeekerMode]);
 
     // Toggle MRT lines/stations overlay based on highlightTrainLines
     useEffect(() => {

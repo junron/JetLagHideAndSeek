@@ -18,11 +18,13 @@ import {
     type Units,
 } from "@/maps/schema";
 
+export const initialCoords = [103.84502381086351, 1.2987900458199177];
+
 export const mapGeoLocation = persistentAtom<OpenStreetMap>(
     "mapGeoLocation",
     {
         geometry: {
-            coordinates: [103.804836, 1.3356856],
+            coordinates: [initialCoords[0], initialCoords[1]],
             type: "Point",
         },
         type: "Feature",
@@ -94,6 +96,16 @@ export const hiderMode = persistentAtom<
           longitude: number;
       }
 >("isHiderMode", false, {
+    encode: JSON.stringify,
+    decode: JSON.parse,
+});
+export const simulatedSeekerMode = persistentAtom<
+    | false
+    | {
+          latitude: number;
+          longitude: number;
+      }
+>("simulatedSeekerMode", false, {
     encode: JSON.stringify,
     decode: JSON.parse,
 });
@@ -229,6 +241,12 @@ export const save = () => {
     if ($hiderMode !== false) {
         hiderMode.set({ ...$hiderMode });
     }
+
+    const $simulatedSeekerMode = simulatedSeekerMode.get();
+
+    if ($simulatedSeekerMode !== false) {
+        simulatedSeekerMode.set({ ...$simulatedSeekerMode });
+    }
 };
 
 /* Presets for custom questions (savable / sharable / editable) */
@@ -358,6 +376,17 @@ export const autoZoom = persistentAtom<boolean>("autoZoom", true, {
 });
 
 export const isLoading = atom<boolean>(false);
+
+// Simulated seeker game time — the time the simulated game started. Stored as a numeric
+// timestamp (ms since epoch). When null, the game hasn't been started yet.
+export const simulatedSeekerGameStartTime = persistentAtom<number | null>(
+    "simulatedSeekerGameStartTime",
+    null,
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    },
+);
 
 export const thunderforestApiKey = persistentAtom<string>(
     "thunderforestApiKey",

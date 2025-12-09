@@ -95,6 +95,39 @@ export async function fetchFromPastebin(pasteId: string): Promise<string> {
     return response.text();
 }
 
+export function getCurrentPosition(
+    simulatedSeekerMode: false | { latitude: number; longitude: number },
+): Promise<GeolocationPosition> {
+    if (simulatedSeekerMode !== false) {
+        // Return a mock position object with simulated coordinates
+        return Promise.resolve({
+            coords: {
+                latitude: simulatedSeekerMode.latitude,
+                longitude: simulatedSeekerMode.longitude,
+                accuracy: 1,
+                altitude: null,
+                altitudeAccuracy: null,
+                heading: null,
+                speed: null,
+            },
+            timestamp: Date.now(),
+        });
+    }
+
+    return new Promise((resolve, reject) => {
+        if (!navigator || !navigator.geolocation) {
+            reject(new Error("Geolocation is not available"));
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 20000,
+        });
+    });
+}
+
 /**
  * Open native share sheet or fallback to sending to clipboard
  * @param url URL to share

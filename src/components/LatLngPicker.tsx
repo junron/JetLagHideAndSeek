@@ -4,6 +4,7 @@ import {
     ClipboardPasteIcon,
     EditIcon,
     LocateIcon,
+    RotateCcw,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -11,8 +12,8 @@ import { toast } from "react-toastify";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useDebounce } from "@/hooks/useDebounce";
-import { isLoading } from "@/lib/context";
-import { cn } from "@/lib/utils";
+import { initialCoords, isLoading, mapGeoLocation, simulatedSeekerMode } from "@/lib/context";
+import { cn, getCurrentPosition } from "@/lib/utils";
 import { determineName, geocode, ICON_COLORS } from "@/maps/api";
 
 import { Button } from "./ui/button";
@@ -252,6 +253,8 @@ export const LatitudeLongitude = ({
     inlineEdit?: boolean;
 }) => {
     const $isLoading = useStore(isLoading);
+    const $simulatedSeekerMode = useStore(simulatedSeekerMode);
+    const $mapGeoLocation = useStore(mapGeoLocation);
 
     const color = colorName ? ICON_COLORS[colorName] : "transparent";
 
@@ -350,24 +353,10 @@ export const LatitudeLongitude = ({
                         <Button
                             variant="outline"
                             onClick={() => {
-                                if (!navigator || !navigator.geolocation)
-                                    return alert("Geolocation not supported");
-
                                 isLoading.set(true);
 
                                 toast.promise(
-                                    new Promise<GeolocationPosition>(
-                                        (resolve, reject) => {
-                                            navigator.geolocation.getCurrentPosition(
-                                                resolve,
-                                                reject,
-                                                {
-                                                    maximumAge: 0,
-                                                    enableHighAccuracy: true,
-                                                },
-                                            );
-                                        },
-                                    )
+                                    getCurrentPosition($simulatedSeekerMode)
                                         .then((position) => {
                                             onChange(
                                                 position.coords.latitude,
@@ -466,6 +455,20 @@ export const LatitudeLongitude = ({
                             title="Copy coordinates to clipboard"
                         >
                             <ClipboardCopyIcon />
+                        </Button>
+                        <Button
+                            variant="outline"
+                            onClick={() => {
+                                const coords = initialCoords;
+                                onChange(coords[1], coords[0]); // coordinates are [lng, lat]
+                                toast.success("Coordinates reset to default location", {
+                                    autoClose: 1000,
+                                });
+                            }}
+                            disabled={disabled}
+                            title="Reset to default location"
+                        >
+                            <RotateCcw />
                         </Button>
                     </div>
                 </div>

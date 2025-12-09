@@ -1,3 +1,4 @@
+import { simulatedSeekerGameStartTime } from "@/lib/context";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -36,6 +37,7 @@ import {
     questions,
     save,
     showTutorial,
+    simulatedSeekerMode,
     thunderforestApiKey,
     triggerLocalRefresh,
     useCustomStations,
@@ -75,6 +77,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
     const $animateMapMovements = useStore(animateMapMovements);
     const $autoZoom = useStore(autoZoom);
     const $hiderMode = useStore(hiderMode);
+    const $simulatedSeekerMode = useStore(simulatedSeekerMode);
     const $autoSave = useStore(autoSave);
     const $hidingZone = useStore(hidingZone);
     const $planningMode = useStore(planningModeEnabled);
@@ -595,6 +598,38 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                     }}
                                 />
                             </div>
+                            <div className="flex flex-row items-center gap-2">
+                                <label className="text-2xl font-semibold font-poppins">
+                                    Simulated (seeker) mode?
+                                </label>
+                                <Checkbox
+                                    checked={!!$simulatedSeekerMode}
+                                    onCheckedChange={() => {
+                                        if ($simulatedSeekerMode === false) {
+                                            const $leafletMapContext =
+                                                leafletMapContext.get();
+
+                                            if ($leafletMapContext) {
+                                                const center =
+                                                    $leafletMapContext.getCenter();
+                                                simulatedSeekerMode.set({
+                                                    latitude: center.lat,
+                                                    longitude: center.lng,
+                                                });
+                                                // Initialize game start time to now
+                                                simulatedSeekerGameStartTime.set(Date.now());
+                                            } else {
+                                                simulatedSeekerMode.set({
+                                                    latitude: 0,
+                                                    longitude: 0,
+                                                });
+                                            }
+                                        } else {
+                                            simulatedSeekerMode.set(false);
+                                        }
+                                    }}
+                                />
+                            </div>
                             {$hiderMode !== false && (
                                 <SidebarMenu>
                                     <LatitudeLongitude
@@ -619,6 +654,43 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                             }
                                         }}
                                         label="Hider Location"
+                                    />
+                                    {!autoSave && (
+                                        <SidebarMenuItem>
+                                            <SidebarMenuButton
+                                                className="bg-blue-600 p-2 rounded-md font-semibold font-poppins transition-shadow duration-500 mt-2"
+                                                onClick={save}
+                                            >
+                                                Save
+                                            </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                    )}
+                                </SidebarMenu>
+                            )}
+                            {$simulatedSeekerMode !== false && (
+                                <SidebarMenu>
+                                    <LatitudeLongitude
+                                        latitude={$simulatedSeekerMode.latitude}
+                                        longitude={$simulatedSeekerMode.longitude}
+                                        inlineEdit
+                                        onChange={(latitude, longitude) => {
+                                            $simulatedSeekerMode.latitude =
+                                                latitude ?? $simulatedSeekerMode.latitude;
+                                            $simulatedSeekerMode.longitude =
+                                                longitude ??
+                                                $simulatedSeekerMode.longitude;
+
+                                            if ($autoSave) {
+                                                simulatedSeekerMode.set({
+                                                    ...$simulatedSeekerMode,
+                                                });
+                                            } else {
+                                                triggerLocalRefresh.set(
+                                                    Math.random(),
+                                                );
+                                            }
+                                        }}
+                                        label="Simulated Seeker Location"
                                     />
                                     {!autoSave && (
                                         <SidebarMenuItem>
