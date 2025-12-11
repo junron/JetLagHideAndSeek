@@ -350,23 +350,21 @@ export const MatchingQuestionComponent = ({
             </SidebarMenuItem>
             {questionSpecific}
 
-            {data.type !== "custom-zone" && (
-                <LatitudeLongitude
-                    latitude={data.lat}
-                    longitude={data.lng}
-                    colorName={data.color}
-                    onChange={(lat, lng) => {
-                        if (lat !== null) {
-                            data.lat = lat;
-                        }
-                        if (lng !== null) {
-                            data.lng = lng;
-                        }
-                        questionModified();
-                    }}
-                    disabled={!data.drag || $isLoading}
-                />
-            )}
+            <LatitudeLongitude
+                latitude={data.lat}
+                longitude={data.lng}
+                colorName={data.color}
+                onChange={(lat, lng) => {
+                    if (lat !== null) {
+                        data.lat = lat;
+                    }
+                    if (lng !== null) {
+                        data.lng = lng;
+                    }
+                    questionModified();
+                }}
+                disabled={!data.drag || $isLoading}
+            />
             <div
                 className={cn(
                     "flex gap-2 items-center p-2",

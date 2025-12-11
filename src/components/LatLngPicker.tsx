@@ -360,6 +360,7 @@ export const LatitudeLongitude = ({
                                 toast.promise(
                                     getCurrentPosition($simulatedSeekerMode)
                                         .then((position) => {
+                                            isLoading.set(false);
                                             onChange(
                                                 position.coords.latitude,
                                                 position.coords.longitude,
