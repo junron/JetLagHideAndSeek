@@ -370,7 +370,7 @@ export const planningModeEnabled = persistentAtom<boolean>(
         decode: JSON.parse,
     },
 );
-export const autoZoom = persistentAtom<boolean>("autoZoom", true, {
+export const autoZoom = persistentAtom<boolean>("autoZoom", false, {
     encode: JSON.stringify,
     decode: JSON.parse,
 });
