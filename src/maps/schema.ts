@@ -303,8 +303,8 @@ export const matchingQuestionSchema = z.union([
     zoneMatchingQuestionsSchema.describe(NO_GROUP),
     ordinaryMatchingQuestionSchema.describe(NO_GROUP),
     // customMatchingQuestionSchema.describe(NO_GROUP),
-    hidingZoneMatchingQuestionsSchema.describe("Hiding Zone Mode"),
-    homeGameMatchingQuestionsSchema.describe("Hiding Zone Mode"),
+    // hidingZoneMatchingQuestionsSchema.describe("Hiding Zone Mode"),
+    // homeGameMatchingQuestionsSchema.describe("Hiding Zone Mode"),
 ]);
 
 const baseMeasuringQuestionSchema = ordinaryBaseQuestionSchema.extend({
@@ -324,6 +324,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z.literal("rail-measure-full").describe("MRT Station Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
             z.literal("university").describe("University Question"),
+            z.literal("reservoir").describe("Reservoir Question"),
             z.literal("electoral-boundary").describe("Electoral Boundary Question"),
             // z
             //     .literal("city")
