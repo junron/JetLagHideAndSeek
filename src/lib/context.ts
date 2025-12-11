@@ -24,7 +24,7 @@ export const mapGeoLocation = persistentAtom<OpenStreetMap>(
     "mapGeoLocation",
     {
         geometry: {
-            coordinates: [initialCoords[0], initialCoords[1]],
+            coordinates: [initialCoords[1], initialCoords[0]],
             type: "Point",
         },
         type: "Feature",
