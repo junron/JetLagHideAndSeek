@@ -28,8 +28,7 @@ import {
     simulatedSeekerMode,
     thunderforestApiKey,
     triggerLocalRefresh,
-        vizPOIsActive,
-        vizPOIsCategory,
+    vizPOIsCategory,
 } from "@/lib/context";
 import { cn } from "@/lib/utils";
 import { applyQuestionsToMapGeoData, holedMask } from "@/maps";
@@ -55,7 +54,6 @@ export const Map = ({ className }: { className?: string }) => {
     const $isLoading = useStore(isLoading);
     const $followMe = useStore(followMe);
     const $simulatedSeekerMode = useStore(simulatedSeekerMode);
-    const $vizPOIsActive = useStore(vizPOIsActive);
     const $vizPOIsCategory = useStore(vizPOIsCategory);
     // VizPOIs is rendered next to Share from OptionDrawers
     const map = useStore(leafletMapContext);
@@ -705,21 +703,42 @@ export const Map = ({ className }: { className?: string }) => {
                         );
                     },
                     pointToLayer(geoJsonPoint, latlng) {
+                        const radiusFromZoom = () => {
+                            const z = map.getZoom();
+                            // Make radius scale with zoom; tune constants as needed
+                            return Math.max(3, Math.round(z / 2));
+                        };
                         const marker = L.circleMarker(latlng, {
-                            radius: 4,
+                            radius: radiusFromZoom(),
                             color: color,
                             fillColor: color,
                             weight: 1,
                             opacity: 1,
                             fillOpacity: 1,
                         });
-                        const name = geoJsonPoint.properties?.["name:en"] || geoJsonPoint.properties?.name || "Unnamed";
+                        const name = geoJsonPoint.properties?.["name:en"] || geoJsonPoint.properties?.name ||  geoJsonPoint.properties?.Name ||"Unnamed";
                         marker.bindPopup(`<b>${name}</b>`);
                         return marker;
                     },
                 });
                 layer.addTo(map);
                 poiLayerRef.current = layer;
+
+                const updateRadius = () => {
+                    const newRadius = Math.pow(map.getZoom() / 8, 3);
+                    layer.eachLayer((m: any) => {
+                        try {
+                            if (m && typeof m.setRadius === "function") {
+                                m.setRadius(newRadius);
+                            }
+                        } catch (e) {
+                            // ignore
+                        }
+                    });
+                };
+                map.on("zoomend", updateRadius);
+                // Initialize sizes
+                updateRadius();
             } catch (err) {
                 console.warn("Failed to load POIs for category", $vizPOIsCategory, err);
             } finally {
@@ -730,8 +749,13 @@ export const Map = ({ className }: { className?: string }) => {
         load();
         return () => {
             if (!loading) clearPois();
+            try {
+                map.off("zoomend", updateRadius);
+            } catch (e) {
+                // ignore
+            }
         };
-    }, [map, $vizPOIsActive, $vizPOIsCategory]);
+    }, [map, $vizPOIsCategory]);
 
     return displayMap;
 };
