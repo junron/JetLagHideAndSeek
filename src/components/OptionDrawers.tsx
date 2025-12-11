@@ -1,4 +1,3 @@
-import { simulatedSeekerGameStartTime } from "@/lib/context";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -13,34 +12,32 @@ import {
 import {
     additionalMapGeoLocations,
     alwaysUsePastebin,
-    animateMapMovements,
-    autoSave,
-    autoZoom,
-    customInitPreference,
-    customPresets,
-    customStations,
-    defaultUnit,
-    disabledStations,
-    displayHidingZonesOptions,
-    followMe,
-    hiderMode,
-    hidingRadius,
-    hidingZone,
-    highlightTrainLines,
-    includeDefaultStations,
-    leafletMapContext,
-    mapGeoJSON,
-    mapGeoLocation,
-    pastebinApiKey,
-    planningModeEnabled,
-    polyGeoJSON,
-    questions,
-    save,
-    showTutorial,
-    simulatedSeekerMode,
-    thunderforestApiKey,
-    triggerLocalRefresh,
-    useCustomStations,
+        animateMapMovements,
+        autoSave,
+        autoZoom,
+        customInitPreference,
+        customPresets,
+        customStations,
+        defaultUnit,
+        disabledStations,
+        displayHidingZonesOptions,
+        followMe,
+        hiderMode,
+        hidingRadius,
+        hidingZone,
+        highlightTrainLines,
+        includeDefaultStations,
+        leafletMapContext,
+        mapGeoJSON,
+        mapGeoLocation,
+        pastebinApiKey,
+        planningModeEnabled,
+        polyGeoJSON,
+        questions,
+        simulatedSeekerMode,
+        thunderforestApiKey,
+        triggerLocalRefresh,
+        useCustomStations,
 } from "@/lib/context";
 import {
     cn,
@@ -65,6 +62,7 @@ import {
     SidebarMenuItem,
 } from "./ui/sidebar-l";
 import { UnitSelect } from "./UnitSelect";
+import VizPOIs from "./VizPOIs";
 
 const HIDING_ZONE_URL_PARAM = "hz";
 const HIDING_ZONE_COMPRESSED_URL_PARAM = "hzc";
@@ -86,6 +84,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
     const $alwaysUsePastebin = useStore(alwaysUsePastebin);
     const $followMe = useStore(followMe);
     const $customInitPref = useStore(customInitPreference);
+    // Viz POIs is always visible; no option toggle
     const [isOptionsOpen, setOptionsOpen] = useState(false);
 
     useEffect(() => {
@@ -257,6 +256,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                 className,
             )}
         >
+            <VizPOIs />
             <Button
                 className="shadow-md"
                 onClick={async () => {
@@ -326,14 +326,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
             >
                 Share
             </Button>
-            <Button
-                className="w-24 shadow-md"
-                onClick={() => {
-                    showTutorial.set(true);
-                }}
-            >
-                Tutorial
-            </Button>
+            {/* Tutorial button removed per replacement — Viz POIs is now controlled via Options */}
             <Drawer open={isOptionsOpen} onOpenChange={setOptionsOpen}>
                 <DrawerTrigger className="w-24" asChild>
                     <Button
@@ -386,6 +379,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                 </Button>
                             </div>
                             <Separator className="bg-slate-300 w-[280px]" />
+                            {/* Viz POIs tool is always visible, no option toggle */}
                             <Label>Default Unit</Label>
                             <UnitSelect
                                 unit={$defaultUnit}

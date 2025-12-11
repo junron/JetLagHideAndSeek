@@ -30,9 +30,11 @@ const AlertDialogContent = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
 >(({ className, ...props }, ref) => (
     <AlertDialogPortal
-        container={document.querySelector(
-            "#map-modal-dialog-container-leaflet",
-        )}
+        container={
+            typeof document !== "undefined"
+                ? document.querySelector("#map-modal-dialog-container-leaflet")
+                : undefined
+        }
     >
         <AlertDialogOverlay />
         <AlertDialogPrimitive.Content

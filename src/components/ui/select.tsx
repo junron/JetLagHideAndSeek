@@ -134,9 +134,11 @@ const SelectContent = React.forwardRef<
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ className, children, position = "popper", ...props }, ref) => (
     <SelectPrimitive.Portal
-        container={document.querySelector(
-            "#map-modal-dialog-container-leaflet",
-        )}
+        container={
+            typeof document !== "undefined"
+                ? document.querySelector("#map-modal-dialog-container-leaflet")
+                : undefined
+        }
     >
         <SelectPrimitive.Content
             ref={ref}

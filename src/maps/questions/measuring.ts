@@ -22,6 +22,7 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
+import { airports, international_borders, mountains } from "@/maps/api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
@@ -34,7 +35,6 @@ import type {
     HomeGameMeasuringQuestions,
     MeasuringQuestion,
 } from "@/maps/schema";
-import { airports, international_borders, mountains } from "@/maps/api/data";
 
 const highSpeedBase = _.memoize(
     (features: Feature[]) => {

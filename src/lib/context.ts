@@ -435,6 +435,21 @@ export const showTutorial = persistentAtom<boolean>("showTutorials", true, {
 });
 export const tutorialStep = atom<number>(0);
 
+
+export const vizPOIsActive = persistentAtom<boolean>("vizPOIsActive", false, {
+    encode: JSON.stringify,
+    decode: JSON.parse,
+});
+
+export const vizPOIsCategory = persistentAtom<string | null>(
+    "vizPOIsCategory",
+    null,
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    },
+);
+
 export const customInitPreference = persistentAtom<"ask" | "blank" | "prefill">(
     "customInitPreference",
     "ask",

@@ -1,15 +1,16 @@
 import { useStore } from "@nanostores/react";
+import * as turf from "@turf/turf";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 import {
-    simulatedSeekerMode,
-    simulatedSeekerGameStartTime,
     customStations,
     simulatedSeekerDestination,
+    simulatedSeekerGameStartTime,
+    simulatedSeekerMode,
     simulatedSeekerTimeScale,
 } from "@/lib/context";
-import * as turf from "@turf/turf";
 import { computeShortestPathBetweenStations, findNearestStationByCoords } from "@/maps/api/sgmrt";
 
 const formatTimestamp = (t: number | null) => {

@@ -188,19 +188,6 @@ export async function findStationByCode(code?: string) {
     return s || null;
 }
 
-async function resolveStationKey(input?: string) {
-    if (!input) return null;
-    const data = await loadSgmrt();
-    // try code match first
-    let feat = data.stationsByCode.get(input);
-    if (feat) {
-        return normalizeName((feat.properties && (feat.properties['name:en'] || feat.properties.name)) as any);
-    }
-    // else try name
-    const maybe = data.stationsByName.get(normalizeName(input));
-    if (maybe) return normalizeName((maybe.properties && (maybe.properties['name:en'] || maybe.properties.name)) as any);
-    return null;
-}
 
 // Generic wrapper: accepts either station names or codes
 export async function computeShortestPathBetweenStations(

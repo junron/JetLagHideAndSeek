@@ -28,18 +28,22 @@ import {
     simulatedSeekerMode,
     thunderforestApiKey,
     triggerLocalRefresh,
+        vizPOIsActive,
+        vizPOIsCategory,
 } from "@/lib/context";
 import { cn } from "@/lib/utils";
 import { applyQuestionsToMapGeoData, holedMask } from "@/maps";
 import { hiderifyQuestion } from "@/maps";
 import { clearCache, determineMapBoundaries } from "@/maps/api";
+import { fetchHawkerCenters, fetchLibraries, fetchMuseums, fetchParks, fetchSupermarkets, findPlacesInZone } from "@/maps/api";
+import { airports, golf_courses, mountains } from "@/maps/api/data";
 
 import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
-import { MeasureTool } from "./MeasureTool";
-import { SimulatedSeekerTimer } from "./SimulatedSeekerTimerAnim";
 import { PolygonDraw } from "./PolygonDraw";
+import { SimulatedSeekerTimer } from "./SimulatedSeekerTimerAnim";
+// VizPOIs moved to OptionDrawers bottom bar
 
 export const Map = ({ className }: { className?: string }) => {
     useStore(additionalMapGeoLocations);
@@ -51,6 +55,9 @@ export const Map = ({ className }: { className?: string }) => {
     const $isLoading = useStore(isLoading);
     const $followMe = useStore(followMe);
     const $simulatedSeekerMode = useStore(simulatedSeekerMode);
+    const $vizPOIsActive = useStore(vizPOIsActive);
+    const $vizPOIsCategory = useStore(vizPOIsCategory);
+    // VizPOIs is rendered next to Share from OptionDrawers
     const map = useStore(leafletMapContext);
 
     const followMeMarkerRef = useMemo(
@@ -66,6 +73,7 @@ export const Map = ({ className }: { className?: string }) => {
         lines?: L.GeoJSON | null;
         stations?: L.GeoJSON | null;
     }>({ lines: null, stations: null });
+    const poiLayerRef = useRef<L.GeoJSON | null>(null);
     const stationCircleRef = useRef<L.Circle | null>(null);
     const mapColorFromToken = (token: string | undefined) => {
         if (!token) return "#000000";
@@ -323,7 +331,6 @@ export const Map = ({ className }: { className?: string }) => {
                 <div className="leaflet-top leaflet-right">
                     <div className="leaflet-control flex-col flex gap-2">
                         <LeafletFullScreenButton />
-                        <MeasureTool />
                         {$simulatedSeekerMode !== false && <SimulatedSeekerTimer />}
                     </div>
                 </div>
@@ -622,6 +629,109 @@ export const Map = ({ className }: { className?: string }) => {
             }
         };
     }, [$highlightTrainLines, map]);
+
+    // Viz POIs effect: render POIs for the selected category (independent of dialog open state)
+    useEffect(() => {
+        if (!map) return;
+
+        const clearPois = () => {
+            if (poiLayerRef.current) {
+                try {
+                    map.removeLayer(poiLayerRef.current);
+                } catch (err) {
+                    /* ignore */
+                }
+                poiLayerRef.current = null;
+            }
+        };
+
+        if (!$vizPOIsCategory) {
+            clearPois();
+            return;
+        }
+
+        let loading = true;
+        const load = async () => {
+            clearPois();
+            try {
+                let data: any = null;
+                switch ($vizPOIsCategory) {
+                    case "museums":
+                        data = await fetchMuseums();
+                        break;
+                    case "parks":
+                        data = await fetchParks();
+                        break;
+                    case "libraries":
+                        data = await fetchLibraries();
+                        break;
+                    case "supermarkets":
+                        data = await fetchSupermarkets();
+                        break;
+                    case "hawker":
+                        data = await fetchHawkerCenters();
+                        break;
+                    case "airports":
+                        data = airports as any;
+                        break;
+                    case "golf_courses":
+                        data = golf_courses as any;
+                        break;
+                    case "mountains":
+                        data = mountains as any;
+                        break;
+                    default:
+                        data = await findPlacesInZone($vizPOIsCategory, `Finding ${$vizPOIsCategory}...`, "nwr", "center", [], 0, true);
+                }
+
+                if (!data) return;
+
+                const colorMap: Record<string, string> = {
+                    museums: "#1976D2",
+                    parks: "#2E7D32",
+                    libraries: "#6A1B9A",
+                    supermarkets: "#FB8C00",
+                    hawker: "#6D4C41",
+                    airports: "#000000",
+                    golf_courses: "#2E7D32",
+                    mountains: "#6B7280",
+                };
+                const color = colorMap[$vizPOIsCategory] ?? "#1976D2";
+
+                const layer = L.geoJSON(data as any, {
+                    filter(feature) {
+                        return (
+                            feature.geometry && feature.geometry.type === "Point"
+                        );
+                    },
+                    pointToLayer(geoJsonPoint, latlng) {
+                        const marker = L.circleMarker(latlng, {
+                            radius: 4,
+                            color: color,
+                            fillColor: color,
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 1,
+                        });
+                        const name = geoJsonPoint.properties?.["name:en"] || geoJsonPoint.properties?.name || "Unnamed";
+                        marker.bindPopup(`<b>${name}</b>`);
+                        return marker;
+                    },
+                });
+                layer.addTo(map);
+                poiLayerRef.current = layer;
+            } catch (err) {
+                console.warn("Failed to load POIs for category", $vizPOIsCategory, err);
+            } finally {
+                loading = false;
+            }
+        };
+
+        load();
+        return () => {
+            if (!loading) clearPois();
+        };
+    }, [map, $vizPOIsActive, $vizPOIsCategory]);
 
     return displayMap;
 };

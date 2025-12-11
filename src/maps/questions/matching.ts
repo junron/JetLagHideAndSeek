@@ -25,6 +25,7 @@ import {
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
+import { airports, international_borders, mountains } from "@/maps/api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
@@ -36,7 +37,6 @@ import type {
     HomeGameMatchingQuestions,
     MatchingQuestion,
 } from "@/maps/schema";
-import { airports, international_borders, mountains } from "@/maps/api/data";
 
 
 export const findMatchingPlaces = async (question: MatchingQuestion) => {
