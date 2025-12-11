@@ -90,6 +90,13 @@ export const Map = ({ className }: { className?: string }) => {
         return colors[base] ?? base;
     };
 
+    const computeMarkerRadius = (m: L.Map | null) => {
+        if (!m) return 3;
+        const z = m.getZoom();
+        const r = Math.pow(z / 8, 3) * 1.2;
+        return r;
+    };
+
     const refreshQuestions = async (focus: boolean = false) => {
         if (!map) return;
 
@@ -482,6 +489,8 @@ export const Map = ({ className }: { className?: string }) => {
     useEffect(() => {
         if (!map) return;
 
+        let updateTrainRadius: (() => void) | null = null;
+
         const removeTrainLayers = () => {
             try {
                 if (trainLayersRef.current.lines) {
@@ -503,6 +512,10 @@ export const Map = ({ className }: { className?: string }) => {
             } catch (err) {
                 // Swallow - map may be destroyed
             }
+            // Ensure we remove zoom handler for train layers when cleaning up
+            try {
+                if (updateTrainRadius) map.off("zoomend", updateTrainRadius);
+            } catch (e) {}
         };
 
         const loadGeoJSON = async () => {
@@ -544,9 +557,8 @@ export const Map = ({ className }: { className?: string }) => {
                         const color = mapColorFromToken(
                             geoJsonPoint.properties?.station_colors || geoJsonPoint.properties?.color,
                         );
-
                         const marker = L.circleMarker(latlng, {
-                            radius: 5,
+                            radius: computeMarkerRadius(map),
                             color: color,
                             fillColor: color,
                             weight: 1,
@@ -565,9 +577,16 @@ export const Map = ({ className }: { className?: string }) => {
                         marker.on("click", () => {
                             try {
                                 if (!map) return;
-                                // Remove existing station circle
+                                // If clicking the same station that already has a circle, remove it (toggle off)
                                 if (stationCircleRef.current) {
                                     try {
+                                        const existingLatLng = stationCircleRef.current.getLatLng?.();
+                                        if (existingLatLng && existingLatLng.equals(latlng)) {
+                                            map.removeLayer(stationCircleRef.current);
+                                            stationCircleRef.current = null;
+                                            return; // toggled off
+                                        }
+                                        // Otherwise remove existing and replace with new one below
                                         map.removeLayer(stationCircleRef.current);
                                     } catch (err) {
                                         /* ignore */
@@ -579,11 +598,19 @@ export const Map = ({ className }: { className?: string }) => {
                                 const newCircle = L.circle(latlng, {
                                     radius: 400,
                                     color,
-                                    fillColor: color,
-                                    fillOpacity: 0.12,
+                                    // No fill: only border
+                                    fillOpacity: 0,
                                     weight: 2,
+                                    // Make non-interactive so clicks pass through to underlying markers
+                                    interactive: false,
                                 });
                                 newCircle.addTo(map);
+                                // Ensure the circle sits below station markers so markers remain clickable
+                                try {
+                                    newCircle.bringToBack();
+                                } catch (e) {
+                                    /* ignore if pane not available */
+                                }
                                 stationCircleRef.current = newCircle;
                             } catch (err) {
                                 console.warn("Error drawing station circle", err);
@@ -598,6 +625,21 @@ export const Map = ({ className }: { className?: string }) => {
                 if ($highlightTrainLines) {
                     trainLayersRef.current.lines = linesLayer.addTo(map);
                     trainLayersRef.current.stations = stationLayer.addTo(map);
+                    // Add zoom handler for station markers so they scale like POIs
+                    updateTrainRadius = () => {
+                        const newRadius = computeMarkerRadius(map);
+                        try {
+                            trainLayersRef.current.stations?.eachLayer((m: any) => {
+                                if (m && typeof m.setRadius === "function") {
+                                    m.setRadius(newRadius);
+                                }
+                            });
+                        } catch (e) {
+                            // ignore
+                        }
+                    };
+                    map.on("zoomend", updateTrainRadius);
+                    updateTrainRadius();
                 }
             } catch (error) {
                 console.warn("Could not load sgmrt.geojson", error);
@@ -649,6 +691,7 @@ export const Map = ({ className }: { className?: string }) => {
         }
 
         let loading = true;
+        let updateRadius: (() => void) | null = null;
         const load = async () => {
             clearPois();
             try {
@@ -703,13 +746,8 @@ export const Map = ({ className }: { className?: string }) => {
                         );
                     },
                     pointToLayer(geoJsonPoint, latlng) {
-                        const radiusFromZoom = () => {
-                            const z = map.getZoom();
-                            // Make radius scale with zoom; tune constants as needed
-                            return Math.max(3, Math.round(z / 2));
-                        };
                         const marker = L.circleMarker(latlng, {
-                            radius: radiusFromZoom(),
+                            radius: computeMarkerRadius(map),
                             color: color,
                             fillColor: color,
                             weight: 1,
@@ -724,8 +762,8 @@ export const Map = ({ className }: { className?: string }) => {
                 layer.addTo(map);
                 poiLayerRef.current = layer;
 
-                const updateRadius = () => {
-                    const newRadius = Math.pow(map.getZoom() / 8, 3);
+                updateRadius = () => {
+                    const newRadius = computeMarkerRadius(map);
                     layer.eachLayer((m: any) => {
                         try {
                             if (m && typeof m.setRadius === "function") {
@@ -750,7 +788,9 @@ export const Map = ({ className }: { className?: string }) => {
         return () => {
             if (!loading) clearPois();
             try {
-                map.off("zoomend", updateRadius);
+                if (updateRadius) {
+                    map.off("zoomend", updateRadius);
+                }
             } catch (e) {
                 // ignore
             }
