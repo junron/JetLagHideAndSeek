@@ -327,7 +327,7 @@ export const Map = ({ className }: { className?: string }) => {
                         {$simulatedSeekerMode !== false && <SimulatedSeekerTimer />}
                     </div>
                 </div>
-                <PolygonDraw />
+                {/* <PolygonDraw /> */}
                 <ScaleControl position="bottomleft" />
                 <MapPrint
                     position="topright"
