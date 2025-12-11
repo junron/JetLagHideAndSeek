@@ -12,7 +12,7 @@ import { safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
 import { ELECTORAL_BOUNDARY_GEOJSON,LOCATION_FIRST_TAG, OVERPASS_API } from "./constants";
-import { airports, golf_courses, international_borders, mountains } from "./data";
+import { airports, golf_courses, international_borders, mountains, universities, reservoirs } from "./data";
 import type {
     EncompassingTentacleQuestionSchema,
     HomeGameMatchingQuestions,
@@ -84,8 +84,14 @@ out center;
     if (question.locationType.includes("airport")) {
         data = Object.assign({}, airports);
     }
+    if (question.locationType.includes("university")) {
+        data = Object.assign({}, universities);
+    }
     if (question.locationType.includes("mountain")) {
         data = Object.assign({}, mountains);
+    }
+    if (question.locationType.includes("reservoir")) {
+        data = Object.assign({}, reservoirs);
     }
     if (question.locationType.includes("international_borders")) {
         data = Object.assign({}, international_borders);
@@ -405,6 +411,12 @@ export const findPlacesInZone = async (
     }
     if (loadingText?.includes("airports")) {
         data = Object.assign({}, airports);
+    }
+    if (loadingText?.includes("reservoirs")) {
+        data = Object.assign({}, reservoirs);
+    }
+    if (loadingText?.includes("universities")) {
+        data = Object.assign({}, universities);
     }
     if (loadingText?.includes("international borders")) {
         data = Object.assign({}, international_borders);

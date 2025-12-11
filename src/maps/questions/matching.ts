@@ -25,7 +25,7 @@ import {
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
-import { airports, international_borders, mountains } from "@/maps/api/data";
+import { airports, international_borders, mountains, universities, reservoirs } from "@/maps/api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
@@ -43,6 +43,12 @@ export const findMatchingPlaces = async (question: MatchingQuestion) => {
     switch (question.type) {
         case "airport": {
             return airports.features.map((f) => turf.point(f.geometry.coordinates));
+        }
+        case "university": {
+            return universities.features.map((f) => turf.point(f.geometry.coordinates));
+        }
+        case "reservoir": {
+            return reservoirs.features.map((f) => turf.point(f.geometry.coordinates));
         }
         case "mountain": {
             return mountains.features.map((f) => turf.point(f.geometry.coordinates));
@@ -205,6 +211,8 @@ export const determineMatchingBoundary = _.memoize(
                 break;
             }
             case "airport":
+            case "university":
+            case "reservoir":
             case "mountain":
             case "major-city":
             case "aquarium-full":
@@ -283,6 +291,8 @@ export const hiderifyMatching = async (question: MatchingQuestion) => {
             "golf_course",
             "consulate",
             "park",
+            "university",
+            "reservoir",
         ].includes(question.type)
     ) {
         const questionNearest = await nearestToQuestion(

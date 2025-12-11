@@ -16,6 +16,8 @@ const options = [
     { key: "airports", label: "Airports" },
     { key: "golf_courses", label: "Golf Courses" },
     { key: "mountains", label: "Mountains" },
+    { key: "universities", label: "Universities" },
+    { key: "reservoirs", label: "Reservoirs" },
 ];
 
 export const VizPOIs = () => {

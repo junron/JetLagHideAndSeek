@@ -35,7 +35,7 @@ import { applyQuestionsToMapGeoData, holedMask } from "@/maps";
 import { hiderifyQuestion } from "@/maps";
 import { clearCache, determineMapBoundaries } from "@/maps/api";
 import { fetchHawkerCenters, fetchLibraries, fetchMuseums, fetchParks, fetchSupermarkets, findPlacesInZone } from "@/maps/api";
-import { airports, golf_courses, mountains } from "@/maps/api/data";
+import { airports, golf_courses, mountains, universities, reservoirs } from "@/maps/api/data";
 
 import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
@@ -721,6 +721,12 @@ export const Map = ({ className }: { className?: string }) => {
                     case "mountains":
                         data = mountains as any;
                         break;
+                    case "reservoirs":
+                        data = reservoirs as any;
+                        break;
+                    case "universities":
+                        data = universities as any;
+                        break;
                     default:
                         data = await findPlacesInZone($vizPOIsCategory, `Finding ${$vizPOIsCategory}...`, "nwr", "center", [], 0, true);
                 }
@@ -736,6 +742,8 @@ export const Map = ({ className }: { className?: string }) => {
                     airports: "#000000",
                     golf_courses: "#2E7D32",
                     mountains: "#6B7280",
+                    reservoirs: "#0288D1",
+                    universities: "#9C27B0",
                 };
                 const color = colorMap[$vizPOIsCategory] ?? "#1976D2";
 

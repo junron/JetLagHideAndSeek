@@ -115,6 +115,7 @@ const apiLocationSchema = z.union([
     z.literal("golf_course"),
     z.literal("consulate"),
     z.literal("park"),
+    z.literal("university"),
     z.literal("rail-measure"),
     tentacleLocationsFifteen,
     tentacleLocationsOne,
@@ -195,6 +196,9 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
                 .literal("airport")
                 .describe("Commercial Airport In Zone Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
+            z.literal("university").describe("University Question"),
+            
+            z.literal("reservoir").describe("Reservoir Question"),
             // z
             //     .literal("major-city")
             //     .describe("Major City (1,000,000+ people) In Zone Question"),
@@ -319,6 +323,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
                 .describe("International Border Question"),
             z.literal("rail-measure-full").describe("MRT Station Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
+            z.literal("university").describe("University Question"),
             z.literal("electoral-boundary").describe("Electoral Boundary Question"),
             // z
             //     .literal("city")

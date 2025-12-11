@@ -22,7 +22,7 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
-import { airports, international_borders, mountains } from "@/maps/api/data";
+import { airports, international_borders, mountains, universities, reservoirs } from "@/maps/api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
@@ -184,6 +184,10 @@ export const determineMeasuringBoundary = async (
             return airports.features.map((f) => turf.point(f.geometry.coordinates));
         case "mountain":
             return mountains.features.map((f) => turf.point(f.geometry.coordinates));
+        case "reservoir":
+            return reservoirs.features.map((f) => turf.point(f.geometry.coordinates));
+        case "university":
+            return universities.features.map((f) => turf.point(f.geometry.coordinates));
         case "international_borders":
             return international_borders.features.map((f) => turf.point(f.geometry.coordinates));
         case "city":
@@ -335,6 +339,8 @@ export const hiderifyMeasuring = async (question: MeasuringQuestion) => {
             "golf_course",
             "consulate",
             "park",
+            "university",
+            "reservoir",
         ].includes(question.type)
     ) {
         const questionNearest = await nearestToQuestion(

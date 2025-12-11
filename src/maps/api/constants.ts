@@ -32,6 +32,7 @@ export const LOCATION_FIRST_TAG: {
     golf_course: "leisure",
     consulate: "diplomatic",
     park: "leisure",
+    university: "amenity",
 };
 
 export const BLANK_GEOJSON = {
