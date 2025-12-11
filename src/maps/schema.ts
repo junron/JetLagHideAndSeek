@@ -358,7 +358,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
                 .literal("park-full")
                 .describe("Park Question (Small+Medium Games)"),
         ])
-        .default("coastline"),
+        .default("airport"),
 });
 
 const hidingZoneMeasuringQuestionsSchema = baseMeasuringQuestionSchema.extend({

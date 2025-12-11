@@ -1,13 +1,18 @@
 import { useStore } from "@nanostores/react";
 import * as turf from "@turf/turf";
 import * as L from "leaflet";
-import { Edit3,LocateIcon } from "lucide-react";
+import { Edit3, LocateIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
 // import { cn } from "@/lib/utils"; // Not used here
-import { defaultUnit, leafletMapContext } from "@/lib/context";
+import {
+    defaultUnit,
+    leafletMapContext,
+    simulatedSeekerMode,
+} from "@/lib/context";
+import { getCurrentPosition } from "@/lib/utils";
 
 export const MeasureTool = () => {
     const map = useStore(leafletMapContext);
@@ -27,11 +32,16 @@ export const MeasureTool = () => {
     const clearAll = () => {
         if (!map) return;
         markersRef.current.forEach((m) => {
-            if (m) try { map.removeLayer(m); } catch (e) {}
+            if (m)
+                try {
+                    map.removeLayer(m);
+                } catch (e) {}
         });
         markersRef.current = [null, null];
         if (lineRef.current) {
-            try { map.removeLayer(lineRef.current); } catch (e) {}
+            try {
+                map.removeLayer(lineRef.current);
+            } catch (e) {}
             lineRef.current = null;
         }
         pointsRef.current = [null, null];
@@ -47,25 +57,34 @@ export const MeasureTool = () => {
         const [p0, p1] = pointsRef.current;
         // Remove existing line
         if (lineRef.current) {
-            try { map.removeLayer(lineRef.current); } catch (e) {}
+            try {
+                map.removeLayer(lineRef.current);
+            } catch (e) {}
             lineRef.current = null;
         }
         const markers = markersRef.current;
         if (p0 && !markers[0]) {
             markers[0] = L.marker(p0).addTo(map);
         } else if (!p0 && markers[0]) {
-            try { map.removeLayer(markers[0]!); } catch (e) {}
+            try {
+                map.removeLayer(markers[0]!);
+            } catch (e) {}
             markers[0] = null;
         }
         if (p1 && !markers[1]) {
             markers[1] = L.marker(p1).addTo(map);
         } else if (!p1 && markers[1]) {
-            try { map.removeLayer(markers[1]!); } catch (e) {}
+            try {
+                map.removeLayer(markers[1]!);
+            } catch (e) {}
             markers[1] = null;
         }
 
         if (p0 && p1) {
-            lineRef.current = L.polyline([p0, p1], { color: "#1976D2", weight: 3 }).addTo(map);
+            lineRef.current = L.polyline([p0, p1], {
+                color: "#1976D2",
+                weight: 3,
+            }).addTo(map);
         }
     };
 
@@ -96,25 +115,25 @@ export const MeasureTool = () => {
         if (idx === 0) setLoadingA(true);
         if (idx === 1) setLoadingB(true);
 
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
+        getCurrentPosition(simulatedSeekerMode.get())
+            .then((pos) => {
                 const lat = pos.coords.latitude;
                 const lng = pos.coords.longitude;
                 pointsRef.current[idx] = L.latLng(lat, lng);
                 recomputeLineAndMarkers();
                 setTick((t) => t + 1);
                 // ensure the map centers to the location
-                try { map.flyTo([lat, lng], Math.max(map.getZoom(), 14)); } catch (err) {}
+                try {
+                    map.flyTo([lat, lng], Math.max(map.getZoom(), 14));
+                } catch (err) {}
                 if (idx === 0) setLoadingA(false);
                 if (idx === 1) setLoadingB(false);
-            },
-            (err) => {
+            })
+            .catch((err) => {
                 toast.error("Unable to access your current location");
                 if (idx === 0) setLoadingA(false);
                 if (idx === 1) setLoadingB(false);
-            },
-            { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 },
-        );
+            });
     };
 
     const handleEditPoint = (idx: 0 | 1) => {
@@ -153,7 +172,11 @@ export const MeasureTool = () => {
                 return;
             }
             // Find first empty point
-            const idx = pointsRef.current[0] ? (pointsRef.current[1] ? -1 : 1) : 0;
+            const idx = pointsRef.current[0]
+                ? pointsRef.current[1]
+                    ? -1
+                    : 1
+                : 0;
             if (idx === -1) {
                 // both points exist, reset
                 clearAll();
@@ -205,16 +228,31 @@ export const MeasureTool = () => {
                 <div className="bg-popover p-2 rounded-md w-56 text-sm">
                     <div className="flex flex-row items-center justify-between gap-2">
                         <div>
-                                <div className="font-semibold">Point A</div>
-                                <div className="text-sm text-gray-300">
-                                    {loadingA ? "Loading..." : formatCoords(pointsRef.current[0])}
-                                </div>
+                            <div className="font-semibold">Point A</div>
+                            <div className="text-sm text-gray-300">
+                                {loadingA
+                                    ? "Loading..."
+                                    : formatCoords(pointsRef.current[0])}
+                            </div>
                         </div>
                         <div className="flex gap-2">
-                            <Button onClick={(e) => { e.stopPropagation(); suppressMapClickRef.current = true; setPointToCurrent(0); }} title="Set to current location">
+                            <Button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    suppressMapClickRef.current = true;
+                                    setPointToCurrent(0);
+                                }}
+                                title="Set to current location"
+                            >
                                 <LocateIcon />
                             </Button>
-                            <Button onClick={(e) => { e.stopPropagation(); handleEditPoint(0); }} title="Edit coordinates">
+                            <Button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleEditPoint(0);
+                                }}
+                                title="Edit coordinates"
+                            >
                                 <Edit3 />
                             </Button>
                         </div>
@@ -224,14 +262,29 @@ export const MeasureTool = () => {
                         <div>
                             <div className="font-semibold">Point B</div>
                             <div className="text-sm text-gray-300">
-                                {loadingB ? "Loading..." : formatCoords(pointsRef.current[1])}
+                                {loadingB
+                                    ? "Loading..."
+                                    : formatCoords(pointsRef.current[1])}
                             </div>
                         </div>
                         <div className="flex gap-2">
-                            <Button onClick={(e) => { e.stopPropagation(); suppressMapClickRef.current = true; setPointToCurrent(1); }} title="Set to current location">
+                            <Button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    suppressMapClickRef.current = true;
+                                    setPointToCurrent(1);
+                                }}
+                                title="Set to current location"
+                            >
                                 <LocateIcon />
                             </Button>
-                            <Button onClick={(e) => { e.stopPropagation(); handleEditPoint(1); }} title="Edit coordinates">
+                            <Button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleEditPoint(1);
+                                }}
+                                title="Edit coordinates"
+                            >
                                 <Edit3 />
                             </Button>
                         </div>

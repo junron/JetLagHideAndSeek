@@ -11,7 +11,8 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { SidebarMenuButton } from "@/components/ui/sidebar-l";
-import { addQuestion, isLoading, leafletMapContext } from "@/lib/context";
+import { addQuestion, followMe, isLoading, leafletMapContext, simulatedSeekerMode } from "@/lib/context";
+import { getCurrentPosition } from "@/lib/utils";
 
 export const AddQuestionDialog = ({
     children,
@@ -21,10 +22,22 @@ export const AddQuestionDialog = ({
     const $isLoading = useStore(isLoading);
     const [open, setOpen] = React.useState(false);
 
-    const runAddRadius = () => {
+    const getQuestionStartLocation = async () => {
+        if(followMe.get()) {
+            const position = await getCurrentPosition(simulatedSeekerMode.get());
+            if(position) {
+                return { lat: position.coords.latitude, lng: position.coords.longitude };
+            }
+        }
         const map = leafletMapContext.get();
-        if (!map) return false;
+        if (!map) return null;
         const center = map.getCenter();
+        return { lat: center.lat, lng: center.lng };
+    }
+
+    const runAddRadius = async () => {
+        const center = await getQuestionStartLocation();
+        if (!center) return false;
         addQuestion({
             id: "radius",
             data: { lat: center.lat, lng: center.lng },
@@ -32,12 +45,11 @@ export const AddQuestionDialog = ({
         return true;
     };
 
-    const runAddThermometer = () => {
-        const map = leafletMapContext.get();
-        if (!map) return false;
-        const center = map.getCenter();
-        const destination = turf.destination([center.lng, center.lat], 5, 90, {
-            units: "miles",
+    const runAddThermometer = async () => {
+        const center = await getQuestionStartLocation();
+        if (!center) return false;
+        const destination = turf.destination([center.lng, center.lat], 2.4, 90, {
+            units: "kilometers",
         });
 
         addQuestion({
@@ -53,10 +65,9 @@ export const AddQuestionDialog = ({
         return true;
     };
 
-    const runAddTentacles = () => {
-        const map = leafletMapContext.get();
-        if (!map) return false;
-        const center = map.getCenter();
+    const runAddTentacles = async () => {
+        const center = await getQuestionStartLocation();
+        if (!center) return false;
         addQuestion({
             id: "tentacles",
             // `tentacles` questions require a locationType — default to 'museum'
@@ -66,10 +77,9 @@ export const AddQuestionDialog = ({
         return true;
     };
 
-    const runAddMatching = () => {
-        const map = leafletMapContext.get();
-        if (!map) return false;
-        const center = map.getCenter();
+    const runAddMatching = async () => {
+        const center = await getQuestionStartLocation();
+        if (!center) return false;
         addQuestion({
             id: "matching",
             data: { lat: center.lat, lng: center.lng },
@@ -77,10 +87,9 @@ export const AddQuestionDialog = ({
         return true;
     };
 
-    const runAddMeasuring = () => {
-        const map = leafletMapContext.get();
-        if (!map) return false;
-        const center = map.getCenter();
+    const runAddMeasuring = async () => {
+        const center = await getQuestionStartLocation();
+        if (!center) return false;
         addQuestion({
             id: "measuring",
             data: { lat: center.lat, lng: center.lng },
