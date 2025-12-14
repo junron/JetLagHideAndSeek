@@ -58,6 +58,7 @@ export const QuestionCard = ({
     const $questions = useStore(questions);
     const $isLoading = useStore(isLoading);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
+    const [showDeleteAllConfirm, setShowDeleteAllConfirm] = useState(false);
 
     const toggleCollapse = () => {
         if (setCollapsed) {
@@ -215,7 +216,7 @@ export const QuestionCard = ({
                                         </AlertDialogCancel>
                                         <AlertDialogAction
                                             onClick={() => {
-                                                questions.set([]);
+                                                setShowDeleteAllConfirm(true);
                                             }}
                                         >
                                             Delete All Questions
@@ -233,6 +234,39 @@ export const QuestionCard = ({
                                             className="mb-2 sm:mb-0"
                                         >
                                             Delete Question
+                                        </AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+                            <AlertDialog
+                                open={showDeleteAllConfirm}
+                                onOpenChange={(open) =>
+                                    setShowDeleteAllConfirm(open)
+                                }
+                            >
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <AlertDialogTitle>
+                                            Confirm delete all questions
+                                        </AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                            This will permanently delete all
+                                            questions. This action cannot be
+                                            undone. Are you sure you want to
+                                            continue?
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                        <AlertDialogCancel>
+                                            Cancel
+                                        </AlertDialogCancel>
+                                        <AlertDialogAction
+                                            onClick={() => {
+                                                questions.set([]);
+                                                setShowDeleteAllConfirm(false);
+                                            }}
+                                        >
+                                            Confirm Delete All
                                         </AlertDialogAction>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
