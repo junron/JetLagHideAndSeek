@@ -318,17 +318,15 @@ export const Map = ({ className }: { className?: string }) => {
                 {$mapTileStyle === "satellite" && (
                     <>
                         <TileLayer
-                            attribution='Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+                            attribution='Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community'
                             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                            maxNativeZoom={19}
                             maxZoom={22}
                             minZoom={2}
                             noWrap
                         />
                         <TileLayer
-                            attribution='Labels &copy; <a href="https://www.esri.com/">Esri</a>'
-                            url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}"
-                            maxNativeZoom={19}
+                            attribution='Boundaries and labels &copy; Esri, HERE, Garmin, OpenStreetMap contributors, and the GIS user community'
+                            url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
                             maxZoom={22}
                             minZoom={2}
                             noWrap
