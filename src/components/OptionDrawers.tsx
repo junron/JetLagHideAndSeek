@@ -30,6 +30,7 @@ import {
         leafletMapContext,
         mapGeoJSON,
         mapGeoLocation,
+        mapTileStyle,
         pastebinApiKey,
         planningModeEnabled,
         polyGeoJSON,
@@ -84,6 +85,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
     const $alwaysUsePastebin = useStore(alwaysUsePastebin);
     const $followMe = useStore(followMe);
     const $customInitPref = useStore(customInitPreference);
+    const $mapTileStyle = useStore(mapTileStyle);
     // Viz POIs is always visible; no option toggle
     const [isOptionsOpen, setOptionsOpen] = useState(false);
 
@@ -384,6 +386,21 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                             <UnitSelect
                                 unit={$defaultUnit}
                                 onChange={defaultUnit.set}
+                            />
+                            <Separator className="bg-slate-300 w-[280px]" />
+                            <Label>Base map</Label>
+                            <Select
+                                trigger="Base map"
+                                options={{
+                                    street: "Street",
+                                    satellite: "Satellite",
+                                }}
+                                value={$mapTileStyle}
+                                onValueChange={(value) =>
+                                    mapTileStyle.set(
+                                        value as "street" | "satellite",
+                                    )
+                                }
                             />
                             <Separator className="bg-slate-300 w-[280px]" />
                             <Label>New Custom Question Defaults</Label>

@@ -21,6 +21,7 @@ import {
     leafletMapContext,
     mapGeoJSON,
     mapGeoLocation,
+    mapTileStyle,
     planningModeEnabled,
     polyGeoJSON,
     questionFinishedMapData,
@@ -55,6 +56,7 @@ export const Map = ({ className }: { className?: string }) => {
     const $followMe = useStore(followMe);
     const $simulatedSeekerMode = useStore(simulatedSeekerMode);
     const $vizPOIsCategory = useStore(vizPOIsCategory);
+    const $mapTileStyle = useStore(mapTileStyle);
     // VizPOIs is rendered next to Share from OptionDrawers
     const map = useStore(leafletMapContext);
 
@@ -313,7 +315,28 @@ export const Map = ({ className }: { className?: string }) => {
                     },
                 ]}
             >
-                {!($highlightTrainLines && $thunderforestApiKey) && (
+                {$mapTileStyle === "satellite" && (
+                    <>
+                        <TileLayer
+                            attribution='Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+                            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                            maxNativeZoom={19}
+                            maxZoom={22}
+                            minZoom={2}
+                            noWrap
+                        />
+                        <TileLayer
+                            attribution='Labels &copy; <a href="https://www.esri.com/">Esri</a>'
+                            url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}"
+                            maxNativeZoom={19}
+                            maxZoom={22}
+                            minZoom={2}
+                            noWrap
+                        />
+                    </>
+                )}
+                {$mapTileStyle === "street" &&
+                    !($highlightTrainLines && $thunderforestApiKey) && (
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors; &copy; <a href="https://carto.com/attributions">CARTO</a>; &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>; Powered by Esri and Turf.js'
                         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -323,7 +346,9 @@ export const Map = ({ className }: { className?: string }) => {
                         noWrap
                     />
                 )}
-                {$highlightTrainLines && $thunderforestApiKey && (
+                {$mapTileStyle === "street" &&
+                    $highlightTrainLines &&
+                    $thunderforestApiKey && (
                     <TileLayer
                         url={`https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=${$thunderforestApiKey}`}
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors; &copy; <a href="https://carto.com/attributions">CARTO</a>; &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>; Powered by Esri and Turf.js'
@@ -355,7 +380,7 @@ export const Map = ({ className }: { className?: string }) => {
                 />
             </MapContainer>
         ),
-        [map, $highlightTrainLines, $thunderforestApiKey, $simulatedSeekerMode],
+        [map, $highlightTrainLines, $thunderforestApiKey, $simulatedSeekerMode, $mapTileStyle],
     );
 
     useEffect(() => {
