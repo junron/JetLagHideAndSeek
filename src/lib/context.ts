@@ -81,6 +81,15 @@ export const questionModified = (..._: any[]) => {
 export const leafletMapContext = atom<Map | null>(null);
 
 export const defaultUnit = persistentAtom<Units>("defaultUnit", "kilometers");
+export type MapTileStyle = "street" | "satellite";
+export const mapTileStyle = persistentAtom<MapTileStyle>(
+    "mapTileStyle",
+    "street",
+    {
+        encode: (value) => value,
+        decode: (value) => (value === "satellite" ? "satellite" : "street"),
+    },
+);
 export const highlightTrainLines = persistentAtom<boolean>(
     "highlightTrainLines",
     true,
