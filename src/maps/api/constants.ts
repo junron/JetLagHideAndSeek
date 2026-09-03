@@ -1,12 +1,7 @@
 import type { APILocations } from "@/maps/schema";
 
-export const OVERPASS_API =
-    "https://overpass-api.de/api/interpreter";
+export const OVERPASS_API = "https://overpass-api.de/api/interpreter";
 export const GEOCODER_API = "https://photon.komoot.io/api/";
-export const PASTEBIN_API_POST_URL =
-    "https://cors-anywhere.com/https://pastebin.com/api/api_post.php";
-export const PASTEBIN_API_RAW_URL =
-    "https://cors-anywhere.com/https://pastebin.com/raw/";
 
 export const ICON_COLORS = {
     black: "#3D3D3D",
@@ -57,4 +52,5 @@ export const BLANK_GEOJSON = {
     ],
 };
 
-export const ELECTORAL_BOUNDARY_GEOJSON = "/ElectoralBoundary2025GEOJSON.geojson";
+export const ELECTORAL_BOUNDARY_GEOJSON =
+    "/ElectoralBoundary2025GEOJSON.geojson";

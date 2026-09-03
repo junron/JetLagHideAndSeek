@@ -573,8 +573,6 @@ const tutorialSteps: TutorialStep[] = [
                 in URL
                 <br />• <strong>Compressed Links:</strong> Smaller URLs for
                 complex games
-                <br />• <strong>Pastebin Integration:</strong> For very large
-                game states
                 <br />
                 <br />
                 <strong>What Gets Shared:</strong>
@@ -633,9 +631,8 @@ const tutorialSteps: TutorialStep[] = [
                 for manual zoom control.
                 <br />• <strong>Animate Map Movements:</strong> Smooth
                 transitions between map positions vs instant jumps.
-                <br />• <strong>Highlight Train Lines:</strong> Visual emphasis
-                on railway networks. Requires Thunderforest API key but provides
-                crucial visual context for train-related questions.
+                <br />• Train lines are always highlighted to provide visual
+                context for train-related questions.
                 <br />• <strong>Follow Me:</strong> GPS tracking for mobile use.
                 Adds a marker that follows your location in real-time.
                 <br />
@@ -663,17 +660,6 @@ const tutorialSteps: TutorialStep[] = [
                     all potential outcomes of a question, better improving your
                     strategy.
                 </strong>
-                <br />
-                <br />
-                <strong>API Integration:</strong>
-                <br />• <strong>Thunderforest API Key:</strong> Enhanced map
-                tiles
-                <br />• <strong>Pastebin API Key:</strong> Improved sharing for
-                large games
-                <br />• <strong>Always Use Pastebin:</strong> Force external
-                hosting for all shares. This is also useful if you want to
-                generate a QR code containing the link, as this makes the QR
-                code much less convoluted.
             </>
         ),
         targetSelector: '[data-tutorial-id="option-questions-button"]',
@@ -700,7 +686,7 @@ const tutorialSteps: TutorialStep[] = [
                 <br />• Official government boundaries imported from
                 authoritative sources
                 <br />• High accuracy for major administrative divisions
-                <br />• Simplified to ±100 meters for browser performance
+                <br />• Simplified to ±1 meter for browser performance
                 <br />• Some disputed or changing boundaries may be outdated
                 <br />
                 <br />

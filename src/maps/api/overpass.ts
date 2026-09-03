@@ -8,11 +8,22 @@ import {
     mapGeoLocation,
 } from "@/lib/context";
 import { getLineNamesForStationName, loadSgmrt } from "@/maps/api/sgmrt";
-import { safeUnion } from "@/maps/geo-utils";
+import { ONE_METER_IN_DEGREES, safeUnion } from "@/maps/geo-utils";
 
 import { cacheFetch } from "./cache";
-import { ELECTORAL_BOUNDARY_GEOJSON,LOCATION_FIRST_TAG, OVERPASS_API } from "./constants";
-import { airports, golf_courses, international_borders, mountains, universities, reservoirs } from "./data";
+import {
+    ELECTORAL_BOUNDARY_GEOJSON,
+    LOCATION_FIRST_TAG,
+    OVERPASS_API,
+} from "./constants";
+import {
+    airports,
+    golf_courses,
+    international_borders,
+    mountains,
+    reservoirs,
+    universities,
+} from "./data";
 import type {
     EncompassingTentacleQuestionSchema,
     HomeGameMatchingQuestions,
@@ -576,7 +587,7 @@ export const determineMapBoundaries = async () => {
 
     if (turf.coordAll(mapGeoData).length > 10000) {
         turf.simplify(mapGeoData, {
-            tolerance: 0.0005,
+            tolerance: ONE_METER_IN_DEGREES,
             highQuality: true,
             mutate: true,
         });

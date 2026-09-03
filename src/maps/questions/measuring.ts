@@ -22,13 +22,14 @@ import {
     prettifyLocation,
     QuestionSpecificLocation,
 } from "@/maps/api";
-import { airports, international_borders, mountains, universities, reservoirs } from "@/maps/api/data";
+import { airports, international_borders, mountains, reservoirs,universities } from "@/maps/api/data";
 import {
     arcBufferToPoint,
     connectToSeparateLines,
     groupObjects,
     holedMask,
     modifyMapData,
+    ONE_METER_IN_DEGREES,
 } from "@/maps/geo-utils";
 import type {
     APILocations,
@@ -55,7 +56,7 @@ const highSpeedBase = _.memoize(
         return turf.combine(
             turf.buffer(
                 turf.simplify(turf.featureCollection(neighbored), {
-                    tolerance: 0.001,
+                    tolerance: ONE_METER_IN_DEGREES,
                 }),
                 0.001,
             )!,

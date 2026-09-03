@@ -21,19 +21,27 @@ export const ThermometerQuestionComponent = ({
     data,
     questionKey,
     sub,
+    displayIndex,
     className,
+    resultEditable,
+    status,
+    footer,
 }: {
     data: ThermometerQuestion;
     questionKey: number;
     sub?: string;
+    displayIndex?: number;
     className?: string;
+    resultEditable?: boolean;
+    status?: "pending" | "answered";
+    footer?: React.ReactNode;
 }) => {
     useStore(triggerLocalRefresh);
     const $hiderMode = useStore(hiderMode);
     const $questions = useStore(questions);
     const $isLoading = useStore(isLoading);
-    const label = `Thermometer
-    ${
+    const label = `Thermometer ${
+        displayIndex ??
         $questions
             .filter((q) => q.id === "thermometer")
             .map((q) => q.key)
@@ -52,12 +60,14 @@ export const ThermometerQuestionComponent = ({
             }}
             locked={!data.drag}
             setLocked={(locked) => questionModified((data.drag = !locked))}
+            status={status}
+            footer={footer}
         >
             <LatitudeLongitude
                 latitude={data.latA}
                 longitude={data.lngA}
                 label="Start"
-                colorName={data.colorA}
+                colorName="green"
                 onChange={(lat, lng) => {
                     if (lat !== null) {
                         data.latA = lat;
@@ -73,7 +83,7 @@ export const ThermometerQuestionComponent = ({
                 latitude={data.latB}
                 longitude={data.lngB}
                 label="End"
-                colorName={data.colorB}
+                colorName="red"
                 onChange={(lat, lng) => {
                     if (lat !== null) {
                         data.latB = lat;
@@ -100,21 +110,28 @@ export const ThermometerQuestionComponent = ({
                             const a = turf.point([data.lngA, data.latA]);
                             const b = turf.point([data.lngB, data.latB]);
                             if (defaultUnit.get() === "miles") {
-                                const miles = turf.distance(a, b, { units: "miles" });
+                                const miles = turf.distance(a, b, {
+                                    units: "miles",
+                                });
                                 return `${miles.toFixed(2)} miles`;
                             }
                             if (defaultUnit.get() === "meters") {
-                                const km = turf.distance(a, b, { units: "kilometers" });
+                                const km = turf.distance(a, b, {
+                                    units: "kilometers",
+                                });
                                 const meters = Math.round(km * 1000);
-                                if (meters >= 1000) return `${(meters / 1000).toFixed(2)} km`;
+                                if (meters >= 1000)
+                                    return `${(meters / 1000).toFixed(2)} km`;
                                 return `${meters.toFixed(0)} m`;
                             }
                             // default to kilometers
-                            const km = turf.distance(a, b, { units: "kilometers" });
+                            const km = turf.distance(a, b, {
+                                units: "kilometers",
+                            });
                             if (km >= 1) return `${km.toFixed(2)} km`;
                             const meters = Math.round(km * 1000);
                             return `${meters.toFixed(0)} m`;
-                        } catch (e) {
+                        } catch {
                             return "";
                         }
                     })()}
@@ -132,11 +149,17 @@ export const ThermometerQuestionComponent = ({
                 <ToggleGroup
                     className="grow"
                     type="single"
+                    selectedOutline
                     value={data.warmer ? "warmer" : "colder"}
                     onValueChange={(value: "warmer" | "colder") =>
                         questionModified((data.warmer = value === "warmer"))
                     }
-                    disabled={!!$hiderMode || !data.drag || $isLoading}>
+                    disabled={
+                        !!$hiderMode ||
+                        (!data.drag && !resultEditable) ||
+                        $isLoading
+                    }
+                >
                     <ToggleGroupItem color="red" value="colder">
                         Colder
                     </ToggleGroupItem>

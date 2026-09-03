@@ -13,6 +13,7 @@ import { QuestionSidebar } from "@/components/QuestionSidebar";
 import { ZoneSidebar } from "@/components/ZoneSidebar";
 import { OptionDrawers } from "@/components/OptionDrawers";
 import { TutorialDialog } from "@/components/TutorialDialog";
+import { MultiplayerPanel } from "@/components/game/MultiplayerPanel";
 ---
 
 <Layout className="bg-jetlag">
@@ -42,6 +43,7 @@ import { TutorialDialog } from "@/components/TutorialDialog";
                         >
                             <OptionDrawers client:load />
                         </div>
+                        <MultiplayerPanel client:only="react" />
                         <Map
                             className="w-full group-[.fullscreen]:w-full group-[.fullscreen]:h-full"
                             client:only

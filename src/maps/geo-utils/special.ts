@@ -1,3 +1,5 @@
+import * as turf from "@turf/turf";
+
 export const lngLatToText = (coordinates: [number, number]) => {
     /**
      * @param coordinates - Should be in longitude, latitude order
@@ -60,18 +62,18 @@ export const groupObjects = (objects: any[]): any[][] => {
     return Object.values(groups);
 };
 
-const naiveDistance = (
+const distanceInMeters = (
     point1: [number, number],
     point2: [number, number],
 ): number => {
-    const dx: number = point1[0] - point2[0];
-    const dy: number = point1[1] - point2[1];
-    return Math.sqrt(dx * dx + dy * dy);
+    return turf.distance(turf.point(point1), turf.point(point2), {
+        units: "meters",
+    });
 };
 
 export const connectToSeparateLines = (
     lines: [number, number][][],
-    maxJumpDistance: number = 0.01,
+    maxJumpDistanceMeters: number = 1,
 ): [number, number][][] => {
     if (lines.length <= 1) return lines.length === 1 ? [lines[0]] : [];
 
@@ -90,14 +92,14 @@ export const connectToSeparateLines = (
         let shouldReverse: boolean = false;
 
         remainingLines.forEach((line, index) => {
-            const distToStart: number = naiveDistance(lastPoint, line[0]);
+            const distToStart: number = distanceInMeters(lastPoint, line[0]);
             if (distToStart < minDistance) {
                 minDistance = distToStart;
                 bestIndex = index;
                 shouldReverse = false;
             }
 
-            const distToEnd: number = naiveDistance(
+            const distToEnd: number = distanceInMeters(
                 lastPoint,
                 line[line.length - 1],
             );
@@ -117,12 +119,12 @@ export const connectToSeparateLines = (
             nextLine = nextLine.slice().reverse();
         }
 
-        if (minDistance > maxJumpDistance) {
+        if (minDistance > maxJumpDistanceMeters) {
             result.push(currentLine);
             currentLine = [...nextLine];
         } else {
             const firstPointOfNextLine: [number, number] = nextLine[0];
-            if (naiveDistance(lastPoint, firstPointOfNextLine) < 0.0001) {
+            if (distanceInMeters(lastPoint, firstPointOfNextLine) <= 1) {
                 currentLine.push(...nextLine.slice(1));
             } else {
                 currentLine.push(...nextLine);

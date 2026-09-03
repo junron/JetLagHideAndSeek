@@ -25,19 +25,27 @@ export const RadiusQuestionComponent = ({
     data,
     questionKey,
     sub,
+    displayIndex,
     className,
+    resultEditable,
+    status,
+    footer,
 }: {
     data: RadiusQuestion;
     questionKey: number;
     sub?: string;
+    displayIndex?: number;
     className?: string;
+    resultEditable?: boolean;
+    status?: "pending" | "answered";
+    footer?: React.ReactNode;
 }) => {
     useStore(triggerLocalRefresh);
     const $hiderMode = useStore(hiderMode);
     const $questions = useStore(questions);
     const $isLoading = useStore(isLoading);
-    const label = `Radius
-    ${
+    const label = `Radius ${
+        displayIndex ??
         $questions
             .filter((q) => q.id === "radius")
             .map((q) => q.key)
@@ -56,6 +64,8 @@ export const RadiusQuestionComponent = ({
             }}
             locked={!data.drag}
             setLocked={(locked) => questionModified((data.drag = !locked))}
+            status={status}
+            footer={footer}
         >
             <SidebarMenuItem>
                 <div className={cn(MENU_ITEM_CLASSNAME, "gap-2 flex flex-row")}>
@@ -106,11 +116,16 @@ export const RadiusQuestionComponent = ({
                 <ToggleGroup
                     className="grow"
                     type="single"
+                    selectedOutline
                     value={data.within ? "inside" : "outside"}
                     onValueChange={(value: "inside" | "outside") =>
                         questionModified((data.within = value === "inside"))
                     }
-                    disabled={!!$hiderMode || !data.drag || $isLoading}
+                    disabled={
+                        !!$hiderMode ||
+                        (!data.drag && !resultEditable) ||
+                        $isLoading
+                    }
                 >
                     <ToggleGroupItem value="outside">Outside</ToggleGroupItem>
                     <ToggleGroupItem value="inside">Inside</ToggleGroupItem>

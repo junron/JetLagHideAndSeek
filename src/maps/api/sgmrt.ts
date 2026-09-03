@@ -66,55 +66,61 @@ export async function loadSgmrt() {
         (f: any) => f.geometry && (f.geometry.type === "LineString" || f.geometry.type === "MultiLineString"),
     );
 
-    // Build lines array and map stations to lines by nearest coordinate matching
-    for (const line of lineFeatures as any) {
-        const lineName = line.properties?.name || line.properties?.network || "";
-            // Each line: find nearest station if within tolerance using continuous line distance
-        const coords: number[][] = line.geometry.type === 'MultiLineString' ? (line.geometry.coordinates as number[][][]).flat() : (line.geometry.coordinates as number[][]);
-        // copy with flattened coords so downstream logic works consistently
-        const storedLine = { ...line, geometry: { ...line.geometry, coordinates: coords } } as any;
-        lines.push(storedLine);
+    const codeToLineName: Record<string, RegExp> = {
+        NS: /(north.*south|north[-\s]?south)/i,
+        EW: /(east.*west|east[-\s]?west)/i,
+        CC: /\bcircle\b/i,
+        DT: /\bdowntown\b/i,
+        NE: /(north.*east|northeast)/i,
+        TE: /(thomson.*east.*coast|thomson[-\s]?east.*coast|thomson)/i,
+        CR: /(cross.*island|cross[-\s]?island)/i,
+        CE: /circle|extension|ce/i,
+    };
 
-        for (const s of stationFeatures as any[]) {
-            const sp = turf.point(s.geometry.coordinates as any);
-            const lineFeature = turf.lineString(coords);
-            const d = turf.pointToLineDistance(sp, lineFeature, { units: "kilometers" });
-            let found = false;
-            // tolerance ~ 0.5 km (500 m) — increase if needed
-            if (d <= 0.5) {
-                const nname = normalizeName(s.properties["name:en"] || s.properties.name);
-                if (!stationToLines.has(nname)) {
-                    stationToLines.set(nname, new Set());
-                }
-                stationToLines.get(nname)!.add(lineName);
-                found = true;
+    // Build lines and map stations by their authoritative line codes. A
+    // one-meter spatial fallback supports datasets without station codes.
+    for (const line of lineFeatures as any) {
+        const lineName =
+            line.properties?.name || line.properties?.network || "";
+        const coords: number[][] =
+            line.geometry.type === "MultiLineString"
+                ? (line.geometry.coordinates as number[][][]).flat()
+                : (line.geometry.coordinates as number[][]);
+        const storedLine = {
+            ...line,
+            geometry: { ...line.geometry, coordinates: coords },
+        } as any;
+        lines.push(storedLine);
+        const lineFeature = turf.lineString(coords);
+
+        for (const station of stationFeatures as any[]) {
+            const stationName = normalizeName(
+                station.properties["name:en"] || station.properties.name,
+            );
+            const stationLines = stationToLines.get(stationName)!;
+            const stationCodes = String(
+                station.properties.station_codes ?? "",
+            )
+                .split("-")
+                .filter(Boolean);
+            const codeMatches = stationCodes.some((code) => {
+                const prefix = code.replace(/[0-9]/g, "").toUpperCase();
+                return codeToLineName[prefix]?.test(lineName) ?? false;
+            });
+
+            if (codeMatches) {
+                stationLines.add(lineName);
+                continue;
             }
-            // fallback: if not found, use station_codes -> map code prefix to line via known abbreviations
-            if (!found && s.properties.station_codes) {
-                const codeToRegex: Record<string, RegExp> = {
-                    NS: /(north.*south|north[-\s]?south)/i,
-                    EW: /(east.*west|east[-\s]?west)/i,
-                    CC: /\bcircle\b/i,
-                    DT: /\bdowntown\b/i,
-                    NE: /(north.*east|northeast)/i,
-                    TE: /(thomson.*east.*coast|thomson[-\s]?east.*coast|thomson)/i,
-                    CR: /(cross.*island|cross[-\s]?island)/i,
-                    CE: /circle|extension|ce/i,
-                };
-                const codes = s.properties.station_codes.split("-").filter(Boolean);
-                for (const code of codes) {
-                    const prefix = code.replace(/[0-9]/g, "").toUpperCase();
-                    const matcher = codeToRegex[prefix as keyof typeof codeToRegex];
-                    if (!matcher) continue;
-                    if (matcher.test(lineName || "")) {
-                        const nname = normalizeName(s.properties["name:en"] || s.properties.name);
-                        if (!stationToLines.has(nname)) {
-                            stationToLines.set(nname, new Set());
-                        }
-                        stationToLines.get(nname)!.add(lineName);
-                        break;
-                    }
-                }
+
+            const stationPoint = turf.point(station.geometry.coordinates);
+            const distanceMeters = turf.pointToLineDistance(
+                stationPoint,
+                lineFeature,
+                { units: "meters" },
+            );
+            if (distanceMeters <= 1) {
+                stationLines.add(lineName);
             }
         }
     }
@@ -241,23 +247,35 @@ export async function computeShortestPathBetweenStationNames(
     const lineStationsByLine = new Map<string, LineStationMatch[]>();
 
     for (const line of data.lines as any[]) {
-        const lineName = line.properties?.name || line.properties?.network || "";
+        const lineName =
+            line.properties?.name || line.properties?.network || "";
         const coords: number[][] = line.geometry.coordinates || [];
         const matches: LineStationMatch[] = [];
-        // Find nearest stations along the line coords
-        coords.forEach((c, idx) => {
-            // For each coordinate, test nearby stations
-            for (const [sname, feature] of data.stationsByName.entries()) {
-                const sp = turf.point((feature.geometry as any).coordinates as any);
-                const d = turf.distance(sp, turf.point(c), { units: "kilometers" });
-                if (d <= 0.5) {
-                    // add match if not already present for this station
-                    if (!matches.some((m) => m.stationName === sname)) {
-                        matches.push({ stationName: sname, coordIndex: idx });
-                    }
+
+        for (const [stationName, feature] of data.stationsByName.entries()) {
+            if (!data.stationToLines.get(stationName)?.has(lineName)) continue;
+
+            const stationPoint = turf.point(
+                (feature.geometry as any).coordinates,
+            );
+            let nearestCoordinateIndex = 0;
+            let nearestCoordinateDistance = Number.POSITIVE_INFINITY;
+            coords.forEach((coordinate, index) => {
+                const distance = turf.distance(
+                    stationPoint,
+                    turf.point(coordinate),
+                    { units: "meters" },
+                );
+                if (distance < nearestCoordinateDistance) {
+                    nearestCoordinateDistance = distance;
+                    nearestCoordinateIndex = index;
                 }
-            }
-        });
+            });
+            matches.push({
+                stationName,
+                coordIndex: nearestCoordinateIndex,
+            });
+        }
 
         // Sort matches by index along the line
         matches.sort((a, b) => a.coordIndex - b.coordIndex);

@@ -1,0 +1,20 @@
+ARG NODE_IMAGE=node:22-bookworm-slim@sha256:6c74791e557ce11fc957704f6d4fe134a7bc8d6f5ca4403205b2966bd488f6b3
+FROM ${NODE_IMAGE} AS build
+WORKDIR /app
+RUN npm install -g pnpm@10.34.5
+COPY package.json pnpm-lock.yaml tsconfig.json ./
+COPY server ./server
+RUN pnpm install --frozen-lockfile
+RUN pnpm build:server
+RUN pnpm prune --prod
+
+FROM ${NODE_IMAGE}
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist-server ./dist-server
+VOLUME ["/data"]
+EXPOSE 3210
+USER node
+CMD ["sh", "-c", "umask 077 && exec node --experimental-sqlite dist-server/server/src/index.js"]

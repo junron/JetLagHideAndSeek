@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../dist-server",
+        "rootDir": "..",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2023",
+        "types": ["node"],
+        "allowImportingTsExtensions": false,
+        "noEmit": false
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["tests"]
+}

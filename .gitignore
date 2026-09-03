@@ -1,8 +1,13 @@
 # build output
 dist/
+dist-server/
+data/
+.hermes/
 
 # generated types
 .astro/
+__pycache__/
+*.py[cod]
 
 # dependencies
 node_modules/

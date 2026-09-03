@@ -30,7 +30,7 @@ import type { Question, Questions } from "./schema";
 export * from "./geo-utils";
 
 export const hiderifyQuestion = async (question: Question) => {
-    if (question.data.drag) {
+    if ((question.data as { drag?: boolean }).drag) {
         switch (question.id) {
             case "radius":
                 question.data = hiderifyRadius(question.data);
@@ -57,7 +57,7 @@ export const determinePlanningPolygon = async (
     question: Question,
     planningModeEnabled: boolean,
 ) => {
-    if (planningModeEnabled && question.data.drag) {
+    if (planningModeEnabled && (question.data as { drag?: boolean }).drag) {
         switch (question.id) {
             case "radius":
                 return radiusPlanningPolygon(question.data);
@@ -122,7 +122,7 @@ export async function applyQuestionsToMapGeoData(
                 planningModeCallback(planningPolygon, question);
             }
         }
-        if (planningModeEnabled && question.data.drag) {
+        if (planningModeEnabled && (question.data as { drag?: boolean }).drag) {
             continue;
         }
 

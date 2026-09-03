@@ -1,6 +1,6 @@
 # Jet Lag The Game: Hide and Seek Map Generator
 
-  > Since you're on GitHub, I'm assuming that you're a developer. I'm currently working on evolving this project with some new features, and am looking for other developers who would be willing to work on this open source project. If you're interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSeuuAhIqx6K9dSxLbFTWOxNf_tMjQoSuBgxyNyWAV_btYtj8g/viewform?usp=header). Thank you!
+> Since you're on GitHub, I'm assuming that you're a developer. I'm currently working on evolving this project with some new features, and am looking for other developers who would be willing to work on this open source project. If you're interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSeuuAhIqx6K9dSxLbFTWOxNf_tMjQoSuBgxyNyWAV_btYtj8g/viewform?usp=header). Thank you!
 
 A tool to trivially generate interactive maps for viewing hiding possibilities in Jet Lag The Game's Hide and Seek. So far, the following questions have been implemented (see https://github.com/taibeled/JetLagHideAndSeek/issues/9 for more):
 
@@ -93,6 +93,47 @@ pnpm dev
 ```
 
 After making any modifications, please run `pnpm lint` to have your code automatically formatted and errors spotted.
+
+## Multiplayer Backend
+
+The map includes an optional multiplayer panel for one hider and multiple seekers. Games use six-character codes. Seekers explicitly send map questions; the hider calculates each geographic answer locally and then explicitly sends the final answer. Questions and sent answers are persisted in SQLite and synchronized with Socket.IO.
+
+Question deadlines follow the Singapore rules documentation: ordinary questions are due five minutes after the server accepts them, while photo questions are due after ten minutes. The backend persists the absolute deadline. Clients display the countdown and overdue state; late answers remain recordable and carry no gameplay penalty.
+
+Photo questions use a dedicated multipart answer endpoint. JPEG, PNG, and static WebP inputs are limited to 10 MiB and 40 megapixels, resized within 2560×2560, auto-oriented, flattened, stripped of embedded metadata, and normalized to JPEG before storage. SQLite contains only bounded metadata and the generated photo reference; sanitized files live under `/data/uploads`. Back up and restore `game.db` and `uploads/` together. The reverse proxy must allow multipart overhead (the supplied Nginx configuration uses `client_max_body_size 11m`).
+
+Run the frontend and backend locally in separate terminals:
+
+```bash
+pnpm dev
+DATABASE_PATH=./data/game.db pnpm dev:server
+```
+
+Production Web Push requires a stable VAPID key pair:
+
+```bash
+pnpm exec web-push generate-vapid-keys --json
+```
+
+Set `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `VAPID_SUBJECT` in the backend environment. The private key and SQLite database must not be committed. Browser notification permission is requested only after the participant clicks **Enable notifications**.
+
+The backend serves `/api/` and `/socket.io/` and should bind to loopback or a private container network. It intentionally has no application-level authentication; production deployments must protect `/`, its static/PWA assets, `/api/`, and `/socket.io/` at the reverse proxy. Participants sharing that outer credential are trusted: player UUIDs are identifiers rather than credentials, so this mode does not prevent one participant from impersonating another. Add participant authentication before using it with untrusted players.
+
+`compose.yaml` runs the backend as an unprivileged user with persistent `/data` storage and publishes it only on `127.0.0.1:3210`. Keep one backend replica per SQLite database; the durable push outbox is coordinated within one process and is not a multi-replica queue.
+
+The production deployment is rooted at `https://map.jro.sg/`. Use `pnpm build`; the manifest, service worker, multiplayer QR links, and notification links all use `/`.
+
+## Production Deployment
+
+For the complete new-system procedure—including backend environment setup, Web Push keys, Docker Compose, TLS, Nginx Basic Auth, frontend publishing, verification, updates, and backups—see [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
+Useful checks:
+
+```bash
+pnpm vitest run --maxWorkers=1 --minWorkers=1
+pnpm build
+pnpm build:server
+```
 
 ## Contributors
 

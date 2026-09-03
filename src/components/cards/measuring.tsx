@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/sidebar-l";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
-    customInitPreference,
     displayHidingZones,
     drawingQuestionKey,
     hiderMode,
@@ -37,12 +36,20 @@ export const MeasuringQuestionComponent = ({
     data,
     questionKey,
     sub,
+    displayIndex,
     className,
+    resultEditable,
+    status,
+    footer,
 }: {
     data: MeasuringQuestion;
     questionKey: number;
     sub?: string;
+    displayIndex?: number;
     className?: string;
+    resultEditable?: boolean;
+    status?: "pending" | "answered";
+    footer?: React.ReactNode;
 }) => {
     useStore(triggerLocalRefresh);
     const $hiderMode = useStore(hiderMode);
@@ -50,10 +57,10 @@ export const MeasuringQuestionComponent = ({
     const $displayHidingZones = useStore(displayHidingZones);
     const $drawingQuestionKey = useStore(drawingQuestionKey);
     const $isLoading = useStore(isLoading);
-    const $customInitPref = useStore(customInitPreference);
+
     const [customDialogOpen, setCustomDialogOpen] = React.useState(false);
-    const label = `Measuring
-    ${
+    const label = `Measuring ${
+        displayIndex ??
         $questions
             .filter((q) => q.id === "measuring")
             .map((q) => q.key)
@@ -135,6 +142,8 @@ export const MeasuringQuestionComponent = ({
             }}
             locked={!data.drag}
             setLocked={(locked) => questionModified((data.drag = !locked))}
+            status={status}
+            footer={footer}
         >
             <CustomInitDialog
                 open={customDialogOpen}
@@ -217,36 +226,9 @@ export const MeasuringQuestionComponent = ({
                             >,
                         )}
                     value={data.type}
-                    onValueChange={async (value) => {
+                    onValueChange={(value) => {
                         if (value === "custom-measure") {
-                            if ($customInitPref === "ask") {
-                                setCustomDialogOpen(true);
-                                return;
-                            }
-                            if ($customInitPref === "blank") {
-                                if (!(data as any).geo) {
-                                    (data as any).geo = {
-                                        type: "FeatureCollection",
-                                        features: [],
-                                    };
-                                } else {
-                                    (data as any).geo.features = [];
-                                }
-                            } else if ($customInitPref === "prefill") {
-                                const boundary =
-                                    await determineMeasuringBoundary(data);
-                                if (!(data as any).geo) {
-                                    (data as any).geo = {
-                                        type: "FeatureCollection",
-                                        features: [],
-                                    };
-                                }
-                                (data as any).geo.features = boundary
-                                    ? boundary
-                                    : [];
-                            }
-                            data.type = value;
-                            questionModified();
+                            setCustomDialogOpen(true);
                             return;
                         }
                         data.type = value;
@@ -283,13 +265,18 @@ export const MeasuringQuestionComponent = ({
                 <ToggleGroup
                     className="grow"
                     type="single"
+                    selectedOutline
                     value={data.hiderCloser ? "closer" : "further"}
                     onValueChange={(value: "closer" | "further") =>
                         questionModified(
                             (data.hiderCloser = value === "closer"),
                         )
                     }
-                    disabled={!!$hiderMode || !data.drag || $isLoading}
+                    disabled={
+                        !!$hiderMode ||
+                        (!data.drag && !resultEditable) ||
+                        $isLoading
+                    }
                 >
                     <ToggleGroupItem value="further">
                         Hider Further

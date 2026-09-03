@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { PHOTO_SUBJECT_IDS } from "@/game/photoQuestions";
 import { defaultUnit } from "@/lib/context";
 
 import { ICON_COLORS } from "./api/constants";
@@ -61,8 +62,8 @@ const thermometerQuestionSchema = z.object({
         .min(-180, "Longitude must not overlap with the antemeridian")
         .max(180, "Longitude must not overlap with the antemeridian"),
     warmer: z.boolean().default(true),
-    colorA: iconColorSchema.default(randomColor),
-    colorB: iconColorSchema.default(randomColor),
+    colorA: iconColorSchema.default("green"),
+    colorB: iconColorSchema.default("red"),
     /** Note that drag is now synonymous with unlocked */
     drag: z.boolean().default(true),
     collapsed: z.boolean().default(false),
@@ -194,10 +195,10 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
         .union([
             z
                 .literal("airport")
-                .describe("Commercial Airport In Zone Question"),
+                .describe("Airport In Zone Question"),
             z.literal("mountain").describe("Mountain Peak Question"),
             z.literal("university").describe("University Question"),
-            
+
             z.literal("reservoir").describe("Reservoir Question"),
             // z
             //     .literal("major-city")
@@ -212,12 +213,8 @@ const ordinaryMatchingQuestionSchema = baseMatchingQuestionSchema.extend({
             z
                 .literal("museum-full")
                 .describe("Museum Question (Small+Medium Games)"),
-            z
-                .literal("hospital-full")
-                .describe("Hawker Center"),
-            z
-                .literal("supermarket-full")
-                .describe("NTUC Supermarket Question"),
+            z.literal("hospital-full").describe("Hawker Center"),
+            z.literal("supermarket-full").describe("NTUC Supermarket Question"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),
@@ -317,7 +314,7 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z.literal("coastline").describe("Coastline Question"),
             z
                 .literal("airport")
-                .describe("Commercial Airport In Zone Question"),
+                .describe("Airport In Zone Question"),
             z
                 .literal("international_borders")
                 .describe("International Border Question"),
@@ -325,7 +322,9 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z.literal("mountain").describe("Mountain Peak Question"),
             z.literal("university").describe("University Question"),
             z.literal("reservoir").describe("Reservoir Question"),
-            z.literal("electoral-boundary").describe("Electoral Boundary Question"),
+            z
+                .literal("electoral-boundary")
+                .describe("Electoral Boundary Question"),
             // z
             //     .literal("city")
             //     .describe("Major City (1,000,000+ people) Question"),
@@ -342,12 +341,8 @@ const ordinaryMeasuringQuestionSchema = baseMeasuringQuestionSchema.extend({
             z
                 .literal("museum-full")
                 .describe("Museum Question (Small+Medium Games)"),
-            z
-                .literal("hospital-full")
-                .describe("Hawker Center Question"),
-            z
-                .literal("supermarket-full")
-                .describe("NTUC Supermarket Question"),
+            z.literal("hospital-full").describe("Hawker Center Question"),
+            z.literal("supermarket-full").describe("NTUC Supermarket Question"),
             // z
             //     .literal("cinema-full")
             //     .describe("Cinema Question (Small+Medium Games)"),
@@ -401,6 +396,16 @@ export const measuringQuestionSchema = z.union([
     // homeGameMeasuringQuestionsSchema.describe("Hiding Zone Mode"),
 ]);
 
+export const photoQuestionSchema = z.object({
+    subject: z.enum(PHOTO_SUBJECT_IDS),
+    response: z
+        .enum(["unanswered", "photo", "cannot_answer"])
+        .default("unanswered"),
+    uploadId: z.string().uuid().optional(),
+    drag: z.literal(false).default(false),
+    collapsed: z.boolean().default(false),
+});
+
 export const questionSchema = z.union([
     z.object({
         id: z.literal("radius"),
@@ -427,6 +432,11 @@ export const questionSchema = z.union([
         key: z.number().default(Math.random),
         data: matchingQuestionSchema,
     }),
+    z.object({
+        id: z.literal("photo"),
+        key: z.number().default(Math.random),
+        data: photoQuestionSchema,
+    }),
 ]);
 
 export const questionsSchema = z.array(questionSchema);
@@ -448,6 +458,7 @@ export type CustomMeasuringQuestion = z.infer<
     typeof customMeasuringQuestionSchema
 >;
 export type MeasuringQuestion = z.infer<typeof measuringQuestionSchema>;
+export type PhotoQuestion = z.infer<typeof photoQuestionSchema>;
 export type HomeGameMeasuringQuestions = z.infer<
     typeof homeGameMeasuringQuestionsSchema
 >;

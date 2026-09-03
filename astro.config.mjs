@@ -18,9 +18,19 @@ export default defineConfig({
             },
         }),
         AstroPWA({
+            strategies: "injectManifest",
+            srcDir: "src",
+            filename: "sw.ts",
+            injectRegister: false,
+            registerType: "autoUpdate",
+            injectManifest: {
+                injectionPoint: undefined,
+            },
             manifest: {
                 name: "Jet Lag Hide and Seek Map Generator",
                 short_name: "Map Generator",
+                start_url: "/",
+                scope: "/",
                 description:
                     "Automatically generate maps for Jet Lag The Game: Hide and Seek with ease! Simply name the questions and watch the map eliminate hundreds of possibilities in seconds.",
                 icons: [

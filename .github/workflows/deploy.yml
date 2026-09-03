@@ -12,7 +12,48 @@ permissions:
     id-token: write
 
 jobs:
+    quality:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10.34.5
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: pnpm
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Run tests
+              run: pnpm vitest run --maxWorkers=1 --minWorkers=1
+            - name: Build backend
+              run: pnpm build:server
+            - name: Check multiplayer source quality
+              run: >-
+                  pnpm exec eslint
+                  server/src/app.ts server/src/index.ts
+                  src/game/multiplayer.ts
+                  src/components/game/MultiplayerPanel.tsx
+                  src/components/cards/base.tsx
+                  src/pwa.ts src/sw.ts
+            - name: Check formatting
+              run: >-
+                  pnpm exec prettier --check
+                  astro.config.mjs compose.yaml
+                  server/src/app.ts server/src/index.ts
+                  src/game/multiplayer.ts
+                  src/components/game/MultiplayerPanel.tsx
+                  src/components/cards/base.tsx
+                  src/pwa.ts src/sw.ts
+                  tests/multiplayer.server.test.ts
+                  tests/multiplayer.client.test.ts
+
     build:
+        needs: quality
         runs-on: ubuntu-latest
         steps:
             - name: Checkout your repository using git
@@ -21,8 +62,8 @@ jobs:
               uses: withastro/action@v3
               with:
                   path: . # The root location of your Astro project inside the repository. (optional)
-                  node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-                  package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+                  node-version: 22 # Match the backend and local production toolchain.
+                  package-manager: pnpm@10.34.5 # Keep installs reproducible with the lockfile.
 
     deploy:
         needs: build

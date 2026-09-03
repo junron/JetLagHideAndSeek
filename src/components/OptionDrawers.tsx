@@ -11,49 +11,35 @@ import {
 } from "@/components/ui/drawer";
 import {
     additionalMapGeoLocations,
-    alwaysUsePastebin,
-        animateMapMovements,
-        autoSave,
-        autoZoom,
-        customInitPreference,
-        customPresets,
-        customStations,
-        defaultUnit,
-        disabledStations,
-        displayHidingZonesOptions,
-        followMe,
-        hiderMode,
-        hidingRadius,
-        hidingZone,
-        highlightTrainLines,
-        includeDefaultStations,
-        leafletMapContext,
-        mapGeoJSON,
-        mapGeoLocation,
-        mapTileStyle,
-        pastebinApiKey,
-        planningModeEnabled,
-        polyGeoJSON,
-        questions,
-        simulatedSeekerMode,
-        thunderforestApiKey,
-        triggerLocalRefresh,
-        useCustomStations,
+    animateMapMovements,
+    autoSave,
+    autoZoom,
+    customPresets,
+    customStations,
+    defaultUnit,
+    disabledStations,
+    displayHidingZonesOptions,
+    followMe,
+    hiderMode,
+    hidingZone,
+    leafletMapContext,
+    mapGeoJSON,
+    mapGeoLocation,
+    mapTileStyle,
+    planningModeEnabled,
+    polyGeoJSON,
+    questions,
+    save,
+    simulatedSeekerGameStartTime,
+    simulatedSeekerMode,
+    triggerLocalRefresh,
 } from "@/lib/context";
-import {
-    cn,
-    compress,
-    decompress,
-    fetchFromPastebin,
-    shareOrFallback,
-    uploadToPastebin,
-} from "@/lib/utils";
+import { cn, compress, decompress, shareOrFallback } from "@/lib/utils";
 import { questionsSchema } from "@/maps/schema";
 
 import { LatitudeLongitude } from "./LatLngPicker";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
-import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select } from "./ui/select";
 import { Separator } from "./ui/separator";
@@ -67,12 +53,11 @@ import VizPOIs from "./VizPOIs";
 
 const HIDING_ZONE_URL_PARAM = "hz";
 const HIDING_ZONE_COMPRESSED_URL_PARAM = "hzc";
-const PASTEBIN_URL_PARAM = "pb";
 
 export const OptionDrawers = ({ className }: { className?: string }) => {
     useStore(triggerLocalRefresh);
     const $defaultUnit = useStore(defaultUnit);
-    const $highlightTrainLines = useStore(highlightTrainLines);
+
     const $animateMapMovements = useStore(animateMapMovements);
     const $autoZoom = useStore(autoZoom);
     const $hiderMode = useStore(hiderMode);
@@ -80,11 +65,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
     const $autoSave = useStore(autoSave);
     const $hidingZone = useStore(hidingZone);
     const $planningMode = useStore(planningModeEnabled);
-    const $thunderforestApiKey = useStore(thunderforestApiKey);
-    const $pastebinApiKey = useStore(pastebinApiKey);
-    const $alwaysUsePastebin = useStore(alwaysUsePastebin);
     const $followMe = useStore(followMe);
-    const $customInitPref = useStore(customInitPreference);
     const $mapTileStyle = useStore(mapTileStyle);
     // Viz POIs is always visible; no option toggle
     const [isOptionsOpen, setOptionsOpen] = useState(false);
@@ -95,7 +76,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
         const hidingZoneCompressed = params.get(
             HIDING_ZONE_COMPRESSED_URL_PARAM,
         );
-        const pastebinId = params.get(PASTEBIN_URL_PARAM);
 
         if (hidingZoneOld !== null) {
             // Legacy base64 encoding
@@ -121,30 +101,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                     toast.error(`Invalid hiding zone settings: ${e}`);
                 }
             });
-        } else if (pastebinId !== null) {
-            fetchFromPastebin(pastebinId)
-                .then((data) => {
-                    try {
-                        loadHidingZone(data);
-                        // Remove pb parameter after initial load
-                        window.history.replaceState(
-                            {},
-                            "",
-                            window.location.pathname,
-                        );
-                        toast.success(
-                            "Successfully loaded data from Pastebin link!",
-                        );
-                    } catch (e) {
-                        toast.error(`Invalid data from Pastebin: ${e}`);
-                    }
-                })
-                .catch((error) => {
-                    console.error("Failed to fetch from Pastebin:", error);
-                    toast.error(
-                        `Failed to load from Pastebin: ${error.message}`,
-                    );
-                });
         }
     }, []);
 
@@ -220,16 +176,8 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                 disabledStations.set(geojson.disabledStations);
             }
 
-            if (geojson.hidingRadius !== null) {
-                hidingRadius.set(geojson.hidingRadius);
-            }
-
             if (geojson.zoneOptions) {
                 displayHidingZonesOptions.set(geojson.zoneOptions ?? []);
-            }
-
-            if (typeof geojson.useCustomStations === "boolean") {
-                useCustomStations.set(geojson.useCustomStations);
             }
 
             if (
@@ -237,10 +185,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                 geojson.customStations.constructor === Array
             ) {
                 customStations.set(geojson.customStations);
-            }
-
-            if (typeof geojson.includeDefaultStations === "boolean") {
-                includeDefaultStations.set(geojson.includeDefaultStations);
             }
 
             toast.success("Hiding zone loaded successfully", {
@@ -273,36 +217,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                     }
 
                     const baseUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
-                    let shareUrl = `${baseUrl}?${HIDING_ZONE_COMPRESSED_URL_PARAM}=${compressedData}`;
-
-                    if ($alwaysUsePastebin || shareUrl.length > 2000) {
-                        if (!$pastebinApiKey) {
-                            toast.error(
-                                "Data is too large for a URL or Pastebin is forced. Please enter a Pastebin API key in Options to share via Pastebin.",
-                            );
-                            return;
-                        }
-                        try {
-                            toast.info("Data is being shared via Pastebin...");
-                            const pastebinUrl = await uploadToPastebin(
-                                $pastebinApiKey,
-                                hidingZoneString,
-                            );
-                            const pasteId = pastebinUrl.substring(
-                                pastebinUrl.lastIndexOf("/") + 1,
-                            );
-                            shareUrl = `${baseUrl}?${PASTEBIN_URL_PARAM}=${pasteId}`;
-                            toast.success(
-                                "Successfully uploaded to Pastebin! URL is ready to be shared.",
-                            );
-                        } catch (error) {
-                            console.error("Pastebin upload failed:", error);
-                            toast.error(
-                                `Pastebin upload failed. Please check your API key and try again.`,
-                            );
-                            return;
-                        }
-                    }
+                    const shareUrl = `${baseUrl}?${HIDING_ZONE_COMPRESSED_URL_PARAM}=${compressedData}`;
 
                     // Show platform native share sheet if possible
                     await shareOrFallback(shareUrl).then((result) => {
@@ -346,41 +261,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                             </DrawerTitle>
                         </DrawerHeader>
                         <div className="overflow-y-scroll max-h-[40vh] flex flex-col items-center gap-4 max-w-[1000px] px-12">
-                            <div className="flex flex-row max-[330px]:flex-col gap-4">
-                                <Button
-                                    onClick={() => {
-                                        if (!navigator || !navigator.clipboard)
-                                            return toast.error(
-                                                "Clipboard not supported",
-                                            );
-                                        navigator.clipboard.writeText(
-                                            JSON.stringify($hidingZone),
-                                        );
-                                        toast.success(
-                                            "Hiding zone copied successfully",
-                                            {
-                                                autoClose: 2000,
-                                            },
-                                        );
-                                    }}
-                                >
-                                    Copy Hiding Zone
-                                </Button>
-                                <Button
-                                    onClick={() => {
-                                        if (!navigator || !navigator.clipboard)
-                                            return toast.error(
-                                                "Clipboard not supported",
-                                            );
-                                        navigator.clipboard
-                                            .readText()
-                                            .then(loadHidingZone);
-                                    }}
-                                >
-                                    Paste Hiding Zone
-                                </Button>
-                            </div>
-                            <Separator className="bg-slate-300 w-[280px]" />
                             {/* Viz POIs tool is always visible, no option toggle */}
                             <Label>Default Unit</Label>
                             <UnitSelect
@@ -403,20 +283,6 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                 }
                             />
                             <Separator className="bg-slate-300 w-[280px]" />
-                            <Label>New Custom Question Defaults</Label>
-                            <Select
-                                trigger="New custom default"
-                                options={{
-                                    ask: "Ask each time",
-                                    blank: "Start blank",
-                                    prefill: "Copy from current",
-                                }}
-                                value={$customInitPref}
-                                onValueChange={(v) =>
-                                    customInitPreference.set(v as any)
-                                }
-                            />
-                            <Separator className="bg-slate-300 w-[280px]" />
                             <div className="flex flex-row items-center gap-2">
                                 <label className="text-2xl font-semibold font-poppins">
                                     Animate map movements?
@@ -430,94 +296,7 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                     }}
                                 />
                             </div>
-                            {$highlightTrainLines && (
-                                <Separator className="bg-slate-300 w-[280px]" />
-                            )}
-                            <div className="flex flex-row items-center gap-2">
-                                <label className="text-2xl font-semibold font-poppins">
-                                    Highlight train lines?
-                                </label>
-                                <Checkbox
-                                    checked={$highlightTrainLines}
-                                    onCheckedChange={() => {
-                                        const willBeEnabled =
-                                            !$highlightTrainLines;
-                                        highlightTrainLines.set(willBeEnabled);
-                                    }}
-                                />
-                            </div>
-                            {$highlightTrainLines && (
-                                <>
-                                    <div className="flex flex-col items-center gap-2">
-                                        <Label>Thunderforest API Key</Label>
-                                        <Input
-                                            type="text"
-                                            value={$thunderforestApiKey}
-                                            id="thunderforestApiKey"
-                                            onChange={(e) =>
-                                                thunderforestApiKey.set(
-                                                    e.target.value,
-                                                )
-                                            }
-                                            placeholder="Enter your Thunderforest API key"
-                                        />
-                                        <p className="text-xs text-gray-500">
-                                            Needed for highlighting train lines.
-                                            Create a key{" "}
-                                            <a
-                                                href="https://manage.thunderforest.com/users/sign_up?price=hobby-project-usd"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-500 cursor-pointer"
-                                            >
-                                                here.
-                                            </a>{" "}
-                                            Don&apos;t worry, it&apos;s free.
-                                        </p>
-                                    </div>
-                                    <Separator className="bg-slate-300 w-[280px]" />{" "}
-                                </>
-                            )}
-                            <Separator className="bg-slate-300 w-[280px]" />
-                            <div className="flex flex-col items-center gap-2">
-                                <Label>Pastebin API Key</Label>
-                                <Input
-                                    type="text"
-                                    value={$pastebinApiKey}
-                                    id="pastebinApiKey"
-                                    onChange={(e) =>
-                                        pastebinApiKey.set(e.target.value)
-                                    }
-                                    placeholder="Enter your Pastebin API key"
-                                />
-                                <p className="text-xs text-gray-500">
-                                    Needed for sharing large game data. Create a
-                                    key{" "}
-                                    <a
-                                        href="https://pastebin.com/doc_api"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-500 cursor-pointer"
-                                    >
-                                        here
-                                    </a>
-                                    .
-                                </p>
-                            </div>
-                            <Separator className="bg-slate-300 w-[280px]" />
-                            <div className="flex flex-row items-center gap-2">
-                                <label className="text-2xl font-semibold font-poppins">
-                                    Force Pastebin for sharing?
-                                </label>
-                                <Checkbox
-                                    checked={$alwaysUsePastebin}
-                                    onCheckedChange={() =>
-                                        alwaysUsePastebin.set(
-                                            !$alwaysUsePastebin,
-                                        )
-                                    }
-                                />
-                            </div>
+
                             <div className="flex flex-row items-center gap-2">
                                 <label className="text-2xl font-semibold font-poppins">
                                     Enable planning mode?
@@ -628,7 +407,9 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                                     longitude: center.lng,
                                                 });
                                                 // Initialize game start time to now
-                                                simulatedSeekerGameStartTime.set(Date.now());
+                                                simulatedSeekerGameStartTime.set(
+                                                    Date.now(),
+                                                );
                                             } else {
                                                 simulatedSeekerMode.set({
                                                     latitude: 0,
@@ -682,12 +463,15 @@ export const OptionDrawers = ({ className }: { className?: string }) => {
                                 <SidebarMenu>
                                     <LatitudeLongitude
                                         latitude={$simulatedSeekerMode.latitude}
-                                        longitude={$simulatedSeekerMode.longitude}
+                                        longitude={
+                                            $simulatedSeekerMode.longitude
+                                        }
                                         showReset
                                         inlineEdit
                                         onChange={(latitude, longitude) => {
                                             $simulatedSeekerMode.latitude =
-                                                latitude ?? $simulatedSeekerMode.latitude;
+                                                latitude ??
+                                                $simulatedSeekerMode.latitude;
                                             $simulatedSeekerMode.longitude =
                                                 longitude ??
                                                 $simulatedSeekerMode.longitude;

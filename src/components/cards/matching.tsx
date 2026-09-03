@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/sidebar-l";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
-    customInitPreference,
     displayHidingZones,
     drawingQuestionKey,
     hiderMode,
@@ -41,12 +40,20 @@ export const MatchingQuestionComponent = ({
     data,
     questionKey,
     sub,
+    displayIndex,
     className,
+    resultEditable,
+    status,
+    footer,
 }: {
     data: MatchingQuestion;
     questionKey: number;
     sub?: string;
+    displayIndex?: number;
     className?: string;
+    resultEditable?: boolean;
+    status?: "pending" | "answered";
+    footer?: React.ReactNode;
 }) => {
     useStore(triggerLocalRefresh);
     const $hiderMode = useStore(hiderMode);
@@ -54,13 +61,15 @@ export const MatchingQuestionComponent = ({
     const $displayHidingZones = useStore(displayHidingZones);
     const $drawingQuestionKey = useStore(drawingQuestionKey);
     const $isLoading = useStore(isLoading);
-    const $customInitPref = useStore(customInitPreference);
+
+    const resultDisabled =
+        !!$hiderMode || (!data.drag && !resultEditable) || $isLoading;
     const [customDialogOpen, setCustomDialogOpen] = React.useState(false);
     const [pendingCustomType, setPendingCustomType] = React.useState<
         "custom-zone" | "custom-points" | null
     >(null);
-    const label = `Matching
-    ${
+    const label = `Matching ${
+        displayIndex ??
         $questions
             .filter((q) => q.id === "matching")
             .map((q) => q.key)
@@ -83,8 +92,9 @@ export const MatchingQuestionComponent = ({
                             value={data.cat.adminLevel.toString()}
                             onValueChange={(value) =>
                                 questionModified(
-                                    (data.cat.adminLevel = parseInt(value) as
-                                        5),
+                                    (data.cat.adminLevel = parseInt(
+                                        value,
+                                    ) as 5),
                                 )
                             }
                             disabled={!data.drag || $isLoading}
@@ -93,8 +103,8 @@ export const MatchingQuestionComponent = ({
                     {data.type === "letter-zone" && (
                         <span className="px-2 text-center text-orange-500">
                             Warning: The zone data has been simplified by
-                            &plusmn;360 feet (100 meters) in order for the
-                            browser to not crash.
+                            &plusmn;1 meter in order for the browser to remain
+                            responsive.
                         </span>
                     )}
                 </>
@@ -173,6 +183,8 @@ export const MatchingQuestionComponent = ({
             }}
             locked={!data.drag}
             setLocked={(locked) => questionModified((data.drag = !locked))}
+            status={status}
+            footer={footer}
         >
             <CustomInitDialog
                 open={customDialogOpen}
@@ -197,10 +209,10 @@ export const MatchingQuestionComponent = ({
                             await determineMatchingBoundary(data);
                     } else {
                         if (
-                                        data.type === "airport" ||
-                                        data.type === "mountain" ||
-                                        data.type === "university" ||
-                                        data.type === "reservoir" ||
+                            data.type === "airport" ||
+                            data.type === "mountain" ||
+                            data.type === "university" ||
+                            data.type === "reservoir" ||
                             data.type === "aquarium-full" ||
                             data.type === "zoo-full" ||
                             data.type === "theme_park-full" ||
@@ -276,65 +288,13 @@ export const MatchingQuestionComponent = ({
                             >,
                         )}
                     value={data.type}
-                    onValueChange={async (value) => {
+                    onValueChange={(value) => {
                         if (
                             value === "custom-zone" ||
                             value === "custom-points"
                         ) {
-                            if ($customInitPref === "ask") {
-                                setPendingCustomType(value);
-                                setCustomDialogOpen(true);
-                                return;
-                            }
-                            // Apply preference without dialog
-                            if ($customInitPref === "blank") {
-                                if (value === "custom-zone") {
-                                    (data as any).geo = undefined;
-                                    toast.info(
-                                        "Please draw the zone on the map.",
-                                    );
-                                } else {
-                                    (data as any).geo = [];
-                                    toast.info(
-                                        "Please draw the points on the map.",
-                                    );
-                                }
-                            } else if ($customInitPref === "prefill") {
-                                if (value === "custom-zone") {
-                                    (data as any).geo =
-                                        await determineMatchingBoundary(data);
-                                } else {
-                                    if (
-                                        data.type === "airport" ||
-                                        data.type === "mountain" ||
-                                        data.type === "university" ||
-                                        data.type === "major-city" ||
-                                        data.type === "aquarium-full" ||
-                                        data.type === "zoo-full" ||
-                                        data.type === "theme_park-full" ||
-                                        data.type === "museum-full" ||
-                                        data.type === "hospital-full" ||
-                                        data.type === "cinema-full" ||
-                                        data.type === "library-full" ||
-                                        data.type === "golf_course-full" ||
-                                        data.type === "consulate-full" ||
-                                        data.type === "park-full"
-                                    ) {
-                                        (data as any).geo =
-                                            await findMatchingPlaces(data);
-                                    } else {
-                                        (data as any).geo = [];
-                                        toast.info(
-                                            "Please draw the points on the map.",
-                                        );
-                                    }
-                                }
-                            }
-                            // The category should be defined such that no error is thrown if this is a zone question.
-                            if (!(data as any).cat) {
-                                (data as any).cat = { adminLevel: 5 };
-                            }
-                            questionModified((data.type = value));
+                            setPendingCustomType(value);
+                            setCustomDialogOpen(true);
                             return;
                         }
 
@@ -413,7 +373,7 @@ export const MatchingQuestionComponent = ({
                                 questionModified((data.same = false));
                             }
                         }}
-                        disabled={!!$hiderMode || !data.drag || $isLoading}
+                        disabled={resultDisabled}
                     >
                         <ToggleGroupItem value="shorter">
                             Shorter
@@ -425,6 +385,7 @@ export const MatchingQuestionComponent = ({
                     <ToggleGroup
                         className="grow"
                         type="single"
+                        selectedOutline
                         value={data.same ? "same" : "different"}
                         onValueChange={(value) => {
                             if (value === "same") {
@@ -433,7 +394,7 @@ export const MatchingQuestionComponent = ({
                                 questionModified((data.same = false));
                             }
                         }}
-                        disabled={!!$hiderMode || !data.drag || $isLoading}
+                        disabled={resultDisabled}
                     >
                         <ToggleGroupItem value="different">
                             Different

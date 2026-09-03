@@ -132,5 +132,8 @@ const { className } = Astro.props;
     <body class:list={[className, "dark"]}>
         <slot />
         <ToastContainer client:only />
+        <script>
+            import "@/pwa";
+        </script>
     </body>
 </html>

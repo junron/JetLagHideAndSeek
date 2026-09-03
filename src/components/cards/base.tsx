@@ -1,7 +1,8 @@
 import { useStore } from "@nanostores/react";
 import { LockIcon, UnlockIcon } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { VscChevronDown, VscShare, VscTrash } from "react-icons/vsc";
+import { toast } from "react-toastify";
 
 import {
     AlertDialog,
@@ -30,6 +31,18 @@ import {
     SidebarGroupLabel,
     SidebarMenu,
 } from "@/components/ui/sidebar-l";
+import {
+    type GameQuestion,
+    gameSession,
+    gameSnapshot,
+    questionSubmissionState,
+    sendQuestion,
+} from "@/game/multiplayer";
+import {
+    initialQuestionCollapsed,
+    type QuestionPresentationStatus,
+    shouldAutoCollapseQuestion,
+} from "@/game/questionPresentation";
 import { isLoading, questions } from "@/lib/context";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +56,8 @@ export const QuestionCard = ({
     locked,
     setLocked,
     setCollapsed,
+    status,
+    footer,
 }: {
     children: React.ReactNode;
     questionKey: number;
@@ -53,12 +68,47 @@ export const QuestionCard = ({
     locked?: boolean;
     setLocked?: (locked: boolean) => void;
     setCollapsed?: (collapsed: boolean) => void;
+    status?: GameQuestion["status"];
+    footer?: React.ReactNode;
 }) => {
-    const [isCollapsed, setIsCollapsed] = useState(collapsed ?? false);
     const $questions = useStore(questions);
     const $isLoading = useStore(isLoading);
+    const $gameSession = useStore(gameSession);
+    const $gameSnapshot = useStore(gameSnapshot);
+    const submissionState =
+        $gameSession?.player.role === "seeker"
+            ? questionSubmissionState(
+                  $gameSnapshot,
+                  $gameSession.player.id,
+                  questionKey,
+              )
+            : "ready";
+    const presentationStatus: QuestionPresentationStatus =
+        status ??
+        (submissionState === "pending" || submissionState === "answered"
+            ? submissionState
+            : undefined);
+    const [isCollapsed, setIsCollapsed] = useState(() =>
+        initialQuestionCollapsed(collapsed, presentationStatus),
+    );
+    const previousStatus = useRef(presentationStatus);
+    const isRemoteTranscript =
+        $gameSession?.player.role === "seeker" && Boolean(sub);
     const copyButtonRef = useRef<HTMLButtonElement>(null);
     const [showDeleteAllConfirm, setShowDeleteAllConfirm] = useState(false);
+
+    useEffect(() => {
+        if (
+            shouldAutoCollapseQuestion(
+                previousStatus.current,
+                presentationStatus,
+            )
+        ) {
+            setIsCollapsed(true);
+            setCollapsed?.(true);
+        }
+        previousStatus.current = presentationStatus;
+    }, [presentationStatus, setCollapsed]);
 
     const toggleCollapse = () => {
         if (setCollapsed) {
@@ -84,16 +134,69 @@ export const QuestionCard = ({
                         className="ml-8 mr-8 cursor-pointer"
                         onClick={toggleCollapse}
                     >
-                        {label} {sub && `(${sub})`}
+                        <span>
+                            {label} {sub && `(${sub})`}
+                        </span>
+                        {presentationStatus === "pending" && (
+                            <span className="ml-2 rounded bg-amber-500/20 px-2 py-0.5 text-xs font-semibold text-amber-300">
+                                Pending
+                            </span>
+                        )}
+                        {presentationStatus === "answered" && (
+                            <span className="ml-2 rounded bg-green-500/20 px-2 py-0.5 text-xs font-semibold text-green-300">
+                                Answered
+                            </span>
+                        )}
                     </SidebarGroupLabel>
                     <SidebarGroupContent
+                        aria-hidden={isCollapsed}
+                        inert={isCollapsed ? true : undefined}
                         className={cn(
                             "overflow-hidden transition-all duration-1000 max-h-[100rem]", // 100rem is arbitrary
                             isCollapsed && "max-h-0",
                         )}
                     >
                         <SidebarMenu>{children}</SidebarMenu>
-                        <div className="flex gap-2 pt-2 px-2 justify-center">
+                        <div
+                            className={cn(
+                                "flex gap-2 pt-2 px-2 justify-center",
+                                ($gameSession?.player.role === "hider" ||
+                                    isRemoteTranscript) &&
+                                    "hidden",
+                            )}
+                        >
+                            {$gameSession?.player.role === "seeker" && (
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    title={
+                                        submissionState === "blocked"
+                                            ? "Wait for the pending question to be answered"
+                                            : "Send question to hider"
+                                    }
+                                    disabled={submissionState !== "ready"}
+                                    onClick={() => {
+                                        if (submissionState !== "ready") return;
+                                        toast.promise(
+                                            sendQuestion(questionKey),
+                                            {
+                                                pending: "Sending question",
+                                                success:
+                                                    "Question sent to hider",
+                                                error: "Could not send question",
+                                            },
+                                        );
+                                    }}
+                                >
+                                    {submissionState === "ready"
+                                        ? "Send"
+                                        : submissionState === "pending"
+                                          ? "Pending"
+                                          : submissionState === "answered"
+                                            ? "Answered"
+                                            : "Waiting for answer"}
+                                </Button>
+                            )}
                             <Dialog>
                                 <DialogTrigger asChild>
                                     <Button variant="outline" size="sm">
@@ -282,6 +385,7 @@ export const QuestionCard = ({
                                 </Button>
                             )}
                         </div>
+                        {footer}
                     </SidebarGroupContent>
                 </div>
             </SidebarGroup>

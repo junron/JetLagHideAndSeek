@@ -1,0 +1,33 @@
+services:
+    backend:
+        build:
+            context: .
+            dockerfile: Dockerfile.server
+        restart: unless-stopped
+        env_file:
+            - /srv/jetlag-map/backend.env
+        ports:
+            - "127.0.0.1:3210:3210"
+        volumes:
+            - /srv/jetlag-map/data:/data
+        read_only: true
+        tmpfs:
+            - /tmp:size=32m,mode=1777
+        cap_drop:
+            - ALL
+        security_opt:
+            - no-new-privileges:true
+        pids_limit: 128
+        mem_limit: 512m
+        cpus: 1.0
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "node",
+                    "-e",
+                    "fetch('http://127.0.0.1:3210/healthz').then(r=>{if(!r.ok)process.exit(1)})",
+                ]
+            interval: 15s
+            timeout: 5s
+            retries: 5

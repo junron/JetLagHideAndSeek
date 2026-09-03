@@ -11,7 +11,13 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { SidebarMenuButton } from "@/components/ui/sidebar-l";
-import { addQuestion, followMe, isLoading, leafletMapContext, simulatedSeekerMode } from "@/lib/context";
+import {
+    addQuestion,
+    followMe,
+    isLoading,
+    leafletMapContext,
+    simulatedSeekerMode,
+} from "@/lib/context";
 import { getCurrentPosition } from "@/lib/utils";
 
 export const AddQuestionDialog = ({
@@ -23,17 +29,22 @@ export const AddQuestionDialog = ({
     const [open, setOpen] = React.useState(false);
 
     const getQuestionStartLocation = async () => {
-        if(followMe.get()) {
-            const position = await getCurrentPosition(simulatedSeekerMode.get());
-            if(position) {
-                return { lat: position.coords.latitude, lng: position.coords.longitude };
+        if (followMe.get()) {
+            const position = await getCurrentPosition(
+                simulatedSeekerMode.get(),
+            );
+            if (position) {
+                return {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
             }
         }
         const map = leafletMapContext.get();
         if (!map) return null;
         const center = map.getCenter();
         return { lat: center.lat, lng: center.lng };
-    }
+    };
 
     const runAddRadius = async () => {
         const center = await getQuestionStartLocation();
@@ -48,9 +59,14 @@ export const AddQuestionDialog = ({
     const runAddThermometer = async () => {
         const center = await getQuestionStartLocation();
         if (!center) return false;
-        const destination = turf.destination([center.lng, center.lat], 2.4, 90, {
-            units: "kilometers",
-        });
+        const destination = turf.destination(
+            [center.lng, center.lat],
+            2.4,
+            90,
+            {
+                units: "kilometers",
+            },
+        );
 
         addQuestion({
             id: "thermometer",
@@ -93,6 +109,14 @@ export const AddQuestionDialog = ({
         addQuestion({
             id: "measuring",
             data: { lat: center.lat, lng: center.lng },
+        });
+        return true;
+    };
+
+    const runAddPhoto = () => {
+        addQuestion({
+            id: "photo",
+            data: { subject: "tree" },
         });
         return true;
     };
@@ -171,6 +195,14 @@ export const AddQuestionDialog = ({
                         disabled={$isLoading}
                     >
                         Add Measuring
+                    </SidebarMenuButton>
+                    <SidebarMenuButton
+                        onClick={() => {
+                            if (runAddPhoto()) setOpen(false);
+                        }}
+                        disabled={$isLoading}
+                    >
+                        Add Photo
                     </SidebarMenuButton>
                     <SidebarMenuButton
                         onClick={async () => {

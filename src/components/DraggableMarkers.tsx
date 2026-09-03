@@ -6,6 +6,11 @@ import { Marker, Tooltip } from "react-leaflet";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
+    gameSession,
+    gameSnapshot,
+    submittedQuestionKeys,
+} from "@/game/multiplayer";
+import {
     autoSave,
     hiderMode,
     questionModified,
@@ -14,7 +19,7 @@ import {
     triggerLocalRefresh,
 } from "@/lib/context";
 import type { ICON_COLORS } from "@/maps/api";
-import { findAdminBoundary,nearestToQuestion } from "@/maps/api";
+import { findAdminBoundary, nearestToQuestion } from "@/maps/api";
 
 import { LatitudeLongitude } from "./LatLngPicker";
 import {
@@ -35,6 +40,7 @@ const ColoredMarker = ({
     color,
     onChange,
     questionKey,
+    submitted = false,
     sub = "",
 }: {
     onChange: (event: DragEndEvent) => void;
@@ -42,6 +48,7 @@ const ColoredMarker = ({
     longitude: number;
     color: keyof typeof ICON_COLORS;
     questionKey: number;
+    submitted?: boolean;
     sub?: string;
 }) => {
     const $questions = useStore(questions);
@@ -51,7 +58,12 @@ const ColoredMarker = ({
     const [hoverText, setHoverText] = useState<string | null>(null);
 
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog
+            open={!submitted && open}
+            onOpenChange={(nextOpen) => {
+                if (!submitted) setOpen(nextOpen);
+            }}
+        >
             <Marker
                 position={[latitude, longitude]}
                 icon={
@@ -67,19 +79,21 @@ const ColoredMarker = ({
                           })
                         : undefined
                 }
-                draggable={true}
+                draggable={!submitted}
                 eventHandlers={{
                     dragstart: () => {
+                        if (submitted) return;
                         isDragging = true;
                     },
                     dragend: (x) => {
+                        if (submitted) return;
                         onChange(x);
                         setTimeout(() => {
                             isDragging = false;
                         }, 100);
                     },
                     click: () => {
-                        if (!isDragging) {
+                        if (!submitted && !isDragging) {
                             setOpen(true);
                         }
                     },
@@ -89,35 +103,52 @@ const ColoredMarker = ({
                             const q = (questions.get() || []).find(
                                 (qq: any) => qq.key === questionKey,
                             );
-                            if (!q || (q.id !== "matching" && q.id !== "measuring") || q.data.type === "coastline") {
+                            if (
+                                !q ||
+                                (q.id !== "matching" && q.id !== "measuring") ||
+                                q.data.type === "coastline"
+                            ) {
                                 try {
                                     e.target.closeTooltip();
-                                } catch {}
+                                } catch {
+                                    // The marker may already be detached from the map.
+                                }
                                 setHoverText(null);
                                 return;
-                            };
+                            }
                             // If it's a matching question with a matching endpoint, compute nearest place
                             // nearestToQuestion returns a turf point with properties populated
                             // compute nearest
                             let nearest;
-                            if(q.data.type == "zone" || q.data.type == "electoral-boundary") {
-                                nearest = await findAdminBoundary(q.data.lat, q.data.lng, 5);
-                            }else{
+                            if (
+                                q.data.type == "zone" ||
+                                q.data.type == "electoral-boundary"
+                            ) {
+                                nearest = await findAdminBoundary(
+                                    q.data.lat,
+                                    q.data.lng,
+                                    5,
+                                );
+                            } else {
                                 nearest = await nearestToQuestion(q.data);
                             }
                             if (nearest && nearest.properties) {
-                                    const name =
-                                        nearest.properties["name:en"] ||
-                                        nearest.properties.name ||
-                                        nearest.properties.Name ||
-                                        nearest.properties.ED_DESC ||
-                                        nearest.properties.ED_DESC_FU ||
-                                        "Matched Entity";
-                                    setHoverText(name);
+                                const name =
+                                    nearest.properties["name:en"] ||
+                                    nearest.properties.name ||
+                                    nearest.properties.Name ||
+                                    nearest.properties.ref ||
+                                    nearest.properties["destination:ref"] ||
+                                    nearest.properties.ED_DESC ||
+                                    nearest.properties.ED_DESC_FU ||
+                                    "Matched Entity";
+                                setHoverText(name);
                                 setTimeout(() => {
                                     try {
                                         e.target.openTooltip();
-                                    } catch {}
+                                    } catch {
+                                        // The marker may already be detached from the map.
+                                    }
                                 }, 0);
                             } else {
                                 setHoverText("Matched Entity");
@@ -125,18 +156,22 @@ const ColoredMarker = ({
                                 setTimeout(() => {
                                     try {
                                         e.target.openTooltip();
-                                    } catch {}
+                                    } catch {
+                                        // The marker may already be detached from the map.
+                                    }
                                 }, 0);
                             }
-                        } catch (err) {
-                            // ignore it but don't crash the UI
+                        } catch {
+                            // Hover lookup failures should not crash the map UI.
                         }
                     },
                     mouseout: (e) => {
-                        if(isDragging) return;
+                        if (isDragging) return;
                         try {
                             e.target.closeTooltip();
-                        } catch {}
+                        } catch {
+                            // The marker may already be detached from the map.
+                        }
                         setHoverText(null);
                     },
                 }}
@@ -250,6 +285,12 @@ export const DraggableMarkers = () => {
     useStore(triggerLocalRefresh);
     const $questions = useStore(questions);
     const $hiderMode = useStore(hiderMode);
+    const $gameSession = useStore(gameSession);
+    const $gameSnapshot = useStore(gameSnapshot);
+    const submittedKeys = submittedQuestionKeys(
+        $gameSnapshot,
+        $gameSession?.player.id,
+    );
 
     return (
         <Fragment>
@@ -279,7 +320,8 @@ export const DraggableMarkers = () => {
             )}
             {$questions.map((question) => {
                 if (!question.data) return null;
-                if (!question.data.drag) return null;
+                const submitted = submittedKeys.has(question.key);
+                if (!question.data.drag && !submitted) return null;
                 // if (
                 //     question.id === "matching" &&
                 //     question.data.type === "custom-zone"
@@ -296,6 +338,7 @@ export const DraggableMarkers = () => {
                                 color={question.data.color}
                                 key={question.key}
                                 questionKey={question.key}
+                                submitted={submitted}
                                 latitude={question.data.lat}
                                 longitude={question.data.lng}
                                 onChange={(e) => {
@@ -311,9 +354,10 @@ export const DraggableMarkers = () => {
                         return (
                             <Fragment key={question.key}>
                                 <ColoredMarker
-                                    color={question.data.colorA}
+                                    color="green"
                                     key={"a" + question.key.toString()}
                                     questionKey={question.key}
+                                    submitted={submitted}
                                     sub="Start"
                                     latitude={question.data.latA}
                                     longitude={question.data.lngA}
@@ -326,9 +370,10 @@ export const DraggableMarkers = () => {
                                     }}
                                 />
                                 <ColoredMarker
-                                    color={question.data.colorB}
+                                    color="red"
                                     key={"b" + question.key.toString()}
                                     questionKey={question.key}
+                                    submitted={submitted}
                                     sub="End"
                                     latitude={question.data.latB}
                                     longitude={question.data.lngB}

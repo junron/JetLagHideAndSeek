@@ -25,12 +25,17 @@ import {
     prettifyLocation,
     trainLineNodeFinder,
 } from "@/maps/api";
-import { airports, international_borders, mountains, universities, reservoirs } from "@/maps/api/data";
+import { airports, international_borders, mountains, reservoirs,universities } from "@/maps/api/data";
 import {
     areStationsOnSameLineByNames,
     getLineNamesForStationName,
 } from "@/maps/api/sgmrt";
-import { holedMask, modifyMapData, safeUnion } from "@/maps/geo-utils";
+import {
+    holedMask,
+    modifyMapData,
+    ONE_METER_IN_DEGREES,
+    safeUnion,
+} from "@/maps/geo-utils";
 import { geoSpatialVoronoi } from "@/maps/geo-utils";
 import type {
     APILocations,
@@ -202,7 +207,7 @@ export const determineMatchingBoundary = _.memoize(
                 // It's either simplify or crash. Technically this could be bad if someone's hiding zone was inside multiple zones, but that's unlikely.
                 boundary = safeUnion(
                     turf.simplify(boundary, {
-                        tolerance: 0.001,
+                        tolerance: ONE_METER_IN_DEGREES,
                         highQuality: true,
                         mutate: true,
                     }),

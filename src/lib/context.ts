@@ -19,6 +19,7 @@ import {
 } from "@/maps/schema";
 
 export const initialCoords = [103.84502381086351, 1.2987900458199177];
+export const HIDING_ZONE_RADIUS_METERS = 400;
 
 export const mapGeoLocation = persistentAtom<OpenStreetMap>(
     "mapGeoLocation",
@@ -90,14 +91,7 @@ export const mapTileStyle = persistentAtom<MapTileStyle>(
         decode: (value) => (value === "satellite" ? "satellite" : "street"),
     },
 );
-export const highlightTrainLines = persistentAtom<boolean>(
-    "highlightTrainLines",
-    true,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
+
 export const hiderMode = persistentAtom<
     | false
     | {
@@ -137,14 +131,6 @@ export const displayHidingZonesOptions = persistentAtom<string[]>(
 );
 export const questionFinishedMapData = atom<any>(null);
 export const trainStations = atom<any[]>([]);
-export const useCustomStations = persistentAtom<boolean>(
-    "useCustomStations",
-    true,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
 export const customStations = persistentAtom<CustomStation[]>(
     "customStations",
     [],
@@ -168,7 +154,10 @@ if (typeof window !== "undefined") {
                 );
 
                 const converted: CustomStation[] = features.map((f) => {
-                    const name = f.properties?.["name:en"] || f.properties?.name || undefined;
+                    const name =
+                        f.properties?.["name:en"] ||
+                        f.properties?.name ||
+                        undefined;
                     const coords: any[] = f.geometry?.coordinates || [0, 0];
                     const lng = coords[0];
                     const lat = coords[1];
@@ -191,26 +180,14 @@ if (typeof window !== "undefined") {
             }
         } catch (err) {
             // Ignore any errors — existing behavior loads sgmrt.geojson elsewhere
-            console.warn("Failed to initialize customStations from sgmrt.geojson", err);
+            console.warn(
+                "Failed to initialize customStations from sgmrt.geojson",
+                err,
+            );
         }
     })();
 }
-export const mergeDuplicates = persistentAtom<boolean>(
-    "removeDuplicates",
-    false,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
-export const includeDefaultStations = persistentAtom<boolean>(
-    "includeDefaultStations",
-    false,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
+
 export const animateMapMovements = persistentAtom<boolean>(
     "animateMapMovements",
     false,
@@ -219,18 +196,7 @@ export const animateMapMovements = persistentAtom<boolean>(
         decode: JSON.parse,
     },
 );
-export const hidingRadius = persistentAtom<number>("hidingRadius", 400, {
-    encode: JSON.stringify,
-    decode: JSON.parse,
-});
-export const hidingRadiusUnits = persistentAtom<Units>(
-    "hidingRadiusUnits",
-    "meters",
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
+
 export const disabledStations = persistentAtom<string[]>(
     "disabledStations",
     [],
@@ -315,12 +281,8 @@ export const hidingZone = computed(
         mapGeoLocation,
         additionalMapGeoLocations,
         disabledStations,
-        hidingRadius,
-        hidingRadiusUnits,
         displayHidingZonesOptions,
-        useCustomStations,
         customStations,
-        includeDefaultStations,
         customPresets,
     ],
     (
@@ -329,12 +291,8 @@ export const hidingZone = computed(
         loc,
         altLoc,
         disabledStations,
-        radius,
-        hidingRadiusUnits,
         zoneOptions,
-        useCustom,
         $customStations,
-        includeDefault,
         presets,
     ) => {
         if (geo !== null) {
@@ -342,12 +300,8 @@ export const hidingZone = computed(
                 ...geo,
                 questions: q,
                 disabledStations: disabledStations,
-                hidingRadius: radius,
-                hidingRadiusUnits,
                 zoneOptions: zoneOptions,
-                useCustomStations: useCustom,
                 customStations: $customStations,
-                includeDefaultStations: includeDefault,
                 presets: structuredClone(presets),
             };
         } else {
@@ -357,13 +311,9 @@ export const hidingZone = computed(
             return {
                 ...$loc,
                 disabledStations: disabledStations,
-                hidingRadius: radius,
-                hidingRadiusUnits,
                 alternateLocations: structuredClone(altLoc),
                 zoneOptions: zoneOptions,
-                useCustomStations: useCustom,
                 customStations: $customStations,
-                includeDefaultStations: includeDefault,
                 presets: structuredClone(presets),
             };
         }
@@ -415,35 +365,16 @@ export const simulatedSeekerTimeScale = persistentAtom<number>(
     },
 );
 
-export const thunderforestApiKey = persistentAtom<string>(
-    "thunderforestApiKey",
-    "",
-    {
-        encode: (value: string) => value,
-        decode: (value: string) => value,
-    },
-);
 export const followMe = persistentAtom<boolean>("followMe", false, {
     encode: JSON.stringify,
     decode: JSON.parse,
 });
-
-export const pastebinApiKey = persistentAtom<string>("pastebinApiKey", "");
-export const alwaysUsePastebin = persistentAtom<boolean>(
-    "alwaysUsePastebin",
-    false,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
 
 export const showTutorial = persistentAtom<boolean>("showTutorials", true, {
     encode: JSON.stringify,
     decode: JSON.parse,
 });
 export const tutorialStep = atom<number>(0);
-
 
 export const vizPOIsActive = persistentAtom<boolean>("vizPOIsActive", false, {
     encode: JSON.stringify,
@@ -453,15 +384,6 @@ export const vizPOIsActive = persistentAtom<boolean>("vizPOIsActive", false, {
 export const vizPOIsCategory = persistentAtom<string | null>(
     "vizPOIsCategory",
     null,
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    },
-);
-
-export const customInitPreference = persistentAtom<"ask" | "blank" | "prefill">(
-    "customInitPreference",
-    "ask",
     {
         encode: JSON.stringify,
         decode: JSON.parse,

@@ -10,13 +10,19 @@ import { MapContainer, ScaleControl, TileLayer } from "react-leaflet";
 import { toast } from "react-toastify";
 
 import {
+    gameSession,
+    gameSnapshot,
+    hiderAnswerPreviews,
+    selectMapQuestions,
+} from "@/game/multiplayer";
+import {
     additionalMapGeoLocations,
     addQuestion,
     animateMapMovements,
     autoZoom,
     followMe,
     hiderMode,
-    highlightTrainLines,
+    HIDING_ZONE_RADIUS_METERS,
     isLoading,
     leafletMapContext,
     mapGeoJSON,
@@ -27,7 +33,6 @@ import {
     questionFinishedMapData,
     questions,
     simulatedSeekerMode,
-    thunderforestApiKey,
     triggerLocalRefresh,
     vizPOIsCategory,
 } from "@/lib/context";
@@ -35,24 +40,57 @@ import { cn } from "@/lib/utils";
 import { applyQuestionsToMapGeoData, holedMask } from "@/maps";
 import { hiderifyQuestion } from "@/maps";
 import { clearCache, determineMapBoundaries } from "@/maps/api";
-import { fetchHawkerCenters, fetchLibraries, fetchMuseums, fetchParks, fetchSupermarkets, findPlacesInZone } from "@/maps/api";
-import { airports, golf_courses, mountains, universities, reservoirs } from "@/maps/api/data";
+import {
+    fetchHawkerCenters,
+    fetchLibraries,
+    fetchMuseums,
+    fetchParks,
+    fetchSupermarkets,
+    findPlacesInZone,
+} from "@/maps/api";
+import {
+    airports,
+    golf_courses,
+    mountains,
+    reservoirs,
+    universities,
+} from "@/maps/api/data";
 
 import { DraggableMarkers } from "./DraggableMarkers";
 import { LeafletFullScreenButton } from "./LeafletFullScreenButton";
 import { MapPrint } from "./MapPrint";
-import { PolygonDraw } from "./PolygonDraw";
 import { SimulatedSeekerTimer } from "./SimulatedSeekerTimerAnim";
+import { VectorBasemap } from "./VectorBasemap";
 // VizPOIs moved to OptionDrawers bottom bar
+
+const STATION_DOT_PANE = "station-dots";
 
 export const Map = ({ className }: { className?: string }) => {
     useStore(additionalMapGeoLocations);
     const $mapGeoLocation = useStore(mapGeoLocation);
     const $questions = useStore(questions);
-    const $highlightTrainLines = useStore(highlightTrainLines);
-    const $thunderforestApiKey = useStore(thunderforestApiKey);
+    const $gameSession = useStore(gameSession);
+    const $gameSnapshot = useStore(gameSnapshot);
+    const $hiderAnswerPreviews = useStore(hiderAnswerPreviews);
+    const $mapQuestions = useMemo(
+        () =>
+            selectMapQuestions(
+                $gameSession?.player.role ?? null,
+                $questions,
+                $gameSnapshot,
+                $hiderAnswerPreviews,
+                $gameSession?.player.id,
+            ),
+        [
+            $gameSession?.player.id,
+            $gameSession?.player.role,
+            $gameSnapshot,
+            $hiderAnswerPreviews,
+            $questions,
+        ],
+    );
+
     const $hiderMode = useStore(hiderMode);
-    const $isLoading = useStore(isLoading);
     const $followMe = useStore(followMe);
     const $simulatedSeekerMode = useStore(simulatedSeekerMode);
     const $vizPOIsCategory = useStore(vizPOIsCategory);
@@ -102,11 +140,11 @@ export const Map = ({ className }: { className?: string }) => {
     const refreshQuestions = async (focus: boolean = false) => {
         if (!map) return;
 
-        if ($isLoading) return;
+        if (isLoading.get()) return;
 
         isLoading.set(true);
 
-        if ($questions.length === 0) {
+        if ($mapQuestions.length === 0) {
             await clearCache();
         }
 
@@ -133,7 +171,7 @@ export const Map = ({ className }: { className?: string }) => {
         }
 
         if ($hiderMode !== false) {
-            for (const question of $questions) {
+            for (const question of $mapQuestions) {
                 await hiderifyQuestion(question);
             }
 
@@ -148,7 +186,7 @@ export const Map = ({ className }: { className?: string }) => {
 
         try {
             mapGeoData = await applyQuestionsToMapGeoData(
-                $questions,
+                $mapQuestions,
                 mapGeoData,
                 planningModeEnabled.get(),
                 (geoJSONObj, question) => {
@@ -210,7 +248,7 @@ export const Map = ({ className }: { className?: string }) => {
                 zoom={12}
                 className={cn("w-[500px] h-[500px]", className)}
                 ref={leafletMapContext.set}
-                // @ts-ignore Typing doesn't update from react-contextmenu
+                // @ts-expect-error Typing doesn't update from react-contextmenu
                 contextmenu={true}
                 contextmenuWidth={140}
                 contextmenuItems={[
@@ -325,7 +363,7 @@ export const Map = ({ className }: { className?: string }) => {
                             noWrap
                         />
                         <TileLayer
-                            attribution='Boundaries and labels &copy; Esri, HERE, Garmin, OpenStreetMap contributors, and the GIS user community'
+                            attribution="Boundaries and labels &copy; Esri, HERE, Garmin, OpenStreetMap contributors, and the GIS user community"
                             url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
                             maxZoom={22}
                             minZoom={2}
@@ -333,33 +371,14 @@ export const Map = ({ className }: { className?: string }) => {
                         />
                     </>
                 )}
-                {$mapTileStyle === "street" &&
-                    !($highlightTrainLines && $thunderforestApiKey) && (
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors; &copy; <a href="https://carto.com/attributions">CARTO</a>; &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>; Powered by Esri and Turf.js'
-                        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                        subdomains="abcd"
-                        maxZoom={20} // This technically should be 6, but once the ratelimiting starts this can take over
-                        minZoom={2}
-                        noWrap
-                    />
-                )}
-                {$mapTileStyle === "street" &&
-                    $highlightTrainLines &&
-                    $thunderforestApiKey && (
-                    <TileLayer
-                        url={`https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=${$thunderforestApiKey}`}
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors; &copy; <a href="https://carto.com/attributions">CARTO</a>; &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>; Powered by Esri and Turf.js'
-                        maxZoom={22}
-                        minZoom={2}
-                        noWrap
-                    />
-                )}
+                {$mapTileStyle === "street" && <VectorBasemap />}
                 <DraggableMarkers />
                 <div className="leaflet-top leaflet-right">
                     <div className="leaflet-control flex-col flex gap-2">
                         <LeafletFullScreenButton />
-                        {$simulatedSeekerMode !== false && <SimulatedSeekerTimer />}
+                        {$simulatedSeekerMode !== false && (
+                            <SimulatedSeekerTimer />
+                        )}
                     </div>
                 </div>
                 {/* <PolygonDraw /> */}
@@ -378,13 +397,28 @@ export const Map = ({ className }: { className?: string }) => {
                 />
             </MapContainer>
         ),
-        [map, $highlightTrainLines, $thunderforestApiKey, $simulatedSeekerMode, $mapTileStyle],
+        [map, $simulatedSeekerMode, $mapTileStyle],
     );
 
     useEffect(() => {
         if (!map) return;
-        refreshQuestions(true);
-    }, [$questions, map, $hiderMode]);
+        if (!isLoading.get()) {
+            void refreshQuestions(true);
+            return;
+        }
+
+        let active = true;
+        const unbind = isLoading.subscribe((loading) => {
+            if (loading || !active) return;
+            active = false;
+            unbind();
+            void refreshQuestions(true);
+        });
+        return () => {
+            active = false;
+            unbind();
+        };
+    }, [$mapQuestions, map, $hiderMode]);
 
     useEffect(() => {
         const intervalId = setInterval(async () => {
@@ -436,7 +470,10 @@ export const Map = ({ className }: { className?: string }) => {
                 map.removeLayer(followMeMarkerRef.current);
                 followMeMarkerRef.current = null;
             }
-            if (geoWatchIdRef.current !== null && geoWatchIdRef.current !== -1) {
+            if (
+                geoWatchIdRef.current !== null &&
+                geoWatchIdRef.current !== -1
+            ) {
                 navigator.geolocation.clearWatch(geoWatchIdRef.current);
                 geoWatchIdRef.current = null;
             } else if (geoWatchIdRef.current === -1) {
@@ -499,7 +536,10 @@ export const Map = ({ className }: { className?: string }) => {
                 map.removeLayer(followMeMarkerRef.current);
                 followMeMarkerRef.current = null;
             }
-            if (geoWatchIdRef.current !== null && geoWatchIdRef.current !== -1) {
+            if (
+                geoWatchIdRef.current !== null &&
+                geoWatchIdRef.current !== -1
+            ) {
                 navigator.geolocation.clearWatch(geoWatchIdRef.current);
                 geoWatchIdRef.current = null;
             } else if (geoWatchIdRef.current === -1) {
@@ -508,9 +548,13 @@ export const Map = ({ className }: { className?: string }) => {
         };
     }, [$followMe, map, $simulatedSeekerMode]);
 
-    // Toggle MRT lines/stations overlay based on highlightTrainLines
+    // The bundled MRT lines and stations are always visible.
     useEffect(() => {
         if (!map) return;
+
+        const stationPane =
+            map.getPane(STATION_DOT_PANE) ?? map.createPane(STATION_DOT_PANE);
+        stationPane.style.zIndex = "450";
 
         let updateTrainRadius: (() => void) | null = null;
 
@@ -527,18 +571,20 @@ export const Map = ({ className }: { className?: string }) => {
                 if (stationCircleRef.current) {
                     try {
                         map.removeLayer(stationCircleRef.current);
-                    } catch (err) {
+                    } catch {
                         // ignore
                     }
                     stationCircleRef.current = null;
                 }
-            } catch (err) {
+            } catch {
                 // Swallow - map may be destroyed
             }
             // Ensure we remove zoom handler for train layers when cleaning up
             try {
                 if (updateTrainRadius) map.off("zoomend", updateTrainRadius);
-            } catch (e) {}
+            } catch {
+                // Map may already be destroyed.
+            }
         };
 
         const loadGeoJSON = async () => {
@@ -558,7 +604,8 @@ export const Map = ({ className }: { className?: string }) => {
                     },
                     style(feature: any) {
                         const color = mapColorFromToken(
-                            feature?.properties?.line_color || feature?.properties?.color,
+                            feature?.properties?.line_color ||
+                                feature?.properties?.color,
                         );
                         return {
                             color,
@@ -573,14 +620,18 @@ export const Map = ({ className }: { className?: string }) => {
                 const stationLayer = L.geoJSON(geo, {
                     filter(feature) {
                         return (
-                            feature.geometry && feature.geometry.type === "Point" && feature.properties.network === "singapore-mrt"
+                            feature.geometry &&
+                            feature.geometry.type === "Point" &&
+                            feature.properties.network === "singapore-mrt"
                         );
                     },
                     pointToLayer(geoJsonPoint, latlng) {
                         const color = mapColorFromToken(
-                            geoJsonPoint.properties?.station_colors || geoJsonPoint.properties?.color,
+                            geoJsonPoint.properties?.station_colors ||
+                                geoJsonPoint.properties?.color,
                         );
                         const marker = L.circleMarker(latlng, {
+                            pane: STATION_DOT_PANE,
                             radius: computeMarkerRadius(map),
                             color: color,
                             fillColor: color,
@@ -603,15 +654,23 @@ export const Map = ({ className }: { className?: string }) => {
                                 // If clicking the same station that already has a circle, remove it (toggle off)
                                 if (stationCircleRef.current) {
                                     try {
-                                        const existingLatLng = stationCircleRef.current.getLatLng?.();
-                                        if (existingLatLng && existingLatLng.equals(latlng)) {
-                                            map.removeLayer(stationCircleRef.current);
+                                        const existingLatLng =
+                                            stationCircleRef.current.getLatLng?.();
+                                        if (
+                                            existingLatLng &&
+                                            existingLatLng.equals(latlng)
+                                        ) {
+                                            map.removeLayer(
+                                                stationCircleRef.current,
+                                            );
                                             stationCircleRef.current = null;
                                             return; // toggled off
                                         }
                                         // Otherwise remove existing and replace with new one below
-                                        map.removeLayer(stationCircleRef.current);
-                                    } catch (err) {
+                                        map.removeLayer(
+                                            stationCircleRef.current,
+                                        );
+                                    } catch {
                                         /* ignore */
                                     }
                                     stationCircleRef.current = null;
@@ -619,7 +678,7 @@ export const Map = ({ className }: { className?: string }) => {
 
                                 // Create a new circle with 400m radius
                                 const newCircle = L.circle(latlng, {
-                                    radius: 400,
+                                    radius: HIDING_ZONE_RADIUS_METERS,
                                     color,
                                     // No fill: only border
                                     fillOpacity: 0,
@@ -631,12 +690,15 @@ export const Map = ({ className }: { className?: string }) => {
                                 // Ensure the circle sits below station markers so markers remain clickable
                                 try {
                                     newCircle.bringToBack();
-                                } catch (e) {
+                                } catch {
                                     /* ignore if pane not available */
                                 }
                                 stationCircleRef.current = newCircle;
                             } catch (err) {
-                                console.warn("Error drawing station circle", err);
+                                console.warn(
+                                    "Error drawing station circle",
+                                    err,
+                                );
                             }
                         });
 
@@ -645,37 +707,30 @@ export const Map = ({ className }: { className?: string }) => {
                 });
 
                 // Attach markers and layers to the map if the component is still alive
-                if ($highlightTrainLines) {
-                    trainLayersRef.current.lines = linesLayer.addTo(map);
-                    trainLayersRef.current.stations = stationLayer.addTo(map);
-                    // Add zoom handler for station markers so they scale like POIs
-                    updateTrainRadius = () => {
-                        const newRadius = computeMarkerRadius(map);
-                        try {
-                            trainLayersRef.current.stations?.eachLayer((m: any) => {
-                                if (m && typeof m.setRadius === "function") {
-                                    m.setRadius(newRadius);
-                                }
-                            });
-                        } catch (e) {
-                            // ignore
-                        }
-                    };
-                    map.on("zoomend", updateTrainRadius);
-                    updateTrainRadius();
-                }
+                trainLayersRef.current.lines = linesLayer.addTo(map);
+                trainLayersRef.current.stations = stationLayer.addTo(map);
+                // Add zoom handler for station markers so they scale like POIs
+                updateTrainRadius = () => {
+                    const newRadius = computeMarkerRadius(map);
+                    try {
+                        trainLayersRef.current.stations?.eachLayer((m: any) => {
+                            if (m && typeof m.setRadius === "function") {
+                                m.setRadius(newRadius);
+                            }
+                        });
+                    } catch {
+                        // ignore
+                    }
+                };
+                map.on("zoomend", updateTrainRadius);
+                updateTrainRadius();
             } catch (error) {
                 console.warn("Could not load sgmrt.geojson", error);
             }
         };
 
-        if ($highlightTrainLines) {
-            // remove existing just in case
-            removeTrainLayers();
-            loadGeoJSON();
-        } else {
-            removeTrainLayers();
-        }
+        removeTrainLayers();
+        void loadGeoJSON();
 
         return () => {
             try {
@@ -687,11 +742,11 @@ export const Map = ({ className }: { className?: string }) => {
                     map.removeLayer(trainLayersRef.current.stations);
                     trainLayersRef.current.stations = null;
                 }
-            } catch (err) {
+            } catch {
                 /* noop */
             }
         };
-    }, [$highlightTrainLines, map]);
+    }, [map]);
 
     // Viz POIs effect: render POIs for the selected category (independent of dialog open state)
     useEffect(() => {
@@ -701,7 +756,7 @@ export const Map = ({ className }: { className?: string }) => {
             if (poiLayerRef.current) {
                 try {
                     map.removeLayer(poiLayerRef.current);
-                } catch (err) {
+                } catch {
                     /* ignore */
                 }
                 poiLayerRef.current = null;
@@ -751,7 +806,15 @@ export const Map = ({ className }: { className?: string }) => {
                         data = universities as any;
                         break;
                     default:
-                        data = await findPlacesInZone($vizPOIsCategory, `Finding ${$vizPOIsCategory}...`, "nwr", "center", [], 0, true);
+                        data = await findPlacesInZone(
+                            $vizPOIsCategory,
+                            `Finding ${$vizPOIsCategory}...`,
+                            "nwr",
+                            "center",
+                            [],
+                            0,
+                            true,
+                        );
                 }
 
                 if (!data) return;
@@ -773,7 +836,8 @@ export const Map = ({ className }: { className?: string }) => {
                 const layer = L.geoJSON(data as any, {
                     filter(feature) {
                         return (
-                            feature.geometry && feature.geometry.type === "Point"
+                            feature.geometry &&
+                            feature.geometry.type === "Point"
                         );
                     },
                     pointToLayer(geoJsonPoint, latlng) {
@@ -785,7 +849,11 @@ export const Map = ({ className }: { className?: string }) => {
                             opacity: 1,
                             fillOpacity: 1,
                         });
-                        const name = geoJsonPoint.properties?.["name:en"] || geoJsonPoint.properties?.name ||  geoJsonPoint.properties?.Name ||"Unnamed";
+                        const name =
+                            geoJsonPoint.properties?.["name:en"] ||
+                            geoJsonPoint.properties?.name ||
+                            geoJsonPoint.properties?.Name ||
+                            "Unnamed";
                         marker.bindPopup(`<b>${name}</b>`);
                         return marker;
                     },
@@ -800,7 +868,7 @@ export const Map = ({ className }: { className?: string }) => {
                             if (m && typeof m.setRadius === "function") {
                                 m.setRadius(newRadius);
                             }
-                        } catch (e) {
+                        } catch {
                             // ignore
                         }
                     });
@@ -809,7 +877,11 @@ export const Map = ({ className }: { className?: string }) => {
                 // Initialize sizes
                 updateRadius();
             } catch (err) {
-                console.warn("Failed to load POIs for category", $vizPOIsCategory, err);
+                console.warn(
+                    "Failed to load POIs for category",
+                    $vizPOIsCategory,
+                    err,
+                );
             } finally {
                 loading = false;
             }
@@ -822,7 +894,7 @@ export const Map = ({ className }: { className?: string }) => {
                 if (updateRadius) {
                     map.off("zoomend", updateRadius);
                 }
-            } catch (e) {
+            } catch {
                 // ignore
             }
         };

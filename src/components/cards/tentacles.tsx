@@ -36,18 +36,26 @@ export const TentacleQuestionComponent = ({
     data,
     questionKey,
     sub,
+    displayIndex,
     className,
+    resultEditable,
+    status,
+    footer,
 }: {
     data: TentacleQuestion;
     questionKey: number;
     sub?: string;
+    displayIndex?: number;
     className?: string;
+    resultEditable?: boolean;
+    status?: "pending" | "answered";
+    footer?: React.ReactNode;
 }) => {
     const $questions = useStore(questions);
     const $drawingQuestionKey = useStore(drawingQuestionKey);
     const $isLoading = useStore(isLoading);
-    const label = `Tentacles
-    ${
+    const label = `Tentacles ${
+        displayIndex ??
         $questions
             .filter((q) => q.id === "tentacles")
             .map((q) => q.key)
@@ -66,6 +74,8 @@ export const TentacleQuestionComponent = ({
             }}
             locked={!data.drag}
             setLocked={(locked) => questionModified((data.drag = !locked))}
+            status={status}
+            footer={footer}
         >
             <SidebarMenuItem>
                 <div className={cn(MENU_ITEM_CLASSNAME, "gap-2 flex flex-row")}>
@@ -213,7 +223,7 @@ export const TentacleQuestionComponent = ({
                                   )
                                 : findTentacleLocations(data)
                         }
-                        disabled={!data.drag || $isLoading}
+                        disabled={(!data.drag && !resultEditable) || $isLoading}
                     />
                 </Suspense>
             </SidebarMenuItem>

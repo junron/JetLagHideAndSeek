@@ -1,13 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import { registerSW } from "virtual:pwa-register";
+const MAP_SERVICE_WORKER_SCOPE = "/";
 
-registerSW({
-    immediate: true,
-    onRegisteredSW(swScriptUrl) {
-        console.log("SW registered: ", swScriptUrl);
-    },
-    onOfflineReady() {
-        console.log("PWA application ready to work offline");
-    },
-});
+async function registerMapServiceWorker() {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(
+        registrations.map(async (registration) => {
+            const activeScript = registration.active?.scriptURL;
+            const scopePath = new URL(registration.scope).pathname;
+            if (
+                activeScript?.endsWith("/sw.js") &&
+                scopePath !== MAP_SERVICE_WORKER_SCOPE
+            ) {
+                await registration.unregister();
+            }
+        }),
+    );
+
+    const registration = await navigator.serviceWorker.register("/sw.js", {
+        scope: MAP_SERVICE_WORKER_SCOPE,
+    });
+    console.log("SW registered:", registration.scope);
+    window.setInterval(() => void registration.update(), 60 * 60 * 1000);
+}
+
+if ("serviceWorker" in navigator) {
+    let reloadingForUpdate = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloadingForUpdate) return;
+        reloadingForUpdate = true;
+        window.location.reload();
+    });
+    void registerMapServiceWorker().catch((error) =>
+        console.error("SW registration failed", error),
+    );
+}
