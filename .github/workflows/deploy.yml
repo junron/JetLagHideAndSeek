@@ -24,7 +24,7 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24.22.1
                   cache: pnpm
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
@@ -62,7 +62,7 @@ jobs:
               uses: withastro/action@v3
               with:
                   path: . # The root location of your Astro project inside the repository. (optional)
-                  node-version: 22 # Match the backend and local production toolchain.
+                  node-version: 24.22.1 # Match the backend and local production toolchain.
                   package-manager: pnpm@10.34.5 # Keep installs reproducible with the lockfile.
 
     deploy:

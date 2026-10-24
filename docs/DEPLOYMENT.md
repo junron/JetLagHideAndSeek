@@ -9,7 +9,7 @@ The frontend is a static Astro build served by Nginx. The multiplayer backend ru
 - A Linux host with DNS for `map.jro.sg` pointing to it.
 - Ports 80 and 443 reachable according to the host’s firewall/security-group policy. This guide does not alter firewall rules.
 - Git.
-- Node.js 22 and pnpm 10.34.5.
+- Node.js 24.22.1 and pnpm 10.34.5.
 - Docker Engine with the Compose plugin, or a compatible Compose implementation.
 - Nginx.
 - Certbot.
@@ -17,11 +17,11 @@ The frontend is a static Astro build served by Nginx. The multiplayer backend ru
 
 A rootless container runtime can be used if its account can read the repository and `/srv/jetlag-map/backend.env`, write `/srv/jetlag-map/data`, and bind the loopback port. Do not grant a user access to a rootful Docker socket under the assumption that it is low privilege; that access is effectively root-equivalent.
 
-## 2. Clone the deployment branch
+## 2. Clone the upstream deployment branch
 
 ```bash
-git clone --branch feat/map-jro-sg-deployment \
-  https://github.com/hermes-jro/JetLagHideAndSeek.git
+git clone --branch master \
+  https://github.com/junron/JetLagHideAndSeek.git
 cd JetLagHideAndSeek
 corepack enable
 corepack prepare pnpm@10.34.5 --activate
@@ -175,7 +175,7 @@ Also verify in a real browser:
 ```bash
 cd JetLagHideAndSeek
 git fetch origin
-git switch feat/map-jro-sg-deployment
+git switch master
 git pull --ff-only
 pnpm install --frozen-lockfile
 pnpm vitest run --maxWorkers=1 --minWorkers=1
